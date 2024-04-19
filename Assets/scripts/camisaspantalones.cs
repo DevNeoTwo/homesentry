@@ -1,0 +1,149 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class camisaspantalones : MonoBehaviour
+{
+    [SerializeField] Material[] camisamaterials;
+    [SerializeField] Material[] pantalonmaterials;
+
+    [SerializeField] Texture[] hombrecamisatexture;
+    [SerializeField] Texture[] hombrepanttexture;
+
+    [SerializeField] Texture[] mujercamisatexture;
+    [SerializeField] Texture[] mujerpanttexture;
+
+    int top = 1;
+    int bottom = 1;
+    audiomanager audiomanagerscript;
+    fadescreen fadescreenscript;
+    private void Start()
+    {
+        camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[0]);
+        pantalonmaterials[0].SetTexture("_MainTex", hombrepanttexture[0]);
+
+        camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[0]);
+        pantalonmaterials[1].SetTexture("_MainTex", mujerpanttexture[0]);
+
+        audiomanagerscript = FindObjectOfType<audiomanager>();
+        fadescreenscript = FindObjectOfType<fadescreen>();
+    }
+    private void FixedUpdate()
+    {
+        if (fadescreenscript.faded)
+        {
+            if (top == 1)
+            {
+                camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[0]);
+                camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[0]);
+            }
+            if (bottom == 1)
+            {
+                pantalonmaterials[0].SetTexture("_MainTex", hombrepanttexture[0]);
+                pantalonmaterials[1].SetTexture("_MainTex", mujerpanttexture[0]);
+            }
+
+            if (top == 2)
+            {
+                camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[1]);
+                camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[1]);
+            }
+            if (bottom == 2)
+            {
+                pantalonmaterials[0].SetTexture("_MainTex", hombrepanttexture[1]);
+                pantalonmaterials[1].SetTexture("_MainTex", mujerpanttexture[1]);
+            }
+
+            if (top == 3)
+            {
+                camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[2]);
+                camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[2]);
+            }
+            if (bottom == 3)
+            {
+                pantalonmaterials[0].SetTexture("_MainTex", hombrepanttexture[2]);
+                pantalonmaterials[1].SetTexture("_MainTex", mujerpanttexture[2]);
+            }
+
+            if (top == 4)
+            {
+                camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[3]);
+                camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[3]);
+            }
+            if (bottom == 4)
+            {
+                pantalonmaterials[0].SetTexture("_MainTex", hombrepanttexture[3]);
+                pantalonmaterials[1].SetTexture("_MainTex", mujerpanttexture[3]);
+            }
+
+            if (top == 5)
+            {
+                camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[4]);
+                camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[4]);
+            }
+            if (bottom == 5)
+            {
+                pantalonmaterials[0].SetTexture("_MainTex", hombrepanttexture[4]);
+                pantalonmaterials[1].SetTexture("_MainTex", mujerpanttexture[4]);
+            }
+
+        }
+           
+
+    }
+    public void nexttop()
+    {
+        if (fadescreenscript.faded)
+        {
+
+            top++;
+            audiomanagerscript.selectaudio(0, 0.7f);
+            if (top > 5)
+            {
+                top = 1;
+            }
+        }
+        
+    }
+    public void backtop()
+    {
+        if (fadescreenscript.faded)
+        {
+            top--;
+            audiomanagerscript.selectaudio(0, 0.7f);
+            if (top < 1)
+            {
+                top = 5;
+            }
+        }
+        
+    }
+    public void nextbottom()
+    {
+        if (fadescreenscript.faded)
+        {
+            bottom++;
+            audiomanagerscript.selectaudio(0, 0.7f);
+            if (bottom > 5)
+            {
+                bottom = 1;
+            }
+        }
+
+        
+    }
+
+    public void backbottom()
+    {
+        if (fadescreenscript.faded)
+        {
+            bottom--;
+            audiomanagerscript.selectaudio(0, 0.7f);
+            if (bottom < 1)
+            {
+                bottom = 5;
+            }
+        }
+        
+    }
+}
