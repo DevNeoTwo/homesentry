@@ -34,7 +34,7 @@ public class popups : MonoBehaviour
         audiomanagerscript.selectaudio(0, 0.7f);
         if (accesorioscript.botas && accesorioscript.carnetbool && accesorioscript.escudo && accesorioscript.codigobarras)
         {
-            Debug.Log("continua");
+            PlayerData.instance.Play();
         }
         if (!accesorioscript.botas || !accesorioscript.carnetbool || !accesorioscript.escudo || !accesorioscript.codigobarras)
         {

@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class camisaspantalones : MonoBehaviour
-{
+public class camisaspantalones : MonoBehaviour {
+
+    public static camisaspantalones instance;
+
     [SerializeField] Material[] camisamaterials;
     [SerializeField] Material[] pantalonmaterials;
 
@@ -13,10 +15,16 @@ public class camisaspantalones : MonoBehaviour
     [SerializeField] Texture[] mujercamisatexture;
     [SerializeField] Texture[] mujerpanttexture;
 
-    int top = 1;
-    int bottom = 1;
+    public int top = 1;
+    public int bottom = 1;
+
     audiomanager audiomanagerscript;
     fadescreen fadescreenscript;
+
+    private void Awake() {
+        instance = this;
+    }
+
     private void Start()
     {
         camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[0]);

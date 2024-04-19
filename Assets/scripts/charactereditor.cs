@@ -4,14 +4,16 @@ using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class charactereditor : MonoBehaviour
-{
+public class charactereditor : MonoBehaviour {
+
+    public static charactereditor instance;
+
     [SerializeField] GameObject[] spritegeneroui;
     [SerializeField] GameObject[] players;
     
     public Material pielmat;
      Renderer render;
-    public bool mujer=false;
+    public bool mujer = false;
     
     public int color = 1;
     [SerializeField] float velocidadrota;
@@ -19,6 +21,11 @@ public class charactereditor : MonoBehaviour
     bool rotandoizq;
     audiomanager audiomanagerscript;
     fadescreen fadescreenscript;
+
+    private void Awake() {
+        instance = this;
+    }
+
     private void Start()
     {
         audiomanagerscript = FindObjectOfType<audiomanager>();

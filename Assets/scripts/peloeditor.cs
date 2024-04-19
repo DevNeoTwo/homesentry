@@ -4,8 +4,10 @@ using System.Drawing;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class peloeditor : MonoBehaviour
-{
+public class peloeditor : MonoBehaviour {
+
+    public static peloeditor instance;
+
     public Material pelomat;
     public Renderer render;
     [SerializeField] GameObject[] players;
@@ -15,6 +17,11 @@ public class peloeditor : MonoBehaviour
     public int estilocabello=1;
     audiomanager audiomanagerscript;
     fadescreen fadescreenscript;
+
+    private void Awake() {
+        instance = this;
+    }
+
     private void Start()
     {
          render= players[players.Length - 1].GetComponent<Renderer>();
