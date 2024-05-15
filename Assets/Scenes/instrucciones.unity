@@ -4141,8 +4141,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidadrota: 0
   escala: 1.1
-  duracion: 0.5
-  delay: 0.5
+  duracion: 1
+  delay: 0.2
 --- !u!1 &1742197666
 GameObject:
   m_ObjectHideFlags: 0
