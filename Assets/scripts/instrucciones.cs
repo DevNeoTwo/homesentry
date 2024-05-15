@@ -99,7 +99,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
             textotuto.text = "Escoge el color de piel de tu avatar";
-            transformtuto.anchoredPosition = new Vector2(168f, 243f);
+            transformtuto.anchoredPosition = new Vector2(96f, 230f);
         }
         if (instruccionnumero == 5)
         {
@@ -163,7 +163,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
             textotuto.text = "Selecciona el pantalon que mas te guste";
-            transformtuto.anchoredPosition = new Vector2(-297f, 249f);
+            transformtuto.anchoredPosition = new Vector2(0f, 80f);
         }
         if (instruccionnumero == 9)
         {
@@ -179,7 +179,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[9].SetActive(true);
             imageninstruccion[10].SetActive(false);
             textotuto.text = "Ponte las botas especiales para trabajar";
-            transformtuto.anchoredPosition = new Vector2(-5f, -116f);
+            transformtuto.anchoredPosition = new Vector2(0f, 7f);
         }
         if (instruccionnumero == 10)
         {
@@ -195,7 +195,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(true);
             textotuto.text = "El carnet que te idenfica siempre a la vista generara una mayor confianza hacia los clientes";
-            transformtuto.anchoredPosition = new Vector2(-5f, -116f);
+            transformtuto.anchoredPosition = new Vector2(0f, 0f);
         }
     }
 

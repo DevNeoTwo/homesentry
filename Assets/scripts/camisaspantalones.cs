@@ -21,6 +21,9 @@ public class camisaspantalones : MonoBehaviour {
     audiomanager audiomanagerscript;
     fadescreen fadescreenscript;
 
+    [SerializeField] Animator pantanim;
+    [SerializeField] Animator camisanim;
+
     private void Awake() {
         instance = this;
     }
@@ -103,7 +106,7 @@ public class camisaspantalones : MonoBehaviour {
     {
         if (fadescreenscript.faded)
         {
-
+            camisanim.SetTrigger("animder");
             top++;
             audiomanagerscript.selectaudio(0, 0.7f);
             if (top > 5)
@@ -117,6 +120,7 @@ public class camisaspantalones : MonoBehaviour {
     {
         if (fadescreenscript.faded)
         {
+            camisanim.SetTrigger("animizq");
             top--;
             audiomanagerscript.selectaudio(0, 0.7f);
             if (top < 1)
@@ -130,6 +134,7 @@ public class camisaspantalones : MonoBehaviour {
     {
         if (fadescreenscript.faded)
         {
+            pantanim.SetTrigger("animder");
             bottom++;
             audiomanagerscript.selectaudio(0, 0.7f);
             if (bottom > 5)
@@ -145,6 +150,7 @@ public class camisaspantalones : MonoBehaviour {
     {
         if (fadescreenscript.faded)
         {
+            pantanim.SetTrigger("animizq");
             bottom--;
             audiomanagerscript.selectaudio(0, 0.7f);
             if (bottom < 1)

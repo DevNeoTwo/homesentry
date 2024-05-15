@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using TMPro;
+using TMPro.EditorUtilities;
 using Unity.VisualScripting;
+using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class charactereditor : MonoBehaviour {
 
@@ -21,6 +25,10 @@ public class charactereditor : MonoBehaviour {
     bool rotandoizq;
     audiomanager audiomanagerscript;
     fadescreen fadescreenscript;
+    [SerializeField] Animator generoanim;
+
+    string nombrejugador;
+    [SerializeField] TMP_InputField nombrepuesto;
 
     private void Awake() {
         instance = this;
@@ -40,6 +48,7 @@ public class charactereditor : MonoBehaviour {
     }
     private void FixedUpdate()
     {
+        nombrejugador = nombrepuesto.text;
         if (rotandoder)
         {
             GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, velocidadrota * Time.deltaTime, 0,Space.Self);
@@ -151,24 +160,46 @@ public class charactereditor : MonoBehaviour {
             if (!mujer)
             {
                 players[0].SetActive(false);
-                spritegeneroui[0].SetActive(false);
+              //  spritegeneroui[0].SetActive(false);
                 players[1].SetActive(true);
-                spritegeneroui[1].SetActive(true);
+               // spritegeneroui[1].SetActive(true);
                 mujer = true;
             }
             else
             {
                 players[0].SetActive(true);
-                spritegeneroui[0].SetActive(true);
+               // spritegeneroui[0].SetActive(true);
                 players[1].SetActive(false);
-                spritegeneroui[1].SetActive(false);
+               // spritegeneroui[1].SetActive(false);
                 mujer = false;
             }
         }
         
         
     }
-
+    public void derecha() {
+        if(mujer)
+        {
+            generoanim.SetTrigger("hombremujer");
+        }
+        else
+        {
+            generoanim.SetTrigger("mujerhombre");
+        }
+        
+        
+    }
+    public void izquierda()
+    {
+        if (!mujer)
+        {
+            generoanim.SetTrigger("backmujer");
+        }
+        else
+        {
+            generoanim.SetTrigger("backhombre");
+        }
+    }
     public void playclick()
     {
         audiomanagerscript.selectaudio(0, 0.7f);

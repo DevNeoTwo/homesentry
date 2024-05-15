@@ -17,6 +17,7 @@ public class peloeditor : MonoBehaviour {
     public int estilocabello=1;
     audiomanager audiomanagerscript;
     fadescreen fadescreenscript;
+    [SerializeField] Animator cabelloanim;
 
     private void Awake() {
         instance = this;
@@ -302,8 +303,12 @@ public class peloeditor : MonoBehaviour {
 
     public void nextcabello() {
 
+        
         if (fadescreenscript.faded)
         {
+            cabelloanim.SetTrigger("animder");
+           
+
             audiomanagerscript.selectaudio(0, 0.7f);
             estilocabello++;
             if (estilocabello > 6)
@@ -312,12 +317,13 @@ public class peloeditor : MonoBehaviour {
             }
 
         }
-         
+        
     }
     public void previouscabello()
     {
         if (fadescreenscript.faded)
         {
+            cabelloanim.SetTrigger("animizq");
             audiomanagerscript.selectaudio(0, 0.7f);
             estilocabello--;
             if (estilocabello < 1)
