@@ -10,6 +10,7 @@ public class PlayerData : MonoBehaviour {
 
     [SerializeField] private NetworkRunner runner;
 
+    public string playerName;
     public int styleHairId;
     public int colorHairId;
     public int shirtId;
@@ -30,6 +31,7 @@ public class PlayerData : MonoBehaviour {
     }
 
     public void Play() {
+        playerName = charactereditor.instance.nombrejugador;
         styleHairId = peloeditor.instance.estilocabello;
         colorHairId = peloeditor.instance.colorcabello;
         shirtId = camisaspantalones.instance.top;
