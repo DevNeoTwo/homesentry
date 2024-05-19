@@ -10,13 +10,20 @@ public class fadescreen : MonoBehaviour
     public bool faded;
     cambiarnivel cambialvlscript;
     audiomanager audiomanagerscript;
+    [SerializeField] bool fadeinicial;
+    [SerializeField] GameObject UIitem;
     private void Start()
     {
         faded = false;
         audiomanagerscript = FindObjectOfType<audiomanager>();
         cambialvlscript =FindObjectOfType<cambiarnivel>();
-        StartCoroutine(fadeclaro());
 
+        if(fadeinicial){
+
+            StartCoroutine(fadeclaro());
+
+        }
+        
     }
 
     IEnumerator fadeclaro()
@@ -67,7 +74,10 @@ public class fadescreen : MonoBehaviour
         {
             StartCoroutine(fadeobscuro());
         }
-        
+        if (!fadeinicial)
+        {
+            UIitem.SetActive(false);
+        }
         
     }
 }

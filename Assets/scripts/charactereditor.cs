@@ -27,7 +27,7 @@ public class charactereditor : MonoBehaviour {
     fadescreen fadescreenscript;
     [SerializeField] Animator generoanim;
 
-    string nombrejugador;
+    public string nombrejugador;
     [SerializeField] TMP_InputField nombrepuesto;
 
     private void Awake() {
@@ -58,7 +58,6 @@ public class charactereditor : MonoBehaviour {
         }
         if (color == 1)
         {
-            
             pielmat.color = new Color32(255, 196, 165, 255);
         }
         if (color == 2)
