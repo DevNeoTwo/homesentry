@@ -97,7 +97,7 @@ public class peloeditor : MonoBehaviour {
         //***************************//***********************************//*************
         //estilos de cabellos**
 
-        if (estilocabello==1)
+        /*if (estilocabello==1)
         {
             tiposcabelloshombre[0].SetActive(true);
             tiposcabellosmujer[0].SetActive(true);
@@ -192,8 +192,14 @@ public class peloeditor : MonoBehaviour {
             tiposcabellosmujer[3].SetActive(false);
             tiposcabellosmujer[4].SetActive(false);
             tiposcabellosmujer[0].SetActive(false);
-        }
+        }*/
 
+        for (int i = 0; i < tiposcabellosmujer.Length; i++) {
+            tiposcabellosmujer[i].SetActive(false);
+            tiposcabelloshombre[i].SetActive(false);
+        }  
+        tiposcabellosmujer[estilocabello - 1].SetActive(true);
+        tiposcabelloshombre[estilocabello - 1].SetActive(true);
     }
 
     //selector colores botones del canvas***

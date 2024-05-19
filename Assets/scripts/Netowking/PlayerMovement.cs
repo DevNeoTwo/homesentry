@@ -19,9 +19,7 @@ public class PlayerMovement : NetworkBehaviour {
             arrowMiniMap.color = Color.red;
     }
 
-    void Update() {
-        
-    }
+    void Update() { }
 
     public override void FixedUpdateNetwork() {
         if (!HasInputAuthority) return;

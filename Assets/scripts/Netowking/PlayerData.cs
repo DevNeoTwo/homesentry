@@ -14,7 +14,7 @@ public class PlayerData : MonoBehaviour {
     public int styleHairId;
     public int colorHairId;
     public int shirtId;
-    public int pantalon;
+    public int pantId;
     public int skinId;
     public bool genre;
 
@@ -26,16 +26,14 @@ public class PlayerData : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
     }
 
-    void Update() {
-        
-    }
+    void Update() { }
 
     public void Play() {
         playerName = charactereditor.instance.nombrejugador;
         styleHairId = peloeditor.instance.estilocabello;
         colorHairId = peloeditor.instance.colorcabello;
         shirtId = camisaspantalones.instance.top;
-        pantalon = camisaspantalones.instance.bottom;
+        pantId = camisaspantalones.instance.bottom;
         skinId = charactereditor.instance.color;
         genre = charactereditor.instance.mujer;
         StartGame("test");
