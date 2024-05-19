@@ -13,7 +13,7 @@ public class PlayerCustomizator : NetworkBehaviour {
 
     [SerializeField] private GameObject[] hairStyles = new GameObject[0];
     [SerializeField] private Color[] hairColors = new Color[0];
-    [SerializeField] private SkinnedMeshRenderer bodyRender;
+    [SerializeField] private Renderer bodyRender;
     [SerializeField] private Color[] bodyColors = new Color[0];
     [SerializeField] private Texture2D[] shirts = new Texture2D[0];
     [SerializeField] private Texture2D[] pants = new Texture2D[0];
@@ -66,7 +66,7 @@ public class PlayerCustomizator : NetworkBehaviour {
         } catch {}
         bodyRender.materials[0].color = bodyColors[skinColor];
         hairStyles[hairStyle].SetActive(true);
-        hairStyles[hairStyle].GetComponent<MeshRenderer>().material.color = hairColors[hairColor];
+        hairStyles[hairStyle].GetComponent<Renderer>().material.color = hairColors[hairColor];
         bodyRender.materials[1].mainTexture = shirts[shirt];
         bodyRender.materials[2].mainTexture = pants[pant];
     }
