@@ -26,8 +26,10 @@ public class PlayerCustomizator : NetworkBehaviour {
     }
 
     void Start() {
-        string color = PlayerData.instance.skinId + "," + PlayerData.instance.styleHairId + "," + PlayerData.instance.colorHairId + "," + PlayerData.instance.shirtId + "," + PlayerData.instance.pantId;
-        RPC_SetColor(PlayerData.instance.playerName, color);
+        if (HasInputAuthority) {
+            string color = PlayerData.instance.skinId + "," + PlayerData.instance.styleHairId + "," + PlayerData.instance.colorHairId + "," + PlayerData.instance.shirtId + "," + PlayerData.instance.pantId;
+            RPC_SetColor(PlayerData.instance.playerName, color);
+        }
     }
 
     void Update() {
