@@ -2689,7 +2689,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1491620331}
         m_TargetAssemblyTypeName: muteunmute, Assembly-CSharp
-        m_MethodName: mutearmusic
+        m_MethodName: botoninicial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2977,7 +2977,7 @@ MonoBehaviour:
   soundofffx: {fileID: 21300000, guid: 70c57ca97e49a984d84c391af401f183, type: 3}
   botonmusic: {fileID: 1134378806}
   botonfx: {fileID: 1650588838}
-  muteadomusic: 1
+  muteadomusic: 0
   muteadofx: 0
   musica: {fileID: 2136812606}
   soundfx: {fileID: 1491620330}

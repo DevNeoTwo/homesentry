@@ -11,13 +11,13 @@ public class muteunmute : MonoBehaviour
     [SerializeField] Sprite soundofffx;
     [SerializeField] Button botonmusic;
     [SerializeField] Button botonfx;
-    public bool muteadomusic=false;
-    public bool muteadofx = false;
+    public bool muteadomusic;
+    public bool muteadofx;
     [SerializeField] AudioSource musica;
     [SerializeField]AudioSource soundfx;
 
-    public static int mutemusic=0;
-    public static int mutefx=1;
+    public static int mutemusic;
+    public static int mutefx;
 
     
 
@@ -32,43 +32,50 @@ public class muteunmute : MonoBehaviour
 
         if (mutemusic == 0)
         {
-            muteadomusic = false;
-        }
-        else
-        {
-            muteadomusic = true;
-        }
-
-        if(mutefx == 0)
-        {
-            muteadofx=false;
-        }
-        else 
-        { 
             
-            muteadofx=true;
-        }
-
-
-        if (!muteadomusic)
-        {
+            botonmusic.image.sprite = soundoffmusic;
+            muteadomusic = false;
+            musica.volume = 0;
             mutemusic = 0;
         }
         else
         {
+            botonmusic.image.sprite = soundonmusic;
+            muteadomusic = true;
+            musica.volume = 0.2f;
             mutemusic = 1;
         }
 
-        if (!muteadofx)
+        if(mutefx == 0)
         {
-            mutefx=0;
+            botonfx.image.sprite = soundofffx;
+            muteadofx = false;
+            soundfx.volume = 0;
+            mutefx = 0;
         }
-        else
+        else 
         {
-
+            botonfx.image.sprite = soundonfx;
+            muteadofx = true;
+            soundfx.volume = 0.7f;
             mutefx = 1;
         }
-        Debug.Log(mutefx);
+        
+    }
+    
+    public void botoninicial()
+    {
+        botonmusic.image.sprite = soundonmusic;
+        muteadomusic = true;
+
+        musica.volume = 0.2f;
+        mutemusic = 1;
+
+        botonfx.image.sprite = soundonfx;
+        muteadofx = true;
+
+        soundfx.volume = 0.7f;
+        mutefx = 1;
     }
     public void mutearmusic()
     {

@@ -16,30 +16,7 @@ public class cambiarnivel : MonoBehaviour
         }
         
     }
-    private void Start()
-    {
-        if (llamascript)
-        {
-            if (mutescript.muteadomusic)
-            {
-                muteunmute.mutemusic = 0;
-            }
-            else
-            {
-                muteunmute.mutemusic = 1;
-            }
-
-            if (mutescript.muteadofx)
-            {
-                muteunmute.mutefx = 0;
-            }
-            else
-            {
-                muteunmute.mutefx = 1;
-            }
-
-        }
-    }
+    
     public void cambiaescena()
     {
         

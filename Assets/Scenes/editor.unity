@@ -584,6 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nivel: InGame
+  llamascript: 0
 --- !u!1 &55254612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,10 +1936,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runner: {fileID: 201024226}
+  playerName: 
   styleHairId: 0
   colorHairId: 0
   shirtId: 0
-  pantalon: 0
+  pantId: 0
   skinId: 0
   genre: 0
 --- !u!4 &201024228
@@ -3342,6 +3344,7 @@ GameObject:
   - component: {fileID: 454997881}
   - component: {fileID: 454997882}
   - component: {fileID: 454997883}
+  - component: {fileID: 454997884}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3466,6 +3469,7 @@ MonoBehaviour:
   velocidadrota: 100
   rotandoder: 0
   generoanim: {fileID: 84425783}
+  nombrejugador: 
   nombrepuesto: {fileID: 220266416}
 --- !u!114 &454997880
 MonoBehaviour:
@@ -3602,6 +3606,26 @@ MonoBehaviour:
   - {fileID: 1048482618}
   - {fileID: 1546578431}
   popuprandomnum: 0
+--- !u!114 &454997884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 454997874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe1a2a866580d84eaab7df76bc7ef8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundoffmusic: {fileID: 21300000, guid: 2589bb39616009b4b9c475a35a0b0e5b, type: 3}
+  soundofffx: {fileID: 21300000, guid: 70c57ca97e49a984d84c391af401f183, type: 3}
+  botonmusic: {fileID: 1747338362}
+  botonfx: {fileID: 1316911685}
+  muteadomusic: 0
+  muteadofx: 0
+  musica: {fileID: 1913741815}
+  soundfx: {fileID: 1132706850}
 --- !u!1 &491256818
 GameObject:
   m_ObjectHideFlags: 0
@@ -9367,7 +9391,7 @@ GameObject:
   - component: {fileID: 1316911686}
   - component: {fileID: 1316911685}
   m_Layer: 5
-  m_Name: mute (1)
+  m_Name: mutefx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9435,7 +9459,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1316911686}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 454997884}
+        m_TargetAssemblyTypeName: muteunmute, Assembly-CSharp
+        m_MethodName: mutearfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1316911686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13202,7 +13238,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1747338363}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 454997884}
+        m_TargetAssemblyTypeName: muteunmute, Assembly-CSharp
+        m_MethodName: mutearmusic
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1747338363
 MonoBehaviour:
   m_ObjectHideFlags: 0
