@@ -8,6 +8,8 @@ public class popups : MonoBehaviour
     accesorios accesorioscript;
    public int popuprandomnum;
     audiomanager audiomanagerscript;
+
+    [SerializeField] private GameObject loading;
     
     private void Start()
     {
@@ -34,6 +36,7 @@ public class popups : MonoBehaviour
         audiomanagerscript.selectaudio(0, 0.7f);
         if (accesorioscript.botas && accesorioscript.carnetbool && accesorioscript.escudo && accesorioscript.codigobarras)
         {
+            loading.SetActive(true);
             PlayerData.instance.Play();
         }
         if (!accesorioscript.botas || !accesorioscript.carnetbool || !accesorioscript.escudo || !accesorioscript.codigobarras)

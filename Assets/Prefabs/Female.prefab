@@ -1757,11 +1757,11 @@ GameObject:
   - component: {fileID: 8319088054573507312}
   - component: {fileID: 6556263796965134844}
   - component: {fileID: 6250169283364278774}
-  - component: {fileID: 1903303779574399334}
   - component: {fileID: 4842592250625620536}
   - component: {fileID: 480182104439169767}
   - component: {fileID: 1316511620586329433}
   - component: {fileID: 8400868306400141022}
+  - component: {fileID: 1903303779574399334}
   m_Layer: 7
   m_Name: Female
   m_TagString: Player
@@ -1849,31 +1849,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 480182104439169767}
-  speed: 5
+  speed: 666
   arrowMiniMap: {fileID: 360732750944980438}
---- !u!136 &1903303779574399334
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3348629638929211527}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.666
-  m_Height: 4
-  m_Direction: 1
-  m_Center: {x: 0, y: 2, z: 0}
+  rb: {fileID: 4842592250625620536}
 --- !u!54 &4842592250625620536
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2006,6 +1984,29 @@ MonoBehaviour:
   - {fileID: 2800000, guid: a52ef2c78aef93541969c5e8e6ec8662, type: 3}
   - {fileID: 2800000, guid: 17c0a17f910d8c949880fcbca108c569, type: 3}
   - {fileID: 2800000, guid: 6b081fca3752e47498a333961ce07bae, type: 3}
+--- !u!136 &1903303779574399334
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3348629638929211527}
+  m_Material: {fileID: 13400000, guid: 3bbb241992ee6d746b4360ffb24f599d, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.666
+  m_Height: 4
+  m_Direction: 1
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1 &3891169540440502479
 GameObject:
   m_ObjectHideFlags: 0
@@ -3103,7 +3104,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 4.335}
+  m_AnchoredPosition: {x: 0, y: 4.854}
   m_SizeDelta: {x: 1180, y: 664}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &4966219333950672961

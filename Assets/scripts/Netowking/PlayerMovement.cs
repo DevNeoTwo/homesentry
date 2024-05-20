@@ -10,6 +10,8 @@ public class PlayerMovement : NetworkBehaviour {
 
     [SerializeField] private SpriteRenderer arrowMiniMap;
 
+    [SerializeField] private Rigidbody rb;
+
     void Start() {
         if (HasInputAuthority) {
             CameraFollow.instance.SetTarget(this.transform);
@@ -24,20 +26,19 @@ public class PlayerMovement : NetworkBehaviour {
     public override void FixedUpdateNetwork() {
         if (!HasInputAuthority) return;
 
-        bool run = true;
-        if (Input.GetKey(KeyCode.LeftShift))
-            run = true;
-        anim.SetBool("run", run);
+        Vector3 vel = new Vector3(0, -300 * Runner.DeltaTime, 0);
 
         //translation
         if (Input.GetKey(KeyCode.W))
-            this.transform.Translate(0, 0, run ? speed * Runner.DeltaTime * 2 : speed * Runner.DeltaTime, Space.World);
+            vel.z = speed * Runner.DeltaTime;
         if (Input.GetKey(KeyCode.S))
-            this.transform.Translate(0, 0, run ? -speed * Runner.DeltaTime * 2 : -speed * Runner.DeltaTime, Space.World);
+            vel.z = -speed * Runner.DeltaTime;
         if (Input.GetKey(KeyCode.A))
-            this.transform.Translate(run ? -speed * Runner.DeltaTime * 2 : -speed * Runner.DeltaTime, 0, 0, Space.World);
+            vel.x = -speed * Runner.DeltaTime;
         if (Input.GetKey(KeyCode.D))
-            this.transform.Translate(run ? speed * Runner.DeltaTime * 2 : speed * Runner.DeltaTime, 0, 0, Space.World);
+            vel.x = speed * Runner.DeltaTime;
+        rb.velocity = vel;
+
         //rotation
         if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A))
             this.transform.eulerAngles = new Vector3(0, 315, 0);
@@ -58,6 +59,7 @@ public class PlayerMovement : NetworkBehaviour {
         //animations
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) {
             anim.SetBool("walk", true);
+            anim.SetBool("run", true);
         } else {
             anim.SetBool("walk", false);
         }
