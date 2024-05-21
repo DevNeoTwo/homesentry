@@ -6,7 +6,7 @@ using TMPro;
 
 public class PlayerCustomizator : NetworkBehaviour {
 
-    [Networked] public NetworkString<_32> charName { get; set; }
+    [Networked, OnChangedRender(nameof(ChangeColor))] public NetworkString<_32> charName { get; set; }
     [Networked] public NetworkString<_32> charColor { get; set; }
 
     [SerializeField] private TMP_Text nameTx;
@@ -37,6 +37,7 @@ public class PlayerCustomizator : NetworkBehaviour {
         foreach (var change in _changeDetector.DetectChanges(this)) {
             switch (change) {
                 case nameof(charColor):
+                    Debug.Log("fixed");
                     ChangeColor();
                     break;
                 case nameof(charName):
@@ -53,6 +54,7 @@ public class PlayerCustomizator : NetworkBehaviour {
     }
 
     private void ChangeColor() {
+        Debug.Log("changing color");
         int skinColor = 0;
         int hairStyle = 0;
         int hairColor = 0;
