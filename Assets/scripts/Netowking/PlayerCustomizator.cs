@@ -33,7 +33,6 @@ public class PlayerCustomizator : NetworkBehaviour {
     }
 
     public override void FixedUpdateNetwork() {
-        if (!HasInputAuthority) return;
         foreach (var change in _changeDetector.DetectChanges(this)) {
             switch (change) {
                 case nameof(charColor):
