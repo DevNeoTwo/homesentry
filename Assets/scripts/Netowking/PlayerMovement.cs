@@ -58,10 +58,9 @@ public class PlayerMovement : NetworkBehaviour {
             this.transform.eulerAngles = new Vector3(0, 90, 0);
         //animations
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) {
-            anim.SetBool("walk", true);
             anim.SetBool("run", true);
         } else {
-            anim.SetBool("walk", false);
+            anim.SetBool("run", false);
         }
     }
 }
