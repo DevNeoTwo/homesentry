@@ -32,7 +32,7 @@ public class PlayerCustomizator : NetworkBehaviour {
         }
     }
 
-    public override void FixedUpdateNetwork() {
+    /*public override void FixedUpdateNetwork() {
         return;
         foreach (var change in _changeDetector.DetectChanges(this)) {
             switch (change) {
@@ -45,9 +45,9 @@ public class PlayerCustomizator : NetworkBehaviour {
                     break;
             }
         }
-    }
+    }*/
 
-    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_SetColor(string playerName, string color, RpcInfo rpcInfo = default) {
         this.charColor = color;
         this.charName = playerName;
