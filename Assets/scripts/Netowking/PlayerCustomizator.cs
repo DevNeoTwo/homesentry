@@ -32,20 +32,18 @@ public class PlayerCustomizator : NetworkBehaviour {
         }
     }
 
-    /*public override void FixedUpdateNetwork() {
-        return;
+    public override void FixedUpdateNetwork() {
         foreach (var change in _changeDetector.DetectChanges(this)) {
             switch (change) {
                 case nameof(charColor):
-                    Debug.Log("fixed");
                     ChangeColor();
                     break;
                 case nameof(charName):
-                    nameTx.text = charName.ToString();
+                    ChangeName();
                     break;
             }
         }
-    }*/
+    }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_SetColor(string playerName, string color, RpcInfo rpcInfo = default) {
