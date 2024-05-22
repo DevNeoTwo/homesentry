@@ -12,7 +12,9 @@ public class PlayerMovement : NetworkBehaviour {
 
     [SerializeField] private Rigidbody rb;
 
-    void Start() {
+    IEnumerator Start() {
+        DontDestroyOnLoad(this.gameObject);
+        yield return new WaitForSeconds(5);
         if (HasInputAuthority) {
             CameraFollow.instance.SetTarget(this.transform);
             CameraMiniMap.instance.SetTarget(this.transform);

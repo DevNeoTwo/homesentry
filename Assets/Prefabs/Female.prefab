@@ -1811,10 +1811,22 @@ MonoBehaviour:
   m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SyncScale: 0
-  SyncParent: 0
-  _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 0
+  _interpolationDataSource: 0
+  InterpolationSpace: 0
+  InterpolationTarget: {fileID: 4824833200111900493}
+  InterpolateErrorCorrection: 1
+  InterpolatedErrorCorrectionSettings:
+    MinRate: 3.3
+    MaxRate: 10
+    PosBlendStart: 0.25
+    PosBlendEnd: 1
+    PosMinCorrection: 0.025
+    PosTeleportDistance: 2
+    RotBlendStart: 0.1
+    RotBlendEnd: 0.5
+    RotTeleportRadians: 1.5
+  UseLegacySharedModeInterpolation: 0
+  TargetInterpolationDelay: 0.03
 --- !u!114 &6556263796965134844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1827,15 +1839,21 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SortKey: 3922804196
   ObjectInterest: 1
-  Flags: 262145
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 1
+  AllowStateAuthorityOverride: 0
+  AoiPositionSource: {fileID: 0}
+  Flags: 264449
+  NetworkGuid:
+    RawGuidValue: 5a7d9c5cf778dd64ebde734ccc38dc3c
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 8319088054573507312}
   - {fileID: 6250169283364278774}
   - {fileID: 1316511620586329433}
   - {fileID: 8400868306400141022}
+  SimulationBehaviours: []
 --- !u!114 &6250169283364278774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1848,6 +1866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 528c3067a5a06f844900a2a00ca627c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   anim: {fileID: 480182104439169767}
   speed: 666
   arrowMiniMap: {fileID: 360732750944980438}
@@ -1912,11 +1931,23 @@ MonoBehaviour:
   m_Script: {fileID: 506319458, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   Animator: {fileID: 480182104439169767}
   TotalWords: 1
-  ApplyTiming: 2
   SyncSettings: 79
-  StateHashes: 0000000077bbd7648e222d228e63d6b2c60128f525ac40e0cb9bedac
+  FloatAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  TimeAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: 1061325578
+  WeightAccuracy:
+    _value: 0
+    _inverse: 0
+    _hash: -814817977
+  StateHashes: 0000000077bbd7648e222d2225ac40e0cb9bedacb880efec3c450914
   TriggerHashes: 00000000
 --- !u!114 &8400868306400141022
 MonoBehaviour:
@@ -1930,6 +1961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bda2d82bf2daecf4996db7cf03d81394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
   _charName:
     _length: 0
     _data:

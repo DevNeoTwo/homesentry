@@ -44,7 +44,7 @@ public class PlayerData : MonoBehaviour {
         return runner.StartGame(
             new StartGameArgs {
                 GameMode = GameMode.Shared,
-                Scene = SceneRef.FromIndex(4),
+                Scene = 4,
                 SessionName = room,
                 SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
             }

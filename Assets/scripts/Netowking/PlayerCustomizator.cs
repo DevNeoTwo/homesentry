@@ -6,8 +6,8 @@ using TMPro;
 
 public class PlayerCustomizator : NetworkBehaviour {
 
-    [Networked, OnChangedRender(nameof(ChangeName))] public NetworkString<_32> charName { get; set; }
-    [Networked, OnChangedRender(nameof(ChangeColor))] public NetworkString<_32> charColor { get; set; }
+    [Networked(OnChanged = nameof(ChangeName))] public NetworkString<_32> charName { get; set; }
+    [Networked(OnChanged = nameof(ChangeColor))] public NetworkString<_32> charColor { get; set; }
 
     [SerializeField] private TMP_Text nameTx;
 
@@ -19,12 +19,6 @@ public class PlayerCustomizator : NetworkBehaviour {
     [SerializeField] private Texture2D[] pants = new Texture2D[0];
 
 
-    private ChangeDetector _changeDetector;
-
-    public override void Spawned() {
-        _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
-    }
-
     void Start() {
         if (HasInputAuthority) {
             string color = PlayerData.instance.skinId + "," + PlayerData.instance.styleHairId + "," + PlayerData.instance.colorHairId + "," + PlayerData.instance.shirtId + "," + PlayerData.instance.pantId;
@@ -32,23 +26,14 @@ public class PlayerCustomizator : NetworkBehaviour {
         }
     }
 
-    public override void FixedUpdateNetwork() {
-        foreach (var change in _changeDetector.DetectChanges(this)) {
-            switch (change) {
-                case nameof(charColor):
-                    ChangeColor();
-                    break;
-                case nameof(charName):
-                    ChangeName();
-                    break;
-            }
-        }
-    }
-
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_SetColor(string playerName, string color, RpcInfo rpcInfo = default) {
         this.charColor = color;
         this.charName = playerName;
+    }
+
+    static void ChangeColor(Changed<PlayerCustomizator> changed) {
+        changed.Behaviour.ChangeColor();
     }
 
     private void ChangeColor() {
@@ -69,6 +54,10 @@ public class PlayerCustomizator : NetworkBehaviour {
         hairStyles[hairStyle].GetComponent<Renderer>().material.color = hairColors[hairColor];
         bodyRender.materials[1].mainTexture = shirts[shirt];
         bodyRender.materials[2].mainTexture = pants[pant];
+    }
+
+    static void ChangeName(Changed<PlayerCustomizator> changed) {
+        changed.Behaviour.ChangeName();
     }
 
     private void ChangeName() {
