@@ -1907,8 +1907,8 @@ GameObject:
   - component: {fileID: 201024228}
   - component: {fileID: 201024227}
   - component: {fileID: 201024226}
-  - component: {fileID: 201024225}
   - component: {fileID: 201024229}
+  - component: {fileID: 201024230}
   m_Layer: 0
   m_Name: PlayerData
   m_TagString: Untagged
@@ -1916,18 +1916,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &201024225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201024224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8edbe7108d8a43ab838cf8b8d9453df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &201024226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1990,6 +1978,29 @@ MonoBehaviour:
   playerPref:
   - RawGuidValue: 7ba2918d340b965469730ede9cdcec04
   - RawGuidValue: 5a7d9c5cf778dd64ebde734ccc38dc3c
+--- !u!114 &201024230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201024224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObjectInterest: 1
+  DefaultInterestGroups: []
+  DestroyWhenStateAuthorityLeaves: 0
+  AllowStateAuthorityOverride: 1
+  AoiPositionSource: {fileID: 0}
+  Flags: 2561
+  NetworkGuid:
+    RawGuidValue: 2794a20fa2b745ffb271a002f03ce073
+  NestedObjects: []
+  NetworkedBehaviours: []
+  SimulationBehaviours: []
 --- !u!1 &214274235 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -8942972599060220640, guid: be8d44b51821989468d286d505df37e1, type: 3}
