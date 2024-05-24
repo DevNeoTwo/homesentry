@@ -21,6 +21,8 @@ public class PlayerMovement : NetworkBehaviour {
             arrowMiniMap.color = Color.green;
         } else
             arrowMiniMap.color = Color.red;
+        yield return new WaitForSeconds(1);
+        GameManager.instance.CreateCustomers();
     }
 
     void Update() { }

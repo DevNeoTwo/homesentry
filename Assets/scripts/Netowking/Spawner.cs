@@ -14,12 +14,15 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks {
     private Dictionary<PlayerRef, NetworkObject> spawnedCharacters = new Dictionary<PlayerRef, NetworkObject>();
     private PlayerRef localPlayer;
 
+    public bool owner;
+
     private void Awake() {
         instance = this;
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) {
         if(player == runner.LocalPlayer) {
+            if (GameObject.FindGameObjectsWithTag("Player").Length == 1) owner = true;
             localPlayer = player;
             Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 3, UnityEngine.Random.Range(-1.5f, 1.5f));
             NetworkObject networkPlayerObject = runner.Spawn(playerPref[PlayerData.instance.genre ? 1 : 0], spawnPosition, Quaternion.identity, player);
