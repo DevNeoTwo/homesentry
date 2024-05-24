@@ -21,6 +21,8 @@ public class charactereditor : MonoBehaviour {
     audiomanager audiomanagerscript;
     fadescreen fadescreenscript;
     [SerializeField] Animator generoanim;
+    [SerializeField] Animator cambiaropaanim_mujer;
+    [SerializeField] Animator cambiaropaanim_hombre;
 
     public string nombrejugador;
     [SerializeField] TMP_InputField nombrepuesto;
@@ -198,7 +200,10 @@ public class charactereditor : MonoBehaviour {
     {
         audiomanagerscript.selectaudio(0, 0.7f);
     }
-
+    public void playanimmale()
+    {
+        cambiaropaanim_hombre.SetTrigger("mirarse");
+    }
     public void rotaplayerderecha()
     {
         if (fadescreenscript.faded)
@@ -220,4 +225,5 @@ public class charactereditor : MonoBehaviour {
         }
         
     }
+
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7841091460072529848}
   - component: {fileID: 704243061119244332}
   m_Layer: 0
-  m_Name: dragableitem
+  m_Name: dragableitem 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4a6cff2f6c710747915aede6aa47754, type: 2}
+  - {fileID: 2100000, guid: 1ac53a6229fa37b4986a9888293d1061, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

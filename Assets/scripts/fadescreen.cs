@@ -12,6 +12,7 @@ public class fadescreen : MonoBehaviour
     audiomanager audiomanagerscript;
     [SerializeField] bool fadeinicial;
     [SerializeField] GameObject UIitem;
+    //20 objs llenando exajerando
     private void Start()
     {
         faded = false;

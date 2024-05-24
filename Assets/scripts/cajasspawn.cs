@@ -9,9 +9,14 @@ public class cajasspawn : MonoBehaviour
     [SerializeField] float spawnintervalos;
     [SerializeField] int cantitadobjspawn;
     bool spawnobjsbool;
+    public int randomindex;
+
+    [SerializeField] GameObject[] cajasactivables;
+    [SerializeField] int objectosactivar;
     private void Start()
     {
         spawnobjsbool = false;
+        actualizacaja();
     }
     private void FixedUpdate()
     {
@@ -19,19 +24,47 @@ public class cajasspawn : MonoBehaviour
         {
             spawnobjsbool = true;
             StartCoroutine(spawnobj());
-            
         }
+        
     }
+
     IEnumerator spawnobj()
     {
         
-        int randomindex=Random.Range(0,cajasspawnprefap.Length);
         for(int i = 0; i < cantitadobjspawn; i++)
         {
-            Instantiate(cajasspawnprefap[randomindex],sitiospawn.position,sitiospawn.rotation);
+            
+            GameObject newobj = Instantiate(cajasspawnprefap[randomindex], sitiospawn.position, sitiospawn.rotation);
             yield return new WaitForSeconds(0.6f);
+            randomindex = Random.Range(0, cajasspawnprefap.Length);
         }
         yield return new WaitForSeconds(spawnintervalos);
         spawnobjsbool = false;
     }
+
+    public void incrementaobjetos()
+    {
+        if (objectosactivar < cajasactivables.Length)
+        {
+            objectosactivar++;
+            actualizacaja();
+        }
+    }
+
+    private void actualizacaja()
+    {
+        for (int i = 0; i < cajasactivables.Length; i++)
+        {
+            if (i < objectosactivar)
+            {
+                cajasactivables[i].SetActive(true);
+            }
+            else
+            {
+                cajasactivables[i].SetActive(false);
+            }
+        }
+    }
 }
+
+//Instantiate(cajasspawnprefap[randomindex],sitiospawn.position,sitiospawn.rotation);
