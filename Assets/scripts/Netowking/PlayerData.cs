@@ -18,6 +18,8 @@ public class PlayerData : MonoBehaviour {
     public int skinId;
     public bool genre;
 
+    public bool gameMode;
+
     private void Awake() {
         instance = this;
     }
@@ -40,10 +42,11 @@ public class PlayerData : MonoBehaviour {
     }
 
     public virtual Task StartGame(string room) {
+        GameMode mode = PlayerPrefs.GetString("gamemode") == "vs" ? GameMode.Shared : GameMode.Single;
         runner.ProvideInput = false;
         return runner.StartGame(
             new StartGameArgs {
-                GameMode = GameMode.Shared,
+                GameMode = mode,
                 Scene = 4,
                 SessionName = room,
                 SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()

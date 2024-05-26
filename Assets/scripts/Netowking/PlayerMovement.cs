@@ -9,8 +9,12 @@ public class PlayerMovement : NetworkBehaviour {
     [SerializeField] private float speed;
 
     [SerializeField] private SpriteRenderer arrowMiniMap;
+    [SerializeField] private Color playerColor;
+    [SerializeField] private Color enemyColor;
 
     [SerializeField] private Rigidbody rb;
+
+    private bool started;
 
     IEnumerator Start() {
         DontDestroyOnLoad(this.gameObject);
@@ -18,17 +22,24 @@ public class PlayerMovement : NetworkBehaviour {
         if (HasInputAuthority) {
             CameraFollow.instance.SetTarget(this.transform);
             CameraMiniMap.instance.SetTarget(this.transform);
-            arrowMiniMap.color = Color.green;
+            arrowMiniMap.color = playerColor;
         } else
-            arrowMiniMap.color = Color.red;
+            arrowMiniMap.color = enemyColor;
         yield return new WaitForSeconds(1);
         GameManager.instance.CreateCustomers();
+        if (PlayerPrefs.GetString("GameMode") == "vs") {
+            while (GameObject.FindGameObjectsWithTag("Player").Length < 2)
+                yield return new WaitForSeconds(0.25f);
+        }
+        yield return new WaitForSeconds(1);
+        started = true;
     }
 
     void Update() { }
 
     public override void FixedUpdateNetwork() {
         if (!HasInputAuthority) return;
+        if (!started) return;
 
         Vector3 vel = new Vector3(0, -300 * Runner.DeltaTime, 0);
 

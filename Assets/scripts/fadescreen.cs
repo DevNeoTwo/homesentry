@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class fadescreen : MonoBehaviour
-{
+public class fadescreen : MonoBehaviour {
+
+    public static fadescreen instance;
+
     [SerializeField] Image imagen;
     [SerializeField] float duracion;
     public bool faded;
@@ -13,6 +15,12 @@ public class fadescreen : MonoBehaviour
     [SerializeField] bool fadeinicial;
     [SerializeField] GameObject UIitem;
     //20 objs llenando exajerando
+
+
+    private void Awake() {
+        instance = this;
+    }
+
     private void Start()
     {
         faded = false;

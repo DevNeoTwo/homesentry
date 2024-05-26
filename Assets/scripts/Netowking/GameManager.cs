@@ -7,7 +7,7 @@ public class GameManager : NetworkBehaviour {
 
     public static GameManager instance;
 
-    [SerializeField] private Transform[] spawnPoint = new Transform[0];
+    [SerializeField] private List<Transform> spawnPoint = new List<Transform>();
 
     [SerializeField] private NetworkPrefabRef[] customer = new NetworkPrefabRef[0];
 
@@ -15,12 +15,22 @@ public class GameManager : NetworkBehaviour {
         instance = this;
     }
 
+    private void Start() {
+        for (int i = 0; i < this.transform.childCount; i++) {
+            spawnPoint.Add(this.transform.GetChild(i).transform);
+        }
+    }
+
     public void CreateCustomers() {
-        for (int i = 0; i < 10; i++)
-            Runner.Spawn(customer[Random.Range(0, 2)], spawnPoint[Random.Range(0, spawnPoint.Length)].position, Quaternion.identity);
+        for (int i = 0; i < 20; i++)
+            Runner.Spawn(customer[Random.Range(0, 2)], spawnPoint[Random.Range(10, spawnPoint.Count)].transform.position, Quaternion.identity);
     }
 
     public override void FixedUpdateNetwork() {
         if (!Spawner.instance.owner) return;
+    }
+
+    public Vector3 GetDestination() {
+        return spawnPoint[Random.Range(0,spawnPoint.Count)].position;
     }
 }
