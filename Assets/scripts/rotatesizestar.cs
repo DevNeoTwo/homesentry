@@ -11,15 +11,23 @@ public class rotatesizestar : MonoBehaviour
     [SerializeField] float duracion;
     [SerializeField] float delay;
     bool escalando = true;
+    public bool iniciacorrutina;
     private void Start()
     {
         imagen = GetComponent<Image>();
+        if (!iniciacorrutina)
+        {
+            StartCoroutine(escalador());
+        }
         
     }
     void Update()
     {
-        imagen.rectTransform.Rotate(0,0, velocidadrota*Time.deltaTime);
-        StartCoroutine(escalador());
+        imagen.rectTransform.Rotate(0, 0, velocidadrota * Time.deltaTime);
+        if (iniciacorrutina)
+        {
+            StartCoroutine(escalador());
+        }
     }
     IEnumerator escalador()
     {
