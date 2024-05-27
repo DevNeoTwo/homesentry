@@ -27,8 +27,8 @@ public class PlayerMovement : NetworkBehaviour {
             arrowMiniMap.color = enemyColor;
         yield return new WaitForSeconds(1);
         GameManager.instance.CreateCustomers();
-        if (PlayerPrefs.GetString("GameMode") == "vs") {
-            while (GameObject.FindGameObjectsWithTag("Player").Length < 2)
+        if (PlayerPrefs.GetString("gamemode") == "vs") {
+            while (GameObject.FindGameObjectsWithTag("Player").Length != 2)
                 yield return new WaitForSeconds(0.25f);
         }
         yield return new WaitForSeconds(1);

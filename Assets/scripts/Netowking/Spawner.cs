@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks {
 
     private void Awake() {
         instance = this;
+        if (PlayerPrefs.GetString("gamemode") != "vs") owner = true;
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) {

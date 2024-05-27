@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class dragdrobobj : MonoBehaviour
-{
+public class dragdrobobj : MonoBehaviour {
+
     Vector3 mouseposicion;
     public int objid;
     cajasspawn cajasspawnscript;
@@ -12,15 +12,19 @@ public class dragdrobobj : MonoBehaviour
     bool destroyobj_A;
     bool destroyobj_B;
     bool destroyobj_C;
+
+    [SerializeField] private bool destroyByTime;
+
     private void Start()
     {
         cajasspawnscript = FindObjectOfType<cajasspawn>();
         objid = cajasspawnscript.randomindex;
+        if (destroyByTime) Destroy(this.gameObject, 10);
     }
 
     Vector3 getmousepos()
     {
-        return Camera.main.WorldToScreenPoint(transform.position);
+        return cajasspawn.instance.cam.WorldToScreenPoint(transform.position);
     }
 
     private void OnMouseDown()
@@ -31,7 +35,7 @@ public class dragdrobobj : MonoBehaviour
 
     private void OnMouseDrag()
     {
-        transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition-mouseposicion);
+        transform.position = cajasspawn.instance.cam.ScreenToWorldPoint(Input.mousePosition-mouseposicion);
         dragobj = true;
     }
 

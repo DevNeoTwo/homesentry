@@ -4,8 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class cajasspawn : MonoBehaviour
-{
+public class cajasspawn : MonoBehaviour {
+
+    public static cajasspawn instance;
+
     [SerializeField] GameObject[] cajasspawnprefap;
     [SerializeField] Transform sitiospawn;
     [SerializeField] float spawnintervalos;
@@ -20,7 +22,15 @@ public class cajasspawn : MonoBehaviour
     public int objectosactivar_A;
     public int objectosactivar_B;
     public int objectosactivar_C;
-    
+
+    [SerializeField] private float tiempo;
+    private float tCurrent;
+    public Camera cam;
+
+    private void Awake() {
+        instance = this;
+    }
+
     private void Start()
     {
         spawnobjsbool = false;
@@ -38,20 +48,23 @@ public class cajasspawn : MonoBehaviour
         
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-
-            objectosactivar_A = 0;
-            objectosactivar_B = 0;
-            objectosactivar_C = 0;
-            spawnintervalos = 2;
-            actualizacaja_A();
-            actualizacaja_B();
-            actualizacaja_C();
+    private void Update() {
+        if (Time.time > tCurrent + tiempo) {
+            //finalizar
         }
     }
+
+    public void Restart() {
+        objectosactivar_A = 0;
+        objectosactivar_B = 0;
+        objectosactivar_C = 0;
+        spawnintervalos = 2;
+        actualizacaja_A();
+        actualizacaja_B();
+        actualizacaja_C();
+        tCurrent = Time.time;
+    }
+
     IEnumerator spawnobj()
     {
         
