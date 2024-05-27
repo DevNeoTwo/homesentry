@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class cajasspawn : MonoBehaviour
 {
@@ -10,13 +12,21 @@ public class cajasspawn : MonoBehaviour
     [SerializeField] int cantitadobjspawn;
     bool spawnobjsbool;
     public int randomindex;
+    
 
-    [SerializeField] GameObject[] cajasactivables;
-    [SerializeField] int objectosactivar;
+    [SerializeField] GameObject[] cajasactivables_A;
+    [SerializeField] GameObject[] cajasactivables_B;
+    [SerializeField] GameObject[] cajasactivables_C;
+    public int objectosactivar_A;
+    public int objectosactivar_B;
+    public int objectosactivar_C;
+    
     private void Start()
     {
         spawnobjsbool = false;
-        actualizacaja();
+        actualizacaja_A();
+        actualizacaja_B();
+        actualizacaja_C();
     }
     private void FixedUpdate()
     {
@@ -28,40 +38,116 @@ public class cajasspawn : MonoBehaviour
         
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            objectosactivar_A = 0;
+            objectosactivar_B = 0;
+            objectosactivar_C = 0;
+            spawnintervalos = 2;
+            actualizacaja_A();
+            actualizacaja_B();
+            actualizacaja_C();
+        }
+    }
     IEnumerator spawnobj()
     {
         
         for(int i = 0; i < cantitadobjspawn; i++)
         {
-            
+           randomindex = Random.Range(0, cajasspawnprefap.Length);
+           
+            if(randomindex == 0 && objectosactivar_A >= cajasactivables_A.Length)
+            {
+                spawnintervalos = 1f;
+                break;
+            }
+            if (randomindex == 1 && objectosactivar_B >= cajasactivables_B.Length)
+            {
+                spawnintervalos = 0.5f;
+                break;
+            }
+            if (randomindex == 2 && objectosactivar_C >= cajasactivables_C.Length)
+            {
+                spawnintervalos = 0.2f;
+                break;
+            }
             GameObject newobj = Instantiate(cajasspawnprefap[randomindex], sitiospawn.position, sitiospawn.rotation);
-            yield return new WaitForSeconds(0.6f);
-            randomindex = Random.Range(0, cajasspawnprefap.Length);
+            yield return new WaitForSeconds(0.5f);
+         
         }
         yield return new WaitForSeconds(spawnintervalos);
         spawnobjsbool = false;
     }
 
-    public void incrementaobjetos()
+    public void incrementaobjetos_A()
     {
-        if (objectosactivar < cajasactivables.Length)
+        if (objectosactivar_A < cajasactivables_A.Length)
         {
-            objectosactivar++;
-            actualizacaja();
+                objectosactivar_A++;
+                actualizacaja_A();
+        }
+        
+    }
+    public void incrementaobjetos_B()
+    {
+        if (objectosactivar_B < cajasactivables_B.Length)
+        {
+                objectosactivar_B++;
+                actualizacaja_B();
+        }
+    }
+    public void incrementaobjetos_C()
+    {
+        if (objectosactivar_C < cajasactivables_C.Length)
+        {
+                objectosactivar_C++;
+                actualizacaja_C();
         }
     }
 
-    private void actualizacaja()
+    private void actualizacaja_A()
     {
-        for (int i = 0; i < cajasactivables.Length; i++)
+        for (int i = 0; i < cajasactivables_A.Length; i++)
         {
-            if (i < objectosactivar)
+            if (i < objectosactivar_A)
             {
-                cajasactivables[i].SetActive(true);
+                cajasactivables_A[i].SetActive(true);
             }
             else
             {
-                cajasactivables[i].SetActive(false);
+                cajasactivables_A[i].SetActive(false);
+            }
+        }
+
+    }
+    private void actualizacaja_B()
+    {
+        for (int i = 0; i < cajasactivables_B.Length; i++)
+        {
+            if (i < objectosactivar_B)
+            {
+                cajasactivables_B[i].SetActive(true);
+            }
+            else
+            {
+                cajasactivables_B[i].SetActive(false);
+            }
+        }
+    }
+    private void actualizacaja_C()
+    {
+        for (int i = 0; i < cajasactivables_C.Length; i++)
+        {
+            if (i < objectosactivar_C)
+            {
+                cajasactivables_C[i].SetActive(true);
+            }
+            else
+            {
+                cajasactivables_C[i].SetActive(false);
             }
         }
     }

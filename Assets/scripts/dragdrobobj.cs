@@ -9,7 +9,9 @@ public class dragdrobobj : MonoBehaviour
     public int objid;
     cajasspawn cajasspawnscript;
     bool dragobj;
-    bool destroyobj;
+    bool destroyobj_A;
+    bool destroyobj_B;
+    bool destroyobj_C;
     private void Start()
     {
         cajasspawnscript = FindObjectOfType<cajasspawn>();
@@ -40,51 +42,90 @@ public class dragdrobobj : MonoBehaviour
 
     private void Update()
     {
-        if (destroyobj&&!dragobj)
+        if (destroyobj_A && !dragobj)
         {
-            cajasspawnscript.incrementaobjetos();
+            cajasspawnscript.incrementaobjetos_A();
             Destroy(this.gameObject, 0.13f);
-            destroyobj = false;
+            destroyobj_A = false;
         }
-        
+        if (destroyobj_B && !dragobj)
+        {
+            cajasspawnscript.incrementaobjetos_B();
+            Destroy(this.gameObject, 0.13f);
+            destroyobj_B = false;
+        }
+
+        if (destroyobj_C && !dragobj)
+        {
+            cajasspawnscript.incrementaobjetos_C();
+            Destroy(this.gameObject, 0.13f);
+            destroyobj_C = false;
+        }
+
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("cubobasura")) 
-        {
-            Destroy(this.gameObject, 0.5f);
-        }
+        
         if (other.gameObject.CompareTag("espacio1") && this.objid == 0)
         {
+
+            destroyobj_A = true;
             
-            destroyobj = true;
-            
+        }
+        else
+        {
+            destroyobj_A=false;
         }
 
 
-        if (other.gameObject.CompareTag("espacio2") && this.objid == 1 && !dragobj)
+        if (other.gameObject.CompareTag("espacio2") && this.objid == 1 )
         {
 
-            destroyobj = true;
+            destroyobj_B = true;
             
         }
-
-
-        if (other.gameObject.CompareTag("espacio3") && this.objid == 2 && !dragobj)
+        else
         {
-            destroyobj = true;
+            destroyobj_B=false;
         }
 
+        if (other.gameObject.CompareTag("espacio3") && this.objid == 2 )
+        {
+            destroyobj_C = true;
+        }
+        else
+        {
+            destroyobj_C=false;
+        }
 
     }
     private void OnTriggerStay(Collider other)
     {
-        if (!dragobj && other.gameObject.CompareTag("espacio1") || other.gameObject.CompareTag("espacio2") || other.gameObject.CompareTag("espacio3"))
+        if (other.gameObject.CompareTag("cubobasura") && !dragobj)
         {
-            
             Destroy(this.gameObject, 0.5f);
-            
+        }
+
+        if (!dragobj && other.gameObject.CompareTag("espacio1"))
+        {
+            destroyobj_A = true;
+            Destroy(this.gameObject);
+        }
+       
+
+        if (!dragobj && other.gameObject.CompareTag("espacio2"))
+        {
+            destroyobj_B = true;
+            Destroy(this.gameObject);
         }
         
+
+        if (!dragobj && other.gameObject.CompareTag("espacio3"))
+        {
+            destroyobj_C = true;
+            Destroy(this.gameObject);
+        }
+       
+
     }
 }

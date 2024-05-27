@@ -14,11 +14,12 @@ public class rotatesizestar : MonoBehaviour
     private void Start()
     {
         imagen = GetComponent<Image>();
-        StartCoroutine(escalador());
+        
     }
     void Update()
     {
         imagen.rectTransform.Rotate(0,0, velocidadrota*Time.deltaTime);
+        StartCoroutine(escalador());
     }
     IEnumerator escalador()
     {

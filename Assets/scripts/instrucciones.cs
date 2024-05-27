@@ -13,6 +13,8 @@ public class instrucciones : MonoBehaviour
     [SerializeField] string nivel;
     audiomanager audiomanagerscript;
     fadescreen fadescreenscript;
+    [SerializeField] GameObject backbtn;
+    [SerializeField] RectTransform nextbtn;
     private void Start()
     {
         audiomanagerscript = FindObjectOfType<audiomanager>();
@@ -36,6 +38,8 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[10].SetActive(false);
             textotuto.text = "Escribe aqui tu nombre";
             transformtuto.anchoredPosition=new Vector2 (0f, -148f);
+            backbtn.SetActive(false);
+            nextbtn.anchoredPosition = new Vector2(-420, 51);
         }
         if(instruccionnumero == 1)
         {
@@ -52,6 +56,8 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[10].SetActive(false);
             textotuto.text = "Activar la ARL es muy importante antes de empezar a trabajar";
             transformtuto.anchoredPosition = new Vector2(0f, 75f);
+            backbtn.SetActive(true);
+            nextbtn.anchoredPosition = new Vector2(-247, 51);
         }
         if (instruccionnumero == 2)
         {

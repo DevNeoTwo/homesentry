@@ -6,11 +6,12 @@ using UnityEngine.Video;
 public class videoplayer : MonoBehaviour
 {
     [SerializeField] string vidio;
+    [SerializeField] GameObject objdesactivar;
     cambiarnivel cambianivelscript;
     void Start()
     {
         cambianivelscript = GetComponent<cambiarnivel>();
-        playvideo();
+        
     }
 
     void playvideo()
@@ -28,5 +29,12 @@ public class videoplayer : MonoBehaviour
     private void videofinish(VideoPlayer vp)
     {
         cambianivelscript.cambiaescena();
+    }
+
+    public void playvidio()
+    {
+        objdesactivar.gameObject.SetActive(false);
+
+        playvideo();
     }
 }
