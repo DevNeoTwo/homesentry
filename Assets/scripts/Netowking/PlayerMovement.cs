@@ -16,23 +16,35 @@ public class PlayerMovement : NetworkBehaviour {
 
     private bool started;
 
+    public bool bussy;
+    [SerializeField] private GameObject itemObj;
+    public int itemID;
+
     IEnumerator Start() {
-        DontDestroyOnLoad(this.gameObject);
-        yield return new WaitForSeconds(5);
         if (HasInputAuthority) {
-            CameraFollow.instance.SetTarget(this.transform);
-            CameraMiniMap.instance.SetTarget(this.transform);
-            arrowMiniMap.color = playerColor;
-        } else
-            arrowMiniMap.color = enemyColor;
-        yield return new WaitForSeconds(1);
-        GameManager.instance.CreateCustomers();
-        if (PlayerPrefs.GetString("gamemode") == "vs") {
-            while (GameObject.FindGameObjectsWithTag("Player").Length != 2)
-                yield return new WaitForSeconds(0.25f);
+            DontDestroyOnLoad(this.gameObject);
+            yield return new WaitForSeconds(1);
+            if (GameObject.FindGameObjectsWithTag("Player").Length == 1) Spawner.instance.owner = true;
+            else Spawner.instance.owner = false;
+
+            Debug.Log(Spawner.instance.owner + " - " + GameObject.FindGameObjectsWithTag("Player").Length);
+
+            yield return new WaitForSeconds(4);
+            if (HasInputAuthority) {
+                CameraFollow.instance.SetTarget(this.transform);
+                CameraMiniMap.instance.SetTarget(this.transform);
+                arrowMiniMap.color = playerColor;
+            } else
+                arrowMiniMap.color = enemyColor;
+            yield return new WaitForSeconds(1);
+            if (Spawner.instance.owner) GameManager.instance.CreateCustomers(20);
+            if (PlayerPrefs.GetString("gamemode") == "vs") {
+                while (GameObject.FindGameObjectsWithTag("Player").Length != 2)
+                    yield return new WaitForSeconds(0.25f);
+            }
+            yield return new WaitForSeconds(1);
+            started = true;
         }
-        yield return new WaitForSeconds(1);
-        started = true;
     }
 
     void Update() { }
@@ -77,5 +89,18 @@ public class PlayerMovement : NetworkBehaviour {
         } else {
             anim.SetBool("run", false);
         }
+    }
+
+    public void TakeItem(int id) {
+        itemID = id;
+        anim.SetBool("box", true);
+        itemObj.SetActive(true);
+    }
+
+    public void LeaveItem() {
+        itemID = 0;
+        bussy = false;
+        anim.SetBool("box", false);
+        itemObj.SetActive(false);
     }
 }

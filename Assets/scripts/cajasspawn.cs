@@ -63,6 +63,8 @@ public class cajasspawn : MonoBehaviour {
         actualizacaja_B();
         actualizacaja_C();
         tCurrent = Time.time;
+        spawnobjsbool = false;
+        //StartCoroutine(spawnobj());
     }
 
     IEnumerator spawnobj()

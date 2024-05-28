@@ -48,7 +48,7 @@ public class PlayerData : MonoBehaviour {
             new StartGameArgs {
                 GameMode = mode,
                 Scene = 4,
-                SessionName = room,
+                SessionName = "",
                 SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
             }
         ); ;

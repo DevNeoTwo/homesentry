@@ -21,8 +21,8 @@ public class GameManager : NetworkBehaviour {
         }
     }
 
-    public void CreateCustomers() {
-        for (int i = 0; i < 20; i++)
+    public void CreateCustomers(int amount) {
+        for (int i = 0; i < amount; i++)
             Runner.Spawn(customer[Random.Range(0, 2)], spawnPoint[Random.Range(10, spawnPoint.Count)].transform.position, Quaternion.identity);
     }
 

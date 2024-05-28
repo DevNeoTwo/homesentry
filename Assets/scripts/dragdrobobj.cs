@@ -7,7 +7,6 @@ public class dragdrobobj : MonoBehaviour {
 
     Vector3 mouseposicion;
     public int objid;
-    cajasspawn cajasspawnscript;
     bool dragobj;
     bool destroyobj_A;
     bool destroyobj_B;
@@ -17,8 +16,7 @@ public class dragdrobobj : MonoBehaviour {
 
     private void Start()
     {
-        cajasspawnscript = FindObjectOfType<cajasspawn>();
-        objid = cajasspawnscript.randomindex;
+        objid = cajasspawn.instance.randomindex;
         if (destroyByTime) Destroy(this.gameObject, 10);
     }
 
@@ -35,6 +33,7 @@ public class dragdrobobj : MonoBehaviour {
 
     private void OnMouseDrag()
     {
+        this.GetComponent<Rigidbody>().velocity = Vector3.zero;
         transform.position = cajasspawn.instance.cam.ScreenToWorldPoint(Input.mousePosition-mouseposicion);
         dragobj = true;
     }
@@ -42,34 +41,37 @@ public class dragdrobobj : MonoBehaviour {
     private void OnMouseUp()
     {
         dragobj=false;
+        Destroy(this.gameObject, 0.15f);
     }
 
     private void Update()
     {
         if (destroyobj_A && !dragobj)
         {
-            cajasspawnscript.incrementaobjetos_A();
+            cajasspawn.instance.incrementaobjetos_A();
             Destroy(this.gameObject, 0.13f);
             destroyobj_A = false;
         }
         if (destroyobj_B && !dragobj)
         {
-            cajasspawnscript.incrementaobjetos_B();
+            cajasspawn.instance.incrementaobjetos_B();
             Destroy(this.gameObject, 0.13f);
             destroyobj_B = false;
         }
 
         if (destroyobj_C && !dragobj)
         {
-            cajasspawnscript.incrementaobjetos_C();
+            cajasspawn.instance.incrementaobjetos_C();
             Destroy(this.gameObject, 0.13f);
             destroyobj_C = false;
         }
-
     }
     private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.CompareTag("cubobasura") && !dragobj) {
+            Destroy(this.gameObject);
+        }
+
         if (other.gameObject.CompareTag("espacio1") && this.objid == 0)
         {
 
@@ -103,7 +105,7 @@ public class dragdrobobj : MonoBehaviour {
         }
 
     }
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStayssss(Collider other)
     {
         if (other.gameObject.CompareTag("cubobasura") && !dragobj)
         {

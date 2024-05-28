@@ -22,6 +22,7 @@ public class CustomerController : NetworkBehaviour {
     [SerializeField] private Animator anim;
     [SerializeField] private NavMeshAgent nav;
     private bool walking;
+    private bool waiting;
     private float tState;
     private float tDelay;
     private Vector3 target;
@@ -30,8 +31,6 @@ public class CustomerController : NetworkBehaviour {
     [SerializeField] private Image productImg;
     [SerializeField] private TMP_Text productTx;
     [SerializeField] private SpriteRenderer arrowImg;
-    [SerializeField] private Sprite arrowIcon;
-    [SerializeField] private Sprite starIcon;
 
     void Start() {
         if (!Spawner.instance.owner) return;
@@ -53,6 +52,8 @@ public class CustomerController : NetworkBehaviour {
 
     public override void FixedUpdateNetwork() {
         if (!Spawner.instance.owner) return;
+        if (waiting) return;
+
         if (walking) {
             if (Vector3.Distance(this.transform.position, target) < 1) {
                 walking = false;
@@ -117,12 +118,43 @@ public class CustomerController : NetworkBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
+
+            if (other.GetComponent<PlayerMovement>().bussy && other.GetComponent<PlayerMovement>().itemID == 1 && waiting) {
+                other.GetComponent<PlayerMovement>().LeaveItem();
+                UIManager.instance.AddPoints(100);
+                GameManager.instance.CreateCustomers(1);
+                Runner.Despawn(this.gameObject.GetComponent<NetworkObject>());
+                return;
+            }
+
+            if (other.GetComponent<PlayerMovement>().bussy) return;
+
+            if (waiting) return;
+
             int aux = int.Parse(product.ToString());
-            productTx.text = aux.ToString();
-            productImg.color = aux == 0 ? Color.red : Color.blue;
-            arrowImg.sprite = starIcon;
-            canvas.SetActive(true);
+
+            if (aux == 0) StartCoroutine(ShowCloud()); //no item
+            else {
+                waiting = true;
+                walking = false;
+                nav.isStopped = true;
+                anim.SetBool("run", false);
+
+                other.GetComponent<PlayerMovement>().bussy = true;
+
+                productTx.text = "item: " + aux.ToString();
+                productImg.color = Color.blue;
+                arrowImg.color = Color.white;
+                canvas.SetActive(true);
+            }
         }
+    }
+
+    IEnumerator ShowCloud() {
+        productTx.text = "...";
+        canvas.SetActive(true);
+        yield return new WaitForSeconds(3);
+        canvas.SetActive(false);
     }
 }
 
