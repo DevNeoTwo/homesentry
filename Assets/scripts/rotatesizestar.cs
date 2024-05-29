@@ -6,30 +6,23 @@ using UnityEngine.UI;
 public class rotatesizestar : MonoBehaviour
 {
     [SerializeField] float velocidadrota;
-     Image imagen;
+    Image imagen;
     [SerializeField] float escala;
     [SerializeField] float duracion;
     [SerializeField] float delay;
     bool escalando = true;
-    public bool iniciacorrutina;
+    Coroutine escaladorcorrutina;
     private void Start()
     {
         imagen = GetComponent<Image>();
-        if (!iniciacorrutina)
-        {
-            StartCoroutine(escalador());
-        }
-        
+        StartCoroutine(escalador());
     }
+    
     void Update()
     {
         imagen.rectTransform.Rotate(0, 0, velocidadrota * Time.deltaTime);
-        if (iniciacorrutina)
-        {
-            StartCoroutine(escalador());
-        }
     }
-    IEnumerator escalador()
+    public IEnumerator escalador()
     {
         while (escalando) { 
         Vector3 escalaoriginal = imagen.rectTransform.localScale;
@@ -53,6 +46,9 @@ public class rotatesizestar : MonoBehaviour
             yield return null;
         }
         imagen.rectTransform.localScale = escalaoriginal;
+            
         }
     }
+
+    
 }

@@ -419,7 +419,6 @@ GameObject:
   - component: {fileID: 118415031}
   - component: {fileID: 118415034}
   - component: {fileID: 118415033}
-  - component: {fileID: 118415032}
   - component: {fileID: 118415035}
   m_Layer: 5
   m_Name: pointer (1)
@@ -447,23 +446,6 @@ RectTransform:
   m_AnchoredPosition: {x: -29, y: -252}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &118415032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 118415030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 1
-  delay: 0
-  iniciacorrutina: 0
 --- !u!114 &118415033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,7 +639,6 @@ GameObject:
   - component: {fileID: 391131630}
   - component: {fileID: 391131633}
   - component: {fileID: 391131632}
-  - component: {fileID: 391131631}
   - component: {fileID: 391131634}
   m_Layer: 5
   m_Name: pointer
@@ -685,23 +666,6 @@ RectTransform:
   m_AnchoredPosition: {x: 462, y: 49}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &391131631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 391131629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 1
-  delay: 0
-  iniciacorrutina: 1
 --- !u!114 &391131632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,7 +905,6 @@ GameObject:
   - component: {fileID: 420756521}
   - component: {fileID: 420756524}
   - component: {fileID: 420756523}
-  - component: {fileID: 420756522}
   - component: {fileID: 420756525}
   m_Layer: 5
   m_Name: pointer (1)
@@ -969,23 +932,6 @@ RectTransform:
   m_AnchoredPosition: {x: -701, y: 48}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &420756522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420756520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 1
-  delay: 0
-  iniciacorrutina: 1
 --- !u!114 &420756523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1341,7 +1287,6 @@ GameObject:
   - component: {fileID: 533197734}
   - component: {fileID: 533197737}
   - component: {fileID: 533197736}
-  - component: {fileID: 533197735}
   - component: {fileID: 533197738}
   m_Layer: 5
   m_Name: pointer
@@ -1369,23 +1314,6 @@ RectTransform:
   m_AnchoredPosition: {x: -71, y: -315}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &533197735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533197733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 1
-  delay: 0
-  iniciacorrutina: 1
 --- !u!114 &533197736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1877,7 +1805,6 @@ GameObject:
   - component: {fileID: 877510260}
   - component: {fileID: 877510264}
   - component: {fileID: 877510263}
-  - component: {fileID: 877510262}
   - component: {fileID: 877510261}
   m_Layer: 5
   m_Name: pointer
@@ -1926,23 +1853,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &877510262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 877510259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 0.5
-  delay: 0.5
-  iniciacorrutina: 1
 --- !u!114 &877510263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2374,7 +2284,6 @@ GameObject:
   - component: {fileID: 962366274}
   - component: {fileID: 962366277}
   - component: {fileID: 962366276}
-  - component: {fileID: 962366275}
   - component: {fileID: 962366278}
   m_Layer: 5
   m_Name: pointer
@@ -2402,23 +2311,6 @@ RectTransform:
   m_AnchoredPosition: {x: -810, y: -273}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &962366275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 962366273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 1
-  delay: 0
-  iniciacorrutina: 1
 --- !u!114 &962366276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2489,7 +2381,6 @@ GameObject:
   - component: {fileID: 1004118584}
   - component: {fileID: 1004118587}
   - component: {fileID: 1004118586}
-  - component: {fileID: 1004118585}
   - component: {fileID: 1004118588}
   m_Layer: 5
   m_Name: pointer (2)
@@ -2517,23 +2408,6 @@ RectTransform:
   m_AnchoredPosition: {x: 283, y: -247}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1004118585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004118583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 1
-  delay: 0
-  iniciacorrutina: 1
 --- !u!114 &1004118586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3405,7 +3279,6 @@ GameObject:
   - component: {fileID: 1242277574}
   - component: {fileID: 1242277577}
   - component: {fileID: 1242277576}
-  - component: {fileID: 1242277575}
   - component: {fileID: 1242277578}
   m_Layer: 5
   m_Name: pointer
@@ -3433,23 +3306,6 @@ RectTransform:
   m_AnchoredPosition: {x: 188, y: 17}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1242277575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242277573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 1
-  delay: 0
-  iniciacorrutina: 1
 --- !u!114 &1242277576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3690,7 +3546,6 @@ GameObject:
   - component: {fileID: 1332558366}
   - component: {fileID: 1332558369}
   - component: {fileID: 1332558368}
-  - component: {fileID: 1332558367}
   - component: {fileID: 1332558370}
   m_Layer: 5
   m_Name: pointer (1)
@@ -3718,23 +3573,6 @@ RectTransform:
   m_AnchoredPosition: {x: -147, y: -236}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1332558367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1332558365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 1
-  delay: 0
-  iniciacorrutina: 1
 --- !u!114 &1332558368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3805,7 +3643,6 @@ GameObject:
   - component: {fileID: 1335290782}
   - component: {fileID: 1335290785}
   - component: {fileID: 1335290784}
-  - component: {fileID: 1335290783}
   - component: {fileID: 1335290786}
   m_Layer: 5
   m_Name: pointer (1)
@@ -3833,23 +3670,6 @@ RectTransform:
   m_AnchoredPosition: {x: 406, y: -252.9}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1335290783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1335290781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 0.5
-  delay: 0.5
-  iniciacorrutina: 1
 --- !u!114 &1335290784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3997,7 +3817,6 @@ GameObject:
   - component: {fileID: 1480343845}
   - component: {fileID: 1480343848}
   - component: {fileID: 1480343847}
-  - component: {fileID: 1480343846}
   - component: {fileID: 1480343849}
   m_Layer: 5
   m_Name: pointer
@@ -4025,23 +3844,6 @@ RectTransform:
   m_AnchoredPosition: {x: -642, y: 24}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1480343846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1480343844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 0.5
-  delay: 0.5
-  iniciacorrutina: 1
 --- !u!114 &1480343847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4476,7 +4278,6 @@ GameObject:
   - component: {fileID: 1717217535}
   - component: {fileID: 1717217538}
   - component: {fileID: 1717217537}
-  - component: {fileID: 1717217536}
   - component: {fileID: 1717217539}
   m_Layer: 5
   m_Name: pointer
@@ -4504,23 +4305,6 @@ RectTransform:
   m_AnchoredPosition: {x: 187, y: -177}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1717217536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717217534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 1
-  delay: 0
-  iniciacorrutina: 1
 --- !u!114 &1717217537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4666,7 +4450,6 @@ GameObject:
   - component: {fileID: 1739804669}
   - component: {fileID: 1739804671}
   - component: {fileID: 1739804670}
-  - component: {fileID: 1739804672}
   - component: {fileID: 1739804673}
   m_Layer: 5
   m_Name: pointer
@@ -4732,23 +4515,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739804668}
   m_CullTransparentMesh: 1
---- !u!114 &1739804672
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1739804668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 1
-  delay: 0
-  iniciacorrutina: 1
 --- !u!95 &1739804673
 Animator:
   serializedVersion: 5
@@ -5011,7 +4777,6 @@ GameObject:
   - component: {fileID: 1794195195}
   - component: {fileID: 1794195198}
   - component: {fileID: 1794195197}
-  - component: {fileID: 1794195196}
   - component: {fileID: 1794195199}
   m_Layer: 5
   m_Name: pointer
@@ -5039,23 +4804,6 @@ RectTransform:
   m_AnchoredPosition: {x: -184.5, y: -64}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1794195196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1794195194}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 1
-  delay: 0
-  iniciacorrutina: 1
 --- !u!114 &1794195197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5390,7 +5138,6 @@ GameObject:
   - component: {fileID: 2076202128}
   - component: {fileID: 2076202131}
   - component: {fileID: 2076202130}
-  - component: {fileID: 2076202129}
   - component: {fileID: 2076202132}
   m_Layer: 5
   m_Name: pointer
@@ -5418,23 +5165,6 @@ RectTransform:
   m_AnchoredPosition: {x: -791, y: -229}
   m_SizeDelta: {x: 440, y: 690}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2076202129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2076202127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6dd997d4345cdc42a4ec7f070342933, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocidadrota: 0
-  escala: 1.1
-  duracion: 1
-  delay: 0
-  iniciacorrutina: 1
 --- !u!114 &2076202130
 MonoBehaviour:
   m_ObjectHideFlags: 0
