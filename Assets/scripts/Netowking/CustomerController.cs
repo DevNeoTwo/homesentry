@@ -12,6 +12,7 @@ public class CustomerController : NetworkBehaviour {
 
     [Networked(OnChanged = nameof(ChangeProduct))] public NetworkString<_32> product { get; set; }
 
+
     [SerializeField] private GameObject[] hairStyles = new GameObject[0];
     [SerializeField] private Color[] hairColors = new Color[0];
     [SerializeField] private Renderer bodyRender;
@@ -32,6 +33,11 @@ public class CustomerController : NetworkBehaviour {
     [SerializeField] private TMP_Text productTx;
     [SerializeField] private SpriteRenderer arrowImg;
 
+    [SerializeField] private GameObject carrito;
+
+    [SerializeField] private bool ending;
+
+
     void Start() {
         if (!Spawner.instance.owner) return;
 
@@ -51,6 +57,12 @@ public class CustomerController : NetworkBehaviour {
     }
 
     public override void FixedUpdateNetwork() {
+        if (anim.GetBool("box")) {
+            carrito.SetActive(true);
+            this.GetComponent<Collider>().enabled = false;
+            this.canvas.SetActive(false);
+            return;
+        }
         if (!Spawner.instance.owner) return;
         if (waiting) return;
 
@@ -121,9 +133,7 @@ public class CustomerController : NetworkBehaviour {
 
             if (other.GetComponent<PlayerMovement>().bussy && other.GetComponent<PlayerMovement>().itemID == 1 && waiting) {
                 other.GetComponent<PlayerMovement>().LeaveItem();
-                UIManager.instance.AddPoints(100);
-                GameManager.instance.CreateCustomers(1);
-                Runner.Despawn(this.gameObject.GetComponent<NetworkObject>());
+                StartCoroutine(EndMovement());
                 return;
             }
 
@@ -148,6 +158,28 @@ public class CustomerController : NetworkBehaviour {
                 canvas.SetActive(true);
             }
         }
+    }
+
+    IEnumerator EndMovement() {
+        anim.SetBool("box", true);
+        anim.SetBool("run", true);
+        nav.SetDestination(GameManager.instance.cajaPoint.position);
+        nav.isStopped = false;
+        nav.speed = 7;
+
+        while(Vector3.Distance(this.transform.position, GameManager.instance.cajaPoint.position) > 1)
+            yield return new WaitForSeconds(0.1f);
+
+        nav.SetDestination(GameManager.instance.portalPoint.position);
+        nav.isStopped = false;
+        UIManager.instance.AddPoints(100);
+        //money sound and particles
+
+        while (Vector3.Distance(this.transform.position, GameManager.instance.portalPoint.position) > 1)
+            yield return new WaitForSeconds(0.1f);
+
+        GameManager.instance.CreateCustomers(2);
+        Runner.Despawn(this.gameObject.GetComponent<NetworkObject>());
     }
 
     IEnumerator ShowCloud() {

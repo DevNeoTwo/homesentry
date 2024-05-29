@@ -11,6 +11,9 @@ public class GameManager : NetworkBehaviour {
 
     [SerializeField] private NetworkPrefabRef[] customer = new NetworkPrefabRef[0];
 
+    public Transform cajaPoint;
+    public Transform portalPoint;
+
     private void Awake() {
         instance = this;
     }
