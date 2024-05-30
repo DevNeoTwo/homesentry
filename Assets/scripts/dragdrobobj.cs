@@ -48,12 +48,14 @@ public class dragdrobobj : MonoBehaviour {
     {
         if (destroyobj_A && !dragobj)
         {
+            cajasspawn.FindObjectOfType<cajasspawn>().GetComponent<cajasspawn>().addscore();
             cajasspawn.instance.incrementaobjetos_A();
             Destroy(this.gameObject, 0.13f);
             destroyobj_A = false;
         }
         if (destroyobj_B && !dragobj)
         {
+            cajasspawn.FindObjectOfType<cajasspawn>().GetComponent<cajasspawn>().addscore();
             cajasspawn.instance.incrementaobjetos_B();
             Destroy(this.gameObject, 0.13f);
             destroyobj_B = false;
@@ -61,6 +63,7 @@ public class dragdrobobj : MonoBehaviour {
 
         if (destroyobj_C && !dragobj)
         {
+            cajasspawn.FindObjectOfType<cajasspawn>().GetComponent<cajasspawn>().addscore();
             cajasspawn.instance.incrementaobjetos_C();
             Destroy(this.gameObject, 0.13f);
             destroyobj_C = false;
@@ -70,11 +73,12 @@ public class dragdrobobj : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("cubobasura") && !dragobj) {
             Destroy(this.gameObject);
+            
         }
 
         if (other.gameObject.CompareTag("espacio1") && this.objid == 0)
         {
-
+            
             destroyobj_A = true;
             
         }
@@ -86,7 +90,7 @@ public class dragdrobobj : MonoBehaviour {
 
         if (other.gameObject.CompareTag("espacio2") && this.objid == 1 )
         {
-
+            
             destroyobj_B = true;
             
         }
@@ -97,6 +101,7 @@ public class dragdrobobj : MonoBehaviour {
 
         if (other.gameObject.CompareTag("espacio3") && this.objid == 2 )
         {
+            
             destroyobj_C = true;
         }
         else

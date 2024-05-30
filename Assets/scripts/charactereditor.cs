@@ -48,10 +48,10 @@ public class charactereditor : MonoBehaviour {
         nombrejugador = nombrepuesto.text;
         if (rotandoder)
         {
-            GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, velocidadrota * Time.deltaTime, 0,Space.Self);
+            GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, velocidadrota * Time.deltaTime, 0,Space.World);
         }
         if (rotandoizq){
-            GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, -velocidadrota * Time.deltaTime, 0, Space.Self);
+            GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, -velocidadrota * Time.deltaTime, 0, Space.World);
         }
         if (color == 1)
         {
@@ -204,8 +204,13 @@ public class charactereditor : MonoBehaviour {
     {
         cambiaropaanim_hombre.SetTrigger("mirarse");
     }
+    public void playanimfemale()
+    {
+        cambiaropaanim_mujer.SetTrigger("mirarse");
+    }
     public void rotaplayerderecha()
     {
+
         if (fadescreenscript.faded)
         {
             

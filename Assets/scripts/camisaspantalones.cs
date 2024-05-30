@@ -81,22 +81,24 @@ public class camisaspantalones : MonoBehaviour {
                 camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[3]);
                 camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[3]);
             }
-            if (bottom == 4)
-            {
-                pantalonmaterials[0].SetTexture("_MainTex", hombrepanttexture[3]);
-                pantalonmaterials[1].SetTexture("_MainTex", mujerpanttexture[3]);
-            }
+            
 
             if (top == 5)
             {
                 camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[4]);
                 camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[4]);
             }
-            if (bottom == 5)
+            if (top == 6)
             {
-                pantalonmaterials[0].SetTexture("_MainTex", hombrepanttexture[4]);
-                pantalonmaterials[1].SetTexture("_MainTex", mujerpanttexture[4]);
+                camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[5]);
+                camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[5]);
             }
+            if (top == 7)
+            {
+                camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[6]);
+                camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[6]);
+            }
+
 
         }
            
@@ -109,7 +111,7 @@ public class camisaspantalones : MonoBehaviour {
             camisanim.SetTrigger("animder");
             top++;
             audiomanagerscript.selectaudio(0, 0.7f);
-            if (top > 5)
+            if (top > 7)
             {
                 top = 1;
             }
@@ -125,7 +127,7 @@ public class camisaspantalones : MonoBehaviour {
             audiomanagerscript.selectaudio(0, 0.7f);
             if (top < 1)
             {
-                top = 5;
+                top = 7;
             }
         }
         
@@ -137,7 +139,7 @@ public class camisaspantalones : MonoBehaviour {
             pantanim.SetTrigger("animder");
             bottom++;
             audiomanagerscript.selectaudio(0, 0.7f);
-            if (bottom > 5)
+            if (bottom > 3)
             {
                 bottom = 1;
             }
@@ -155,7 +157,7 @@ public class camisaspantalones : MonoBehaviour {
             audiomanagerscript.selectaudio(0, 0.7f);
             if (bottom < 1)
             {
-                bottom = 5;
+                bottom = 3;
             }
         }
         

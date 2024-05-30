@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using TMPro;
+using UnityEngine.UI;
 
 public class cajasspawn : MonoBehaviour {
 
@@ -26,7 +28,10 @@ public class cajasspawn : MonoBehaviour {
     [SerializeField] private float tiempo;
     private float tCurrent;
     public Camera cam;
-
+    public int puntos;
+    [SerializeField] TextMeshProUGUI textopuntos;
+    [SerializeField] Image timerfill;
+    [SerializeField] float duracionfill;
     private void Awake() {
         instance = this;
     }
@@ -37,6 +42,7 @@ public class cajasspawn : MonoBehaviour {
         actualizacaja_A();
         actualizacaja_B();
         actualizacaja_C();
+        StartCoroutine(decrementofillimg());
     }
     private void FixedUpdate()
     {
@@ -64,9 +70,26 @@ public class cajasspawn : MonoBehaviour {
         actualizacaja_C();
         tCurrent = Time.time;
         spawnobjsbool = false;
+        puntos=0;
+        duracionfill = 15;
+        timerfill.fillAmount = 1;
+        StartCoroutine(decrementofillimg());
+        StartCoroutine(rotatesizestar.FindObjectOfType<rotatesizestar>().GetComponent<rotatesizestar>().escalador());
         //StartCoroutine(spawnobj());
     }
-
+    IEnumerator decrementofillimg()
+    {
+        float starttime=Time.time;
+        float endtime=Time.time+duracionfill;
+        while (Time.time<endtime)
+        {
+            float tiempopasado=Time.time-starttime;
+            float porcentajecompleto=1f-(tiempopasado/duracionfill);
+            timerfill.fillAmount=porcentajecompleto;
+            yield return null;
+        }
+        timerfill.fillAmount = 0;
+    }
     IEnumerator spawnobj()
     {
         
@@ -165,6 +188,12 @@ public class cajasspawn : MonoBehaviour {
                 cajasactivables_C[i].SetActive(false);
             }
         }
+    }
+    public void addscore()
+    {
+        
+        puntos++;
+        textopuntos.text = "PUNTOS: "+puntos.ToString();
     }
 }
 
