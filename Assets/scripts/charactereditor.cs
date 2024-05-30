@@ -26,6 +26,7 @@ public class charactereditor : MonoBehaviour {
 
     public string nombrejugador;
     [SerializeField] TMP_InputField nombrepuesto;
+    public bool textonombre;
 
     private void Awake() {
         instance = this;
@@ -40,7 +41,7 @@ public class charactereditor : MonoBehaviour {
         {
             pielmat = render.material;
         }
-       
+        
         
     }
     private void FixedUpdate()
@@ -80,6 +81,16 @@ public class charactereditor : MonoBehaviour {
         if (color == 7)
         {
             pielmat.color = new Color32(68, 33, 16, 255);
+        }
+
+        if (string.IsNullOrWhiteSpace(nombrepuesto.text))
+        {
+
+            textonombre = false;
+        }
+        else
+        {
+            textonombre = true;
         }
     }
     
