@@ -2760,6 +2760,7 @@ MonoBehaviour:
   - {r: 0.49056602, g: 0, b: 0, a: 1}
   - {r: 0.3033108, g: 0.48011732, b: 0.9056604, a: 1}
   bodyRender: {fileID: 3782495010815652443}
+  hands: {fileID: 500009122980778695}
   bodyColors:
   - {r: 1, g: 0.76862746, b: 0.64705884, a: 1}
   - {r: 0.972549, g: 0.69803923, b: 0.56078434, a: 1}
@@ -2798,6 +2799,7 @@ MonoBehaviour:
   arrowImg: {fileID: 1331490729633863180}
   carrito: {fileID: 701496520705404039}
   ending: 0
+  gender: 0
 --- !u!195 &4923919360059672857
 NavMeshAgent:
   m_ObjectHideFlags: 0

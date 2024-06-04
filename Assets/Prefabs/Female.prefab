@@ -1966,8 +1966,8 @@ Rigidbody:
   m_GameObject: {fileID: 3348629638929211527}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2080,6 +2080,7 @@ MonoBehaviour:
   - {r: 0.48235294, g: 0.17254902, b: 0, a: 1}
   - {r: 0.09019608, g: 0.28627452, b: 0.18039216, a: 1}
   bodyRender: {fileID: 4820945233943839392}
+  hands: {fileID: 3975869578297293913}
   bodyColors:
   - {r: 1, g: 0.76862746, b: 0.64705884, a: 1}
   - {r: 0.972549, g: 0.69803923, b: 0.56078434, a: 1}
@@ -2102,6 +2103,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: a52ef2c78aef93541969c5e8e6ec8662, type: 3}
   - {fileID: 2800000, guid: 17c0a17f910d8c949880fcbca108c569, type: 3}
   - {fileID: 2800000, guid: 6b081fca3752e47498a333961ce07bae, type: 3}
+  gender: 1
 --- !u!136 &1903303779574399334
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2245,6 +2247,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 687e57a75182ee94aa1f232ac2399a38, type: 2}
+  - {fileID: 2100000, guid: abed865d0431baf4297f585c71115793, type: 2}
   - {fileID: 2100000, guid: 54bbdc17640fc52498c9adcf2cb75b2a, type: 2}
   - {fileID: 2100000, guid: 29e6e4e281079d541ac1dbb9977067d6, type: 2}
   m_StaticBatchInfo:

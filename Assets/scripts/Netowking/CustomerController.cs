@@ -16,6 +16,7 @@ public class CustomerController : NetworkBehaviour {
     [SerializeField] private GameObject[] hairStyles = new GameObject[0];
     [SerializeField] private Color[] hairColors = new Color[0];
     [SerializeField] private Renderer bodyRender;
+    [SerializeField] private Renderer hands;
     [SerializeField] private Color[] bodyColors = new Color[0];
     [SerializeField] private Color[] shirtsColors = new Color[0];
     [SerializeField] private Color[] pantsColors = new Color[0];
@@ -37,6 +38,8 @@ public class CustomerController : NetworkBehaviour {
 
     [SerializeField] private bool ending;
 
+
+    [SerializeField] private bool gender;
 
     void Start() {
         if (!Spawner.instance.owner) return;
@@ -109,10 +112,17 @@ public class CustomerController : NetworkBehaviour {
             pant = int.Parse(charColor.ToString().Split(",")[4]);
         } catch { }
         bodyRender.materials[0].color = bodyColors[skinColor];
+        hands.material.color = bodyColors[skinColor];
         hairStyles[hairStyle].SetActive(true);
         hairStyles[hairStyle].GetComponent<Renderer>().material.color = hairColors[hairColor];
-        bodyRender.materials[1].color = shirtsColors[shirt];
-        bodyRender.materials[2].color = pantsColors[pant];
+        if (gender) {
+            bodyRender.materials[2].color = shirtsColors[shirt];
+            bodyRender.materials[3].color = pantsColors[pant];
+        } else {
+            bodyRender.materials[1].color = shirtsColors[shirt];
+            bodyRender.materials[2].color = pantsColors[pant];
+        }
+        
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]

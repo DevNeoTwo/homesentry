@@ -2869,6 +2869,7 @@ MonoBehaviour:
   rb: {fileID: 6795929998739679506}
   bussy: 0
   itemObj: {fileID: 2886297280538369669}
+  itemID: 0
 --- !u!54 &6795929998739679506
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2878,8 +2879,8 @@ Rigidbody:
   m_GameObject: {fileID: 4111802081273228698}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2992,6 +2993,7 @@ MonoBehaviour:
   - {r: 0.48235294, g: 0.17254902, b: 0, a: 1}
   - {r: 0.09019608, g: 0.28627452, b: 0.18039216, a: 1}
   bodyRender: {fileID: 7269401010861528437}
+  hands: {fileID: 2658412599962646705}
   bodyColors:
   - {r: 1, g: 0.76862746, b: 0.64705884, a: 1}
   - {r: 0.972549, g: 0.69803923, b: 0.56078434, a: 1}
@@ -3014,6 +3016,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 4de6bd5341c3c184ea4c4091dbe7f951, type: 3}
   - {fileID: 2800000, guid: 4226b7602b64abf4e9cb206ab77f0b72, type: 3}
   - {fileID: 2800000, guid: 23a1a9abb4664734caab611fae9cf168, type: 3}
+  gender: 0
 --- !u!136 &-5220800976927713472
 CapsuleCollider:
   m_ObjectHideFlags: 0

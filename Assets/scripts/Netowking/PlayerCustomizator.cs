@@ -14,10 +14,12 @@ public class PlayerCustomizator : NetworkBehaviour {
     [SerializeField] private GameObject[] hairStyles = new GameObject[0];
     [SerializeField] private Color[] hairColors = new Color[0];
     [SerializeField] private Renderer bodyRender;
+    [SerializeField] private Renderer hands;
     [SerializeField] private Color[] bodyColors = new Color[0];
     [SerializeField] private Texture2D[] shirts = new Texture2D[0];
     [SerializeField] private Texture2D[] pants = new Texture2D[0];
 
+    [SerializeField] private bool gender;
 
     void Start() {
         if (HasInputAuthority) {
@@ -50,10 +52,16 @@ public class PlayerCustomizator : NetworkBehaviour {
             pant = int.Parse(charColor.ToString().Split(",")[4]) - 1;
         } catch {}
         bodyRender.materials[0].color = bodyColors[skinColor];
+        hands.material.color = bodyColors[skinColor];
         hairStyles[hairStyle].SetActive(true);
         hairStyles[hairStyle].GetComponent<Renderer>().material.color = hairColors[hairColor];
-        bodyRender.materials[1].mainTexture = shirts[shirt];
-        bodyRender.materials[2].mainTexture = pants[pant];
+        if (gender) {
+            bodyRender.materials[2].mainTexture = shirts[shirt];
+            bodyRender.materials[3].mainTexture = pants[pant];
+        } else {
+            bodyRender.materials[1].mainTexture = shirts[shirt];
+            bodyRender.materials[2].mainTexture = pants[pant];
+        }
     }
 
     static void ChangeName(Changed<PlayerCustomizator> changed) {

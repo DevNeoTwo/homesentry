@@ -27,9 +27,10 @@ public class PlayerMovement : NetworkBehaviour {
             if (GameObject.FindGameObjectsWithTag("Player").Length == 1) Spawner.instance.owner = true;
             else Spawner.instance.owner = false;
 
-            Debug.Log(Spawner.instance.owner + " - " + GameObject.FindGameObjectsWithTag("Player").Length);
+            //Debug.Log(Spawner.instance.owner + " - " + GameObject.FindGameObjectsWithTag("Player").Length);
+            while(GameManager.instance == null)
+                yield return new WaitForSeconds(0.1f);
 
-            yield return new WaitForSeconds(4);
             if (HasInputAuthority) {
                 CameraFollow.instance.SetTarget(this.transform);
                 CameraMiniMap.instance.SetTarget(this.transform);
@@ -41,7 +42,10 @@ public class PlayerMovement : NetworkBehaviour {
             if (PlayerPrefs.GetString("gamemode") == "vs") {
                 while (GameObject.FindGameObjectsWithTag("Player").Length != 2)
                     yield return new WaitForSeconds(0.25f);
-            }
+                UIManager.instance.CloseLoading(true);
+            } else
+                UIManager.instance.CloseLoading(false);
+
             yield return new WaitForSeconds(1);
             started = true;
         }

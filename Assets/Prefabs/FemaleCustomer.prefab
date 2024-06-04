@@ -1733,6 +1733,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 687e57a75182ee94aa1f232ac2399a38, type: 2}
+  - {fileID: 2100000, guid: 687e57a75182ee94aa1f232ac2399a38, type: 2}
   - {fileID: 2100000, guid: 8a52e7b60a4649f48bd6a969ba67937c, type: 2}
   - {fileID: 2100000, guid: 707e574f92bc95a43b2ab9aaeb405125, type: 2}
   m_StaticBatchInfo:
@@ -3551,6 +3552,7 @@ MonoBehaviour:
   - {r: 0.49056602, g: 0, b: 0, a: 1}
   - {r: 0.3033108, g: 0.48011732, b: 0.9056604, a: 1}
   bodyRender: {fileID: 6379059454587956781}
+  hands: {fileID: 3680686310926592902}
   bodyColors:
   - {r: 1, g: 0.76862746, b: 0.64705884, a: 1}
   - {r: 0.972549, g: 0.69803923, b: 0.56078434, a: 1}
@@ -3589,6 +3591,7 @@ MonoBehaviour:
   arrowImg: {fileID: 4603776915313609653}
   carrito: {fileID: 8384244042794500681}
   ending: 0
+  gender: 1
 --- !u!195 &8856428257990561079
 NavMeshAgent:
   m_ObjectHideFlags: 0
