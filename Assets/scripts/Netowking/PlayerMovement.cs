@@ -47,6 +47,8 @@ public class PlayerMovement : NetworkBehaviour {
                 UIManager.instance.CloseLoading(false);
 
             yield return new WaitForSeconds(1);
+
+            if (Spawner.instance.owner) StartCoroutine(GameManager.instance.SetTimer());
             started = true;
         }
     }

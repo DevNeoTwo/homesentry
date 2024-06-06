@@ -25,10 +25,12 @@ public class StartMiniGame : MonoBehaviour {
 
     IEnumerator MiniGame() {
         this.GetComponent<Collider>().enabled = false;
+        UIManager.instance.HideUI();
         miniGame.SetActive(true);
         cajasspawn.instance.Restart();
         yield return new WaitForSeconds(15);
         miniGame.SetActive(false);
+        UIManager.instance.ShowUI();
         this.gameObject.SetActive(false);
     }
 }

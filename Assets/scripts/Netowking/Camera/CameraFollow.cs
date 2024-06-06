@@ -10,6 +10,9 @@ public class CameraFollow : MonoBehaviour {
     [SerializeField] private Vector3 fixedRotation;
 
     private Vector3 offset;
+    private bool showStore = true;
+    [SerializeField] private Transform[] storePositions = new Transform[0];
+    private float tShow;
 
     private void Awake() {
         instance = this;
@@ -17,17 +20,31 @@ public class CameraFollow : MonoBehaviour {
 
     void Start() {
         offset = this.transform.position;
+        tShow = Time.time;
     }
 
     void LateUpdate() {
+        if (showStore) {
+            if (Time.time > tShow + 5) {
+                this.transform.position = storePositions[Random.Range(0, storePositions.Length)].position;
+                tShow = Time.time;
+            }
+            this.transform.Rotate(0, 5 * Time.deltaTime, 0, Space.World);
+            return;
+        }
         if (target != null) {
             this.transform.eulerAngles = fixedRotation;
             this.transform.position = target.position + offset;
-        } else
-            this.transform.eulerAngles = Vector3.MoveTowards(this.transform.eulerAngles, fixedRotation, 3f * Time.deltaTime);
+        }
     }
 
     public void SetTarget(Transform tar) {
         target = tar;
+    }
+
+    public void CloseTutorial() {
+        showStore = false;
+        this.transform.position = offset;
+        this.transform.eulerAngles = fixedRotation;
     }
 }

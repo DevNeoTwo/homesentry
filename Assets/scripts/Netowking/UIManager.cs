@@ -7,15 +7,17 @@ public class UIManager : MonoBehaviour {
 
     public static UIManager instance;
 
+    [SerializeField] private GameObject UIWin;
+
     [SerializeField] private TMP_Text pointsTx;
     [SerializeField] private int points;
     [SerializeField] private TMP_Text timeTx;
-    [SerializeField] private int gameTime;
 
     [SerializeField] private GameObject loadingWin;
     [SerializeField] private TMP_Text loadingTx;
 
     private int tutorialPos;
+    [SerializeField] private GameObject tutorialWin;
     [SerializeField] private GameObject[] tutorialSteps = new GameObject[0];
     [SerializeField] private GameObject prevTutorialBt;
     [SerializeField] private GameObject nextTutorialBt;
@@ -24,20 +26,14 @@ public class UIManager : MonoBehaviour {
         instance = this;
     }
 
-    void Start() {
-        StartCoroutine(SetTimer());
-    }
+    void Start() { }
 
     void Update() {
 
     }
 
-    IEnumerator SetTimer() {
-        while (true) {
-            yield return new WaitForSeconds(1);
-            gameTime--;
-            timeTx.text = gameTime.ToString();
-        }
+    public void SetTime(string t) {
+        timeTx.text = t;
     }
 
     public void AddPoints(int poi) {
@@ -55,15 +51,30 @@ public class UIManager : MonoBehaviour {
         loadingWin.SetActive(false);
     }
 
+    public void ShowUI() {
+        UIWin.SetActive(true);
+        CameraMiniMap.instance.GetComponent<Camera>().enabled = true;
+    }
+
+    public void HideUI() {
+        UIWin.SetActive(false);
+        CameraMiniMap.instance.GetComponent<Camera>().enabled = false;
+    }
+
     //Tutorial
     public void CloseTutorial() {
-
+        tutorialWin.SetActive(false);
+        ShowUI();
+        CameraFollow.instance.CloseTutorial();
     }
 
     public void NextTutorial() {
-        if (tutorialPos < tutorialSteps.Length)
+        if (tutorialPos <= tutorialSteps.Length)
             tutorialPos++;
-        SetStepTutorial();
+        if (tutorialPos == tutorialSteps.Length)
+            CloseTutorial();
+        else
+            SetStepTutorial();
     }
 
     public void PrevTutorial() {
@@ -77,10 +88,6 @@ public class UIManager : MonoBehaviour {
             tutorialSteps[i].SetActive(false);
         tutorialSteps[tutorialPos].SetActive(true);
 
-        nextTutorialBt.SetActive(true);
-        prevTutorialBt.SetActive(true);
-
-        if (tutorialPos == 0) prevTutorialBt.SetActive(false);
-        if (tutorialPos == tutorialSteps.Length - 1) nextTutorialBt.SetActive(false);
+        prevTutorialBt.SetActive(tutorialPos != 0);
     }
 }

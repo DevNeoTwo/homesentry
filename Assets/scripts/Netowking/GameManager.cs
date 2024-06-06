@@ -11,8 +11,23 @@ public class GameManager : NetworkBehaviour {
 
     [SerializeField] private NetworkPrefabRef[] customer = new NetworkPrefabRef[0];
 
+    [Networked(OnChanged = nameof(ChangeTime))] public NetworkString<_8> textTime { get; set; }
+
     public Transform cajaPoint;
     public Transform portalPoint;
+
+    [SerializeField] private int gameTime;
+
+    public IEnumerator SetTimer() {
+        while (gameTime > 0) {
+            yield return new WaitForSeconds(1);
+            gameTime--;
+            System.TimeSpan t = System.TimeSpan.FromSeconds(gameTime);
+            RPC_SetTime(t.ToString("mm\\:ss")); ;
+        }
+    }
+
+
 
     private void Awake() {
         instance = this;
@@ -34,6 +49,23 @@ public class GameManager : NetworkBehaviour {
     }
 
     public Vector3 GetDestination() {
-        return spawnPoint[Random.Range(0,spawnPoint.Count)].position;
+        return spawnPoint[Random.Range(0, spawnPoint.Count)].position;
     }
+
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_SetTime(string t, RpcInfo rpcInfo = default) {
+        this.textTime = t;
+        Debug.Log(t);
+    }
+
+    static void ChangeTime(Changed<GameManager> changed) {
+        changed.Behaviour.ChangeTime();
+    }
+
+    private void ChangeTime() {
+        UIManager.instance.SetTime(textTime.ToString());
+        Debug.Log(textTime);
+    }
+
 }
