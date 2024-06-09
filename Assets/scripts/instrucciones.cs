@@ -36,7 +36,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Escribe aqui tu nombre";
+            textotuto.text = "Escribe aquí tu nombre";
             transformtuto.anchoredPosition=new Vector2 (0f, -148f);
             backbtn.SetActive(false);
             nextbtn.anchoredPosition = new Vector2(-420, 51);
@@ -72,7 +72,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Registrar tu hora de ingreso a trabajar nos ayudara a llevar un mejor control de tu tiempo trabajado";
+            textotuto.text = "Registrar tu hora de ingreso a trabajar nos ayudará a llevar un mejor control de tu tiempo trabajado";
             transformtuto.anchoredPosition = new Vector2(0f, 143f);
         }
         if (instruccionnumero == 3)
@@ -88,7 +88,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Presiona aqui para rotar tu avatar y tener una vista de 360°";
+            textotuto.text = "Presiona aquí para rotar tu avatar y tener una vista de 360°";
             transformtuto.anchoredPosition = new Vector2(81f, -148f);
         }
         if (instruccionnumero == 4)
@@ -120,7 +120,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Cambia entre diferentes estilos de cabello para tu avatar y Escoge el color que mas te guste";
+            textotuto.text = "Cambia entre diferentes estilos de cabello para tu avatar y Escoge el color que más te guste";
             transformtuto.anchoredPosition = new Vector2(-478f, -209f);
         }
         if (instruccionnumero == 6)
@@ -136,7 +136,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Escoge el genero de tu avatar";
+            textotuto.text = "Escoge el género de tu avatar";
             transformtuto.anchoredPosition = new Vector2(1f, -194f);
         }
         if (instruccionnumero == 7)
@@ -152,7 +152,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Selecciona la camiseta que mas te guste";
+            textotuto.text = "Selecciona la camiseta que más te guste";
             transformtuto.anchoredPosition = new Vector2(-297f, -24f);
         }
         if (instruccionnumero == 8)
@@ -168,7 +168,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(true);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Selecciona el pantalon que mas te guste";
+            textotuto.text = "Selecciona el pantalón que más te guste";
             transformtuto.anchoredPosition = new Vector2(0f, 80f);
         }
         if (instruccionnumero == 9)
@@ -200,7 +200,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(true);
-            textotuto.text = "El carnet que te idenfica siempre a la vista generara una mayor confianza hacia los clientes";
+            textotuto.text = "El carnet que te identifica siempre a la vista generara una mayor confianza hacia los clientes";
             transformtuto.anchoredPosition = new Vector2(0f, 0f);
         }
     }

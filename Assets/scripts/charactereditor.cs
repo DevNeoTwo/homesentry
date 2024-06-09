@@ -184,6 +184,7 @@ public class charactereditor : MonoBehaviour {
         
         
     }
+
     public void derecha() {
         if(mujer)
         {
@@ -207,18 +208,47 @@ public class charactereditor : MonoBehaviour {
             generoanim.SetTrigger("backhombre");
         }
     }
+
+    
     public void playclick()
     {
         audiomanagerscript.selectaudio(0, 0.7f);
     }
-    public void playanimmale()
+    public void playanimmirar()
     {
-        cambiaropaanim_hombre.SetTrigger("mirarse");
+        if (!mujer)
+        {
+            cambiaropaanim_hombre.SetTrigger("mirarse");
+        }
+        else { cambiaropaanim_mujer.SetTrigger("mirarse"); }
     }
-    public void playanimfemale()
+    
+
+    public void cabelloanim()
     {
-        cambiaropaanim_mujer.SetTrigger("mirarse");
+        if (!mujer)
+        {
+            cambiaropaanim_hombre.SetTrigger("miraalrededor");
+        }
+        else
+        {
+            cambiaropaanim_mujer.SetTrigger("miraalrededor");
+        }
+        
     }
+   
+    public void cabellocolor()
+    {
+        if (!mujer)
+        {
+            cambiaropaanim_hombre.SetTrigger("feliz");
+        }
+        else
+        {
+            cambiaropaanim_mujer.SetTrigger("feliz");
+        }
+    }
+
     public void rotaplayerderecha()
     {
 

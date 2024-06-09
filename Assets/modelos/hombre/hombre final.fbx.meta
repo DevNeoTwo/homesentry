@@ -78,11 +78,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: hombre home sentry|bailar men
-      takeName: hombre home sentry|bailar men
+      name: hombre home sentry|happy men (1)
+      takeName: hombre home sentry|happy men
       internalID: 4469935644793256631
       firstFrame: 0
-      lastFrame: 741
+      lastFrame: 88
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
