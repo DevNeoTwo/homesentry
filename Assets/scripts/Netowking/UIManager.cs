@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
     public static UIManager instance;
 
     [SerializeField] private GameObject UIWin;
+
+    [SerializeField] private Image playerImage;
+    [SerializeField] private TMP_Text playerName;
 
     [SerializeField] private TMP_Text pointsTx;
     [SerializeField] private int points;
@@ -26,7 +30,10 @@ public class UIManager : MonoBehaviour {
         instance = this;
     }
 
-    void Start() { }
+    void Start() {
+        playerImage.sprite = PlayerData.instance.playerImage;
+        playerName.text = PlayerData.instance.playerName;
+    }
 
     void Update() {
 

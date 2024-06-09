@@ -18,6 +18,9 @@ public class PlayerData : MonoBehaviour {
     public int skinId;
     public bool genre;
 
+    public Sprite playerImage;
+    [SerializeField] private Camera cam;
+
     public bool gameMode;
 
     private void Awake() {
@@ -31,6 +34,10 @@ public class PlayerData : MonoBehaviour {
     void Update() { }
 
     public void Play() {
+        StartCoroutine(GetData());
+    }
+
+    IEnumerator GetData() {
         playerName = charactereditor.instance.nombrejugador;
         styleHairId = peloeditor.instance.estilocabello;
         colorHairId = peloeditor.instance.colorcabello;
@@ -38,10 +45,34 @@ public class PlayerData : MonoBehaviour {
         pantId = camisaspantalones.instance.bottom;
         skinId = charactereditor.instance.color;
         genre = charactereditor.instance.mujer;
-        StartGame("test");
+
+
+        yield return new WaitForEndOfFrame();
+
+        cam.transform.position += new Vector3(0, 1f, 2.5f);
+
+        RenderTexture render = new RenderTexture(128, 128, 16);
+        cam.targetTexture = render;
+        Texture2D texture = new Texture2D(128, 128, TextureFormat.RGBA32, false);
+        Rect rect = new Rect(0,0,128,128);
+
+        cam.Render();
+        RenderTexture currentRender = RenderTexture.active;
+        RenderTexture.active = render;
+
+        texture.ReadPixels(rect, 0, 0);
+        texture.Apply();
+
+        cam.targetTexture = null;
+        RenderTexture.active = currentRender;
+        Destroy(render);
+
+        playerImage = Sprite.Create(texture, rect, Vector2.zero);
+
+        StartGame();
     }
 
-    public virtual Task StartGame(string room) {
+    public virtual Task StartGame() {
         GameMode mode = PlayerPrefs.GetString("gamemode") == "vs" ? GameMode.Shared : GameMode.Single;
         runner.ProvideInput = false;
         return runner.StartGame(

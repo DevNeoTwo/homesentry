@@ -56,7 +56,6 @@ public class GameManager : NetworkBehaviour {
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
     public void RPC_SetTime(string t, RpcInfo rpcInfo = default) {
         this.textTime = t;
-        Debug.Log(t);
     }
 
     static void ChangeTime(Changed<GameManager> changed) {
@@ -65,7 +64,6 @@ public class GameManager : NetworkBehaviour {
 
     private void ChangeTime() {
         UIManager.instance.SetTime(textTime.ToString());
-        Debug.Log(textTime);
     }
 
 }
