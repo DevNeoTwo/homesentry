@@ -1963,6 +1963,9 @@ MonoBehaviour:
   genre: 0
   playerImage: {fileID: 0}
   cam: {fileID: 375563415}
+  player: {fileID: 874644821}
+  male: {fileID: 815359447}
+  female: {fileID: 2000944733}
   gameMode: 0
 --- !u!4 &201024228
 Transform:

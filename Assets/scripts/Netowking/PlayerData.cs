@@ -20,6 +20,9 @@ public class PlayerData : MonoBehaviour {
 
     public Sprite playerImage;
     [SerializeField] private Camera cam;
+    [SerializeField] private Transform player;
+    [SerializeField] private Animator male;
+    [SerializeField] private Animator female;
 
     public bool gameMode;
 
@@ -46,10 +49,12 @@ public class PlayerData : MonoBehaviour {
         skinId = charactereditor.instance.color;
         genre = charactereditor.instance.mujer;
 
+        cam.transform.position += new Vector3(0, 1f, 2.5f);
+        player.eulerAngles = Vector3.zero;
+        male.Rebind();
+        female.Rebind();
 
         yield return new WaitForEndOfFrame();
-
-        cam.transform.position += new Vector3(0, 1f, 2.5f);
 
         RenderTexture render = new RenderTexture(128, 128, 16);
         cam.targetTexture = render;
