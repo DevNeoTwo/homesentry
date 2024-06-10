@@ -49,7 +49,7 @@ public class PlayerData : MonoBehaviour {
         skinId = charactereditor.instance.color;
         genre = charactereditor.instance.mujer;
 
-        cam.transform.position += new Vector3(0, 1f, 2.5f);
+        cam.transform.position += new Vector3(0.15f, genre ? 0.75f : 1.25f, 3f);
         player.eulerAngles = Vector3.zero;
         male.Rebind();
         female.Rebind();

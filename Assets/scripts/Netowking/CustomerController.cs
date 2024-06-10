@@ -184,10 +184,12 @@ public class CustomerController : NetworkBehaviour {
         nav.isStopped = false;
         UIManager.instance.AddPoints(100);
         //money sound and particles
+        AudioManager.instance.PlayCajaRegistradora();
 
         while (Vector3.Distance(this.transform.position, GameManager.instance.portalPoint.position) > 1)
             yield return new WaitForSeconds(0.1f);
 
+        AudioManager.instance.PlayPortal();
         GameManager.instance.CreateCustomers(2);
         Runner.Despawn(this.gameObject.GetComponent<NetworkObject>());
     }

@@ -101,6 +101,7 @@ public class PlayerMovement : NetworkBehaviour {
         itemID = id;
         anim.SetBool("box", true);
         itemObj.SetActive(true);
+        AudioManager.instance.PlayRecogerCaja();
     }
 
     public void LeaveItem() {
@@ -108,5 +109,6 @@ public class PlayerMovement : NetworkBehaviour {
         bussy = false;
         anim.SetBool("box", false);
         itemObj.SetActive(false);
+        AudioManager.instance.PlayEntregarCaja();
     }
 }
