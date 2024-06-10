@@ -18,6 +18,7 @@ public class PlayerMovement : NetworkBehaviour {
 
     public bool bussy;
     [SerializeField] private GameObject itemObj;
+    private GameObject currentObj;
     public int itemID;
 
     IEnumerator Start() {
@@ -99,6 +100,9 @@ public class PlayerMovement : NetworkBehaviour {
 
     public void TakeItem(int id) {
         itemID = id;
+        if (currentObj != null) Destroy(currentObj);
+        currentObj = Instantiate(ProductsDB.instance.products[itemID].obj, itemObj.transform.position, Quaternion.identity);
+        currentObj.transform.parent = itemObj.transform;
         anim.SetBool("box", true);
         itemObj.SetActive(true);
         AudioManager.instance.PlayRecogerCaja();
@@ -106,6 +110,7 @@ public class PlayerMovement : NetworkBehaviour {
 
     public void LeaveItem() {
         itemID = 0;
+        if (currentObj != null) Destroy(currentObj);
         bussy = false;
         anim.SetBool("box", false);
         itemObj.SetActive(false);

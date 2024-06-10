@@ -10,7 +10,7 @@ public class CustomerController : NetworkBehaviour {
 
     [Networked(OnChanged = nameof(ChangeColor))] public NetworkString<_32> charColor { get; set; }
 
-    [Networked(OnChanged = nameof(ChangeProduct))] public NetworkString<_32> product { get; set; }
+    [Networked(OnChanged = nameof(ChangeProduct))] public NetworkString<_2> product { get; set; }
 
 
     [SerializeField] private GameObject[] hairStyles = new GameObject[0];
@@ -35,6 +35,7 @@ public class CustomerController : NetworkBehaviour {
     [SerializeField] private SpriteRenderer arrowImg;
 
     [SerializeField] private GameObject carrito;
+    private bool carritoShown;
 
     [SerializeField] private bool ending;
 
@@ -55,15 +56,23 @@ public class CustomerController : NetworkBehaviour {
         aux += Random.Range(0, 9) + ",";//shirt color
         aux += Random.Range(0, 9);//pants color
         RPC_SetColor(aux);
-        RPC_SetProduct(Random.Range(0,2).ToString());
+        int product = Random.Range(0,3);
+        if (product != 0) product = Random.Range(1,5);
+        RPC_SetProduct(product.ToString());
         this.transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
     }
 
     public override void FixedUpdateNetwork() {
-        if (anim.GetBool("box")) {
+        if (anim.GetBool("box") && !carritoShown) {
             carrito.SetActive(true);
             this.GetComponent<Collider>().enabled = false;
             this.canvas.SetActive(false);
+
+            int aux = int.Parse(product.ToString());
+            GameObject itemAux = Instantiate(ProductsDB.instance.products[aux].obj, carrito.transform.position, Quaternion.identity);
+            itemAux.transform.parent = carrito.transform;
+
+            carritoShown = true;
             return;
         }
         if (!Spawner.instance.owner) return;
@@ -141,7 +150,7 @@ public class CustomerController : NetworkBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
 
-            if (other.GetComponent<PlayerMovement>().bussy && other.GetComponent<PlayerMovement>().itemID == 1 && waiting) {
+            if (other.GetComponent<PlayerMovement>().bussy && other.GetComponent<PlayerMovement>().itemID.ToString() == product.ToString() && waiting) {
                 other.GetComponent<PlayerMovement>().LeaveItem();
                 StartCoroutine(EndMovement());
                 return;
@@ -162,8 +171,8 @@ public class CustomerController : NetworkBehaviour {
 
                 other.GetComponent<PlayerMovement>().bussy = true;
 
-                productTx.text = "item: " + aux.ToString();
-                productImg.color = Color.blue;
+                productTx.text = ProductsDB.instance.products[aux].pName;
+                productImg.sprite = ProductsDB.instance.products[aux].img;
                 arrowImg.color = Color.white;
                 canvas.SetActive(true);
             }
@@ -201,4 +210,3 @@ public class CustomerController : NetworkBehaviour {
         canvas.SetActive(false);
     }
 }
-
