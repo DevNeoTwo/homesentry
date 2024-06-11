@@ -24,6 +24,7 @@ public class camisaspantalones : MonoBehaviour {
     [SerializeField] Animator pantanim;
     [SerializeField] Animator camisanim;
 
+    //nombre script+instance
     private void Awake() {
         instance = this;
     }

@@ -11,6 +11,7 @@ public class cajasspawn : MonoBehaviour {
     public static cajasspawn instance;
 
     [SerializeField] GameObject[] cajasspawnprefap;
+    [SerializeField] GameObject[] cajasspawnprefap1;
     [SerializeField] Transform sitiospawn;
     [SerializeField] float spawnintervalos;
     [SerializeField] int cantitadobjspawn;
@@ -32,6 +33,10 @@ public class cajasspawn : MonoBehaviour {
     [SerializeField] TextMeshProUGUI textopuntos;
     [SerializeField] Image timerfill;
     [SerializeField] float duracionfill;
+
+    [SerializeField] Material marcamaterial;
+    [SerializeField] Texture[] marcatextura;
+    [SerializeField] Texture[] emisiontextura;
     private void Awake() {
         instance = this;
     }
@@ -43,6 +48,7 @@ public class cajasspawn : MonoBehaviour {
         actualizacaja_B();
         actualizacaja_C();
         StartCoroutine(decrementofillimg());
+
     }
     private void FixedUpdate()
     {
@@ -51,7 +57,7 @@ public class cajasspawn : MonoBehaviour {
             spawnobjsbool = true;
             StartCoroutine(spawnobj());
         }
-        
+
     }
 
     private void Update() {
@@ -75,6 +81,7 @@ public class cajasspawn : MonoBehaviour {
         timerfill.fillAmount = 1;
         StartCoroutine(decrementofillimg());
         StartCoroutine(rotatesizestar.FindObjectOfType<rotatesizestar>().GetComponent<rotatesizestar>().escalador());
+        texturasmarcas();
         //StartCoroutine(spawnobj());
     }
     IEnumerator decrementofillimg()
@@ -95,9 +102,16 @@ public class cajasspawn : MonoBehaviour {
         
         for(int i = 0; i < cantitadobjspawn; i++)
         {
-           randomindex = Random.Range(0, cajasspawnprefap.Length);
-           
-            if(randomindex == 0 && objectosactivar_A >= cajasactivables_A.Length)
+            if (camisaspantalones.instance.top == 0)
+            {
+                randomindex = Random.Range(0, cajasspawnprefap.Length);
+            }
+            if (camisaspantalones.instance.top > 0)
+            {
+                randomindex = Random.Range(0, cajasspawnprefap1.Length);
+            }
+
+            if (randomindex == 0 && objectosactivar_A >= cajasactivables_A.Length)
             {
                 spawnintervalos = 1f;
                 break;
@@ -112,12 +126,50 @@ public class cajasspawn : MonoBehaviour {
                 spawnintervalos = 0.2f;
                 break;
             }
-            GameObject newobj = Instantiate(cajasspawnprefap[randomindex], sitiospawn.position, sitiospawn.rotation);
+
+            if(camisaspantalones.instance.top == 0)
+            {
+                GameObject newobj = Instantiate(cajasspawnprefap[randomindex], sitiospawn.position, sitiospawn.rotation);
+            }
+            if (camisaspantalones.instance.top > 0)
+            {
+                GameObject newobj = Instantiate(cajasspawnprefap1[randomindex], sitiospawn.position, sitiospawn.rotation);
+            }
+
             yield return new WaitForSeconds(0.5f);
          
         }
         yield return new WaitForSeconds(spawnintervalos);
         spawnobjsbool = false;
+    }
+
+    void texturasmarcas()
+    {
+        if (camisaspantalones.instance.top == 1)
+        {
+            marcamaterial.SetTexture("_MainTex", marcatextura[0]);
+            marcamaterial.SetTexture("_EmissionMap", emisiontextura[0]);
+        }
+        if (camisaspantalones.instance.top == 2)
+        {
+            marcamaterial.SetTexture("_MainTex", marcatextura[1]);
+            marcamaterial.SetTexture("_EmissionMap", emisiontextura[1]);
+        }
+        if (camisaspantalones.instance.top == 3)
+        {
+            marcamaterial.SetTexture("_MainTex", marcatextura[2]);
+            marcamaterial.SetTexture("_EmissionMap", emisiontextura[2]);
+        }
+        if (camisaspantalones.instance.top == 4)
+        {
+            marcamaterial.SetTexture("_MainTex", marcatextura[3]);
+            marcamaterial.SetTexture("_EmissionMap", emisiontextura[3]);
+        }
+        if (camisaspantalones.instance.top == 5)
+        {
+            marcamaterial.SetTexture("_MainTex", marcatextura[4]);
+            marcamaterial.SetTexture("_EmissionMap", emisiontextura[4]);
+        }
     }
 
     public void incrementaobjetos_A()

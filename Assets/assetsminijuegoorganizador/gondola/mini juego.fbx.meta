@@ -3,7 +3,37 @@ guid: 3385f41f276b72e4fbaff81823561c71
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LOGOS
+    second: {fileID: 2100000, guid: 3fef765f2825e2a44b9919c9d0619ade, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.012
+    second: {fileID: 2100000, guid: f782cab3d6bd5fd49be3a8014787583e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.025
+    second: {fileID: 2100000, guid: c551ba61d38f97b4bae206e087320c27, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blanco brillante
+    second: {fileID: 2100000, guid: 99737d76bc305e344b38c0f94c14ae79, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gondola mdera
+    second: {fileID: 2100000, guid: b23382cedb7e15a4d909d4864ac57fb7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gondola metal
+    second: {fileID: 2100000, guid: c3f5708e7355a4d4a97b8c72003e4dff, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
