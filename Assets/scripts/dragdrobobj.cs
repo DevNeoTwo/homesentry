@@ -51,6 +51,7 @@ public class dragdrobobj : MonoBehaviour {
         {
             cajasspawn.FindObjectOfType<cajasspawn>().GetComponent<cajasspawn>().addscore();
             cajasspawn.instance.incrementaobjetos_A();
+            AudioManager.instance.PlayEntregarCaja();
             Instantiate(particula, this.transform.position, Quaternion.identity);
             particula.Play();
             Destroy(this.gameObject, 0.15f);
@@ -60,6 +61,7 @@ public class dragdrobobj : MonoBehaviour {
         {
             cajasspawn.FindObjectOfType<cajasspawn>().GetComponent<cajasspawn>().addscore();
             cajasspawn.instance.incrementaobjetos_B();
+            AudioManager.instance.PlayEntregarCaja();
             Instantiate(particula, this.transform.position, Quaternion.identity);
             particula.Play();
             Destroy(this.gameObject, 0.15f);
@@ -70,6 +72,7 @@ public class dragdrobobj : MonoBehaviour {
         {
             cajasspawn.FindObjectOfType<cajasspawn>().GetComponent<cajasspawn>().addscore();
             cajasspawn.instance.incrementaobjetos_C();
+            AudioManager.instance.PlayEntregarCaja();
             Instantiate(particula, this.transform.position, Quaternion.identity);
             particula.Play();
             Destroy(this.gameObject, 0.15f);
