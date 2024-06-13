@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objid: 1
   destroyByTime: 0
+  particula: {fileID: 1009500846150801297, guid: a6221080222c9804fa10f7faee7f200a, type: 3}
 --- !u!54 &4821195577311160280
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class dragdrobobj : MonoBehaviour {
     bool destroyobj_C;
 
     [SerializeField] private bool destroyByTime;
-
+    [SerializeField] ParticleSystem particula;
     private void Start()
     {
         objid = cajasspawn.instance.randomindex;
@@ -28,6 +28,7 @@ public class dragdrobobj : MonoBehaviour {
     private void OnMouseDown()
     {
         mouseposicion=Input.mousePosition-getmousepos();
+        AudioManager.instance.PlayRecogerCaja();
         dragobj = true;
     }
 
@@ -50,14 +51,18 @@ public class dragdrobobj : MonoBehaviour {
         {
             cajasspawn.FindObjectOfType<cajasspawn>().GetComponent<cajasspawn>().addscore();
             cajasspawn.instance.incrementaobjetos_A();
-            Destroy(this.gameObject, 0.13f);
+            Instantiate(particula, this.transform.position, Quaternion.identity);
+            particula.Play();
+            Destroy(this.gameObject, 0.15f);
             destroyobj_A = false;
         }
         if (destroyobj_B && !dragobj)
         {
             cajasspawn.FindObjectOfType<cajasspawn>().GetComponent<cajasspawn>().addscore();
             cajasspawn.instance.incrementaobjetos_B();
-            Destroy(this.gameObject, 0.13f);
+            Instantiate(particula, this.transform.position, Quaternion.identity);
+            particula.Play();
+            Destroy(this.gameObject, 0.15f);
             destroyobj_B = false;
         }
 
@@ -65,14 +70,18 @@ public class dragdrobobj : MonoBehaviour {
         {
             cajasspawn.FindObjectOfType<cajasspawn>().GetComponent<cajasspawn>().addscore();
             cajasspawn.instance.incrementaobjetos_C();
-            Destroy(this.gameObject, 0.13f);
+            Instantiate(particula, this.transform.position, Quaternion.identity);
+            particula.Play();
+            Destroy(this.gameObject, 0.15f);
             destroyobj_C = false;
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("cubobasura") && !dragobj) {
-            Destroy(this.gameObject);
+            Instantiate(particula, this.transform.position, Quaternion.identity);
+            particula.Play();
+            Destroy(this.gameObject,0.15f);
             
         }
 
