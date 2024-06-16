@@ -31,7 +31,7 @@ public class QRReader : MonoBehaviour{
             // decode the current frame
             var result = barcodeReader.Decode(camTexture.GetPixels32(), camTexture.width, camTexture.height);
             if (result != null) {
-                Debug.Log(result.Text);
+                Debug.Log(result.Text); 
                 Debug.Log("DECODED TEXT FROM QR:  " + NeoCrypt.instance.Desencriptar(result.Text));
             }
         } catch {}
