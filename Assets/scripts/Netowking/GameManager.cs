@@ -18,6 +18,11 @@ public class GameManager : NetworkBehaviour {
 
     [SerializeField] private int gameTime;
 
+    private int points;
+    [Networked(OnChanged = nameof(ChangePoints))] public NetworkString<_8> totalPoints { get; set; }
+
+
+
     public IEnumerator SetTimer() {
         while (gameTime > 0) {
             yield return new WaitForSeconds(1);
@@ -66,4 +71,21 @@ public class GameManager : NetworkBehaviour {
         UIManager.instance.SetTime(textTime.ToString());
     }
 
+    public void AddPoints(int p) {
+        points += p;
+        UIManager.instance.SetPoints(points.ToString());
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_SetPoints(string t, RpcInfo rpcInfo = default) {
+        this.totalPoints = t;
+    }
+
+    static void ChangePoints(Changed<GameManager> changed) {
+        changed.Behaviour.ChangePoints();
+    }
+
+    private void ChangePoints() {
+
+    }
 }

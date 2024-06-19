@@ -6,6 +6,8 @@ public class AudioManager : MonoBehaviour {
 
     public static AudioManager instance;
 
+    [SerializeField] private audiomanager audiomanager;
+
     [SerializeField] private AudioSource cajaRegistradora;
     [SerializeField] private AudioSource recogerCaja;
     [SerializeField] private AudioSource entregarCaja;
@@ -20,22 +22,18 @@ public class AudioManager : MonoBehaviour {
     void Update() { }
 
     public void PlayCajaRegistradora() {
-        cajaRegistradora.pitch = Random.Range(0.85f, 1.15f);
-        cajaRegistradora.Play();
+        audiomanager.selectaudio(0, 1);
     }
 
     public void PlayRecogerCaja() {
-        recogerCaja.pitch = Random.Range(0.85f, 1.15f);
-        recogerCaja.Play();
+        audiomanager.selectaudio(1, 1);
     }
 
     public void PlayEntregarCaja() {
-        entregarCaja.pitch = Random.Range(0.85f, 1.15f);
-        entregarCaja.Play();
+        audiomanager.selectaudio(2, 1);
     }
 
     public void PlayPortal() {
-        portal.pitch = Random.Range(0.85f, 1.15f);
-        portal.Play();
+        audiomanager.selectaudio(4, 1);
     }
 }

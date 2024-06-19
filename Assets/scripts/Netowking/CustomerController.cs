@@ -191,7 +191,7 @@ public class CustomerController : NetworkBehaviour {
 
         nav.SetDestination(GameManager.instance.portalPoint.position);
         nav.isStopped = false;
-        UIManager.instance.AddPoints(100);
+        GameManager.instance.AddPoints(100);
         //money sound and particles
         AudioManager.instance.PlayCajaRegistradora();
 

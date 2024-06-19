@@ -14,7 +14,6 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private TMP_Text playerName;
 
     [SerializeField] private TMP_Text pointsTx;
-    [SerializeField] private int points;
     [SerializeField] private TMP_Text timeTx;
 
     [SerializeField] private GameObject loadingWin;
@@ -43,9 +42,8 @@ public class UIManager : MonoBehaviour {
         timeTx.text = t;
     }
 
-    public void AddPoints(int poi) {
-        points += poi;
-        pointsTx.text = points.ToString();
+    public void SetPoints(string p) {
+        pointsTx.text = p;
     }
 
     public void CloseLoading(bool vs) {

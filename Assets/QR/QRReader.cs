@@ -2,13 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZXing;
-using ZXing.QrCode;
+using TMPro;
+using UnityEngine.UI;
 
 public class QRReader : MonoBehaviour{
 
     private WebCamTexture camTexture;
     private Rect screenRect;
 
+    [SerializeField] private TMP_Text hora;
+    [SerializeField] private TMP_Text bateryPer;
+    [SerializeField] private Image bateryBar;
 
     void Start() {
         screenRect = new Rect(0, 0, Screen.width, Screen.height);
@@ -21,7 +25,9 @@ public class QRReader : MonoBehaviour{
     }
 
     void Update() {
-        
+        hora.text = System.DateTime.UtcNow.ToString("hh:mm tt");
+        bateryBar.fillAmount = SystemInfo.batteryLevel;
+        bateryPer.text = (int)(SystemInfo.batteryLevel * 100) + "%";
     }
 
     void OnGUI() {

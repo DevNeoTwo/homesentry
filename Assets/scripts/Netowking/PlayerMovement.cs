@@ -21,6 +21,16 @@ public class PlayerMovement : NetworkBehaviour {
     private GameObject currentObj;
     public int itemID;
 
+    private bool hat;
+    private bool chain;
+    [SerializeField] private GameObject hatObj;
+    [SerializeField] private GameObject chainObj;
+    [SerializeField] private ParticleSystem hatParticles;
+    [SerializeField] private ParticleSystem chainParticles;
+    private float tDress;
+    private float tDressDelay;
+
+
     IEnumerator Start() {
         if (HasInputAuthority) {
             DontDestroyOnLoad(this.gameObject);
@@ -50,11 +60,30 @@ public class PlayerMovement : NetworkBehaviour {
             yield return new WaitForSeconds(1);
 
             if (Spawner.instance.owner) StartCoroutine(GameManager.instance.SetTimer());
+            tDress = Time.time;
+            tDressDelay = Random.Range(20f, 60f);
             started = true;
         }
     }
 
-    void Update() { }
+    void Update() {
+        if (started && Time.time > tDress + tDressDelay) {
+            if (Random.Range(0, 2) == 0) {
+                hatObj.SetActive(true);
+                Color c = Random.ColorHSV(0, 1, 0.5f, 1, 0.5f, 1);
+                hatObj.GetComponent<Material>().color = c;
+                hatParticles.startColor = c;
+                hatParticles.Play();
+                hat = true;
+            } else {
+                chainObj.SetActive(true);
+                chainParticles.Play();
+                chain = true;
+            }
+            tDressDelay = Random.Range(20f, 60f);
+            tDress = Time.time;
+        }
+    }
 
     public override void FixedUpdateNetwork() {
         if (!HasInputAuthority) return;
@@ -95,6 +124,21 @@ public class PlayerMovement : NetworkBehaviour {
             anim.SetBool("run", true);
         } else {
             anim.SetBool("run", false);
+        }
+    }
+
+    public void OnMouseDown() {
+        if (hat) {
+            hatObj.SetActive(false);
+            hatParticles.Play();
+            hat = false;
+            GameManager.instance.AddPoints(500);
+        }
+        if (chain) {
+            chainObj.SetActive(false);
+            chainParticles.Play();
+            chain = false;
+            GameManager.instance.AddPoints(500);
         }
     }
 
