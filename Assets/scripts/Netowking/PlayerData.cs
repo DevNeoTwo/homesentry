@@ -56,10 +56,10 @@ public class PlayerData : MonoBehaviour {
 
         yield return new WaitForEndOfFrame();
 
-        RenderTexture render = new RenderTexture(128, 128, 16);
+        RenderTexture render = new RenderTexture(256, 256, 16);
         cam.targetTexture = render;
-        Texture2D texture = new Texture2D(128, 128, TextureFormat.RGBA32, false);
-        Rect rect = new Rect(0,0,128,128);
+        Texture2D texture = new Texture2D(256, 256, TextureFormat.RGBA32, false);
+        Rect rect = new Rect(0,0,256,256);
 
         cam.Render();
         RenderTexture currentRender = RenderTexture.active;

@@ -18,6 +18,8 @@ public class GameManager : NetworkBehaviour {
 
     [SerializeField] private int gameTime;
 
+    [Networked(OnChanged = nameof(ChangeEndGame))] public NetworkString<_2> endGame { get; set; }
+
     private int points;
     [Networked(OnChanged = nameof(ChangePoints))] public NetworkString<_8> totalPoints { get; set; }
 
@@ -28,7 +30,7 @@ public class GameManager : NetworkBehaviour {
             System.TimeSpan t = System.TimeSpan.FromSeconds(gameTime);
             RPC_SetTime(t.ToString("mm\\:ss")); ;
         }
-        UIManager.instance.ShowWinScreen();
+        RPC_SetEndGame("SI");
     }
 
 
@@ -88,5 +90,19 @@ public class GameManager : NetworkBehaviour {
 
     private void ChangePoints() {
 
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_SetEndGame(string e, RpcInfo rpcInfo = default) {
+        this.endGame = e;
+    }
+
+    static void ChangeEndGame(Changed<GameManager> changed) {
+        changed.Behaviour.ChangeEndGame();
+    }
+
+    private void ChangeEndGame() {
+        if(endGame.ToString() != "")
+            UIManager.instance.ShowWinScreen();
     }
 }
