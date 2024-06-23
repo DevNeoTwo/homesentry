@@ -49,10 +49,10 @@ public class charactereditor : MonoBehaviour {
         nombrejugador = nombrepuesto.text;
         if (rotandoder)
         {
-            GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, velocidadrota * Time.deltaTime, 0,Space.World);
+            GameObject.FindGameObjectWithTag("jugador").transform.Rotate(0, velocidadrota * Time.deltaTime, 0,Space.World);
         }
         if (rotandoizq){
-            GameObject.FindGameObjectWithTag("Player").transform.Rotate(0, -velocidadrota * Time.deltaTime, 0, Space.World);
+            GameObject.FindGameObjectWithTag("jugador").transform.Rotate(0, -velocidadrota * Time.deltaTime, 0, Space.World);
         }
         if (color == 1)
         {

@@ -15,11 +15,14 @@ public class instrucciones : MonoBehaviour
     fadescreen fadescreenscript;
     [SerializeField] GameObject backbtn;
     [SerializeField] RectTransform nextbtn;
+    [SerializeField] GameObject cuadritoextra;
+    [SerializeField] RectTransform transfortext;
     private void Start()
     {
         audiomanagerscript = FindObjectOfType<audiomanager>();
         fadescreenscript= FindObjectOfType<fadescreen>();
         instruccionnumero = 0;
+        cuadritoextra.SetActive(false);
     }
     private void LateUpdate()
     {
@@ -38,6 +41,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[10].SetActive(false);
             textotuto.text = "Escribe aquí tu nombre";
             transformtuto.anchoredPosition=new Vector2 (0f, -148f);
+            transfortext.anchoredPosition = new Vector2(0f, 21f);
             backbtn.SetActive(false);
             nextbtn.anchoredPosition = new Vector2(-420, 51);
         }
@@ -54,8 +58,10 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Activar la ARL es muy importante antes de empezar a trabajar";
+            cuadritoextra.SetActive(false);
+            textotuto.text = "Antes de ingresar a la tienda, verifica \n que cuentes con la ARL vigente y \n preséntala al equipo de seguridad";
             transformtuto.anchoredPosition = new Vector2(0f, 75f);
+            transfortext.anchoredPosition = new Vector2(0f, 21f);
             backbtn.SetActive(true);
             nextbtn.anchoredPosition = new Vector2(-247, 51);
         }
@@ -72,8 +78,13 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Registrar tu hora de ingreso a trabajar nos ayudará a llevar un mejor control de tu tiempo trabajado";
+            cuadritoextra.SetActive(true);
+            textotuto.text = "¿No registraste tu marcación? Verifica que\ncuentes con  el código de barras que te da\nel acceso a que puedas" +
+                "registrar tu visita\ncon las siguientes recomendaciones";
+            transfortext.anchoredPosition = new Vector2(-105f, 21f);
             transformtuto.anchoredPosition = new Vector2(0f, 143f);
+            //x 105
+            //x 0
         }
         if (instruccionnumero == 3)
         {
@@ -88,8 +99,10 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Presiona aquí para rotar tu avatar y tener una vista de 360°";
+            cuadritoextra.SetActive(false);
+            textotuto.text = "Presiona aquí para rotar tu avatar y tener una\nvista de 360°";
             transformtuto.anchoredPosition = new Vector2(81f, -148f);
+            transfortext.anchoredPosition = new Vector2(0f, 21f);
         }
         if (instruccionnumero == 4)
         {
@@ -104,7 +117,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Escoge el color de piel de tu avatar";
+            textotuto.text = "Elije el color de piel de tu personaje";
             transformtuto.anchoredPosition = new Vector2(96f, 230f);
         }
         if (instruccionnumero == 5)
@@ -120,7 +133,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Cambia entre diferentes estilos de cabello para tu avatar y Escoge el color que más te guste";
+            textotuto.text = "Cambia entre diferentes estilos de cabello para\ntu personaje y Escoge el color que más te guste";
             transformtuto.anchoredPosition = new Vector2(-478f, -209f);
         }
         if (instruccionnumero == 6)
@@ -136,7 +149,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Escoge el género de tu avatar";
+            textotuto.text = "Escoge el género de tu personaje";
             transformtuto.anchoredPosition = new Vector2(1f, -194f);
         }
         if (instruccionnumero == 7)
@@ -152,7 +165,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Selecciona la camiseta que más te guste";
+            textotuto.text = "Selecciona el uniforme que te\nidentificará en la tienda";
             transformtuto.anchoredPosition = new Vector2(-297f, -24f);
         }
         if (instruccionnumero == 8)
@@ -168,7 +181,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(true);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Selecciona el pantalón que más te guste";
+            textotuto.text = "Elije el pantalón que complementa\ntu uniforme";
             transformtuto.anchoredPosition = new Vector2(0f, 80f);
         }
         if (instruccionnumero == 9)
@@ -184,7 +197,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(true);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Ponte las botas especiales para trabajar";
+            textotuto.text = "Verifica que cuentes con (calzado de\nseguridad) para ingresar a la tienda";
             transformtuto.anchoredPosition = new Vector2(0f, 7f);
         }
         if (instruccionnumero == 10)
@@ -200,7 +213,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(true);
-            textotuto.text = "El carnet que te identifica siempre a la vista generara una mayor confianza hacia los clientes";
+            textotuto.text = "Usa siempre un carnet que contenga tu nombre\ny la marca que representas en la tienda";
             transformtuto.anchoredPosition = new Vector2(0f, 0f);
         }
     }

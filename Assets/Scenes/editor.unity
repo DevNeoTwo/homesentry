@@ -1980,6 +1980,7 @@ MonoBehaviour:
   playerPref:
   - RawGuidValue: 7ba2918d340b965469730ede9cdcec04
   - RawGuidValue: 5a7d9c5cf778dd64ebde734ccc38dc3c
+  localPlayer: {fileID: 0}
   owner: 0
 --- !u!114 &201024230
 MonoBehaviour:
@@ -3198,9 +3199,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "A\xFAn no le has puesto las botas de seguridad a tu avatar, recuerda que
-    es necesario tener todos los implementos de seguridad puestos para evitar posibles
-    accidentes."
+  m_text: "\xA1Ups! Olvidaste seleccionar las botas de seguridad."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 96bc93ae5690087469b49554c6ba1e7c, type: 2}
   m_sharedMaterial: {fileID: -2781961636815552889, guid: 96bc93ae5690087469b49554c6ba1e7c, type: 2}
@@ -3489,7 +3488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: 0}
+  m_AnchoredPosition: {x: -53, y: -45}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &454997874
@@ -4651,7 +4650,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 92, y: 0}
+  m_AnchoredPosition: {x: 92, y: 144}
   m_SizeDelta: {x: 912, y: 173}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &653752795
@@ -5717,7 +5716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000015258789, y: 0}
+  m_AnchoredPosition: {x: -0.000015258789, y: -111}
   m_SizeDelta: {x: 975.3947, y: 105.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &773434242
@@ -6441,7 +6440,7 @@ GameObject:
   - component: {fileID: 874644821}
   m_Layer: 0
   m_Name: players
-  m_TagString: Player
+  m_TagString: jugador
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10915,7 +10914,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -160, y: 81}
+  m_AnchoredPosition: {x: -160, y: 108}
   m_SizeDelta: {x: 323, y: 91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1333554423
@@ -13634,7 +13633,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: 0}
+  m_AnchoredPosition: {x: -50, y: -36}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1660234052
@@ -14359,7 +14358,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 94, y: 0}
+  m_AnchoredPosition: {x: 94, y: -113}
   m_SizeDelta: {x: 141, y: 168}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1701850368
@@ -15139,8 +15138,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Recuerda portar tu carnet siempre en un lugar visible para que los clientes
-    sientan una mayor comodidad al ser atendidos por ti
+  m_text: "\xA1Ups! olvidaste seleccionar el carnet de presentaci\xF3n."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 96bc93ae5690087469b49554c6ba1e7c, type: 2}
   m_sharedMaterial: {fileID: -2781961636815552889, guid: 96bc93ae5690087469b49554c6ba1e7c, type: 2}
@@ -15174,7 +15172,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: -1.26
