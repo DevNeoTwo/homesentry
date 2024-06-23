@@ -160,7 +160,7 @@ public class popups : MonoBehaviour
                 popupsobjs[5].SetActive(true);
             }
         }
-        if (!accesorioscript.botas && !accesorioscript.carnetbool && !accesorioscript.escudo && accesorioscript.codigobarras && charactereditorscript.textonombre)
+        if (!accesorioscript.botas && !accesorioscript.carnetbool && !accesorioscript.escudo && !accesorioscript.codigobarras && charactereditorscript.textonombre)
         {
             popuprandomnum = Random.Range(1, 5);
             if (popuprandomnum == 1)

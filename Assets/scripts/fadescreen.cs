@@ -51,6 +51,10 @@ public class fadescreen : MonoBehaviour {
         imagen.color = objetivocolor;
         
         faded = true;
+        if (faded)
+        {
+            this.gameObject.GetComponent<Image>().raycastTarget = false;
+        }
     }
 
     IEnumerator fadeobscuro()
@@ -69,6 +73,10 @@ public class fadescreen : MonoBehaviour {
         imagen.color = objetivocolor;
         
         faded = false;
+        if (faded)
+        {
+            this.gameObject.GetComponent<Image>().raycastTarget = true;
+        }
         cambialvlscript.cambiaescena();
     }
 
@@ -78,10 +86,12 @@ public class fadescreen : MonoBehaviour {
         if (!faded)
         {
             StartCoroutine(fadeclaro());
+            
         }
         else
         {
             StartCoroutine(fadeobscuro());
+            this.gameObject.GetComponent<Image>().raycastTarget = false;
         }
         if (!fadeinicial)
         {

@@ -99,8 +99,16 @@ public class camisaspantalones : MonoBehaviour {
                 camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[6]);
                 camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[6]);
             }
-
-
+            if (top == 8)
+            {
+                camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[7]);
+                camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[7]);
+            }
+            if (top == 9)
+            {
+                camisamaterials[0].SetTexture("_MainTex", hombrecamisatexture[8]);
+                camisamaterials[1].SetTexture("_MainTex", mujercamisatexture[8]);
+            }
         }
            
 
@@ -112,7 +120,7 @@ public class camisaspantalones : MonoBehaviour {
             camisanim.SetTrigger("animder");
             top++;
             audiomanagerscript.selectaudio(0, 0.7f);
-            if (top > 7)
+            if (top > 9)
             {
                 top = 1;
             }
@@ -128,7 +136,7 @@ public class camisaspantalones : MonoBehaviour {
             audiomanagerscript.selectaudio(0, 0.7f);
             if (top < 1)
             {
-                top = 7;
+                top = 9;
             }
         }
         
