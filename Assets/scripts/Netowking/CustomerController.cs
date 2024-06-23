@@ -169,7 +169,7 @@ public class CustomerController : NetworkBehaviour {
                 nav.isStopped = true;
                 anim.SetBool("run", false);
 
-                other.GetComponent<PlayerMovement>().bussy = true;
+                other.GetComponent<PlayerMovement>().SetBussy();
 
                 productTx.text = ProductsDB.instance.products[aux].pName;
                 productImg.sprite = ProductsDB.instance.products[aux].img;
@@ -191,7 +191,9 @@ public class CustomerController : NetworkBehaviour {
 
         nav.SetDestination(GameManager.instance.portalPoint.position);
         nav.isStopped = false;
-        GameManager.instance.AddPoints(100);
+        int aux = (int)(200f * UIManager.instance.GetTimeBar());
+        GameManager.instance.AddPoints(200 + aux);
+
         //money sound and particles
         AudioManager.instance.PlayCajaRegistradora();
 

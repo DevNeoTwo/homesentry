@@ -21,8 +21,6 @@ public class GameManager : NetworkBehaviour {
     private int points;
     [Networked(OnChanged = nameof(ChangePoints))] public NetworkString<_8> totalPoints { get; set; }
 
-
-
     public IEnumerator SetTimer() {
         while (gameTime > 0) {
             yield return new WaitForSeconds(1);
@@ -30,6 +28,7 @@ public class GameManager : NetworkBehaviour {
             System.TimeSpan t = System.TimeSpan.FromSeconds(gameTime);
             RPC_SetTime(t.ToString("mm\\:ss")); ;
         }
+        UIManager.instance.ShowWinScreen();
     }
 
 
@@ -74,6 +73,8 @@ public class GameManager : NetworkBehaviour {
     public void AddPoints(int p) {
         points += p;
         UIManager.instance.SetPoints(points.ToString());
+        Spawner.instance.localPlayer.RPC_SetPoints(points.ToString());
+        RPC_SetPoints(points.ToString());
     }
 
     [Rpc(RpcSources.All, RpcTargets.StateAuthority)]

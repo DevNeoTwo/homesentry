@@ -12,7 +12,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks {
 
     [SerializeField] private NetworkPrefabRef[] playerPref = new NetworkPrefabRef[0];
     private Dictionary<PlayerRef, NetworkObject> spawnedCharacters = new Dictionary<PlayerRef, NetworkObject>();
-    public PlayerRef localPlayer;
+    public PlayerMovement localPlayer;
 
     public bool owner;
 
@@ -23,7 +23,6 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks {
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) {
         if(player == runner.LocalPlayer) {
-            localPlayer = player;
             Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 3, UnityEngine.Random.Range(-1.5f, 1.5f));
             NetworkObject networkPlayerObject = runner.Spawn(playerPref[PlayerData.instance.genre ? 1 : 0], spawnPosition, Quaternion.identity, player);
             spawnedCharacters.Add(player, networkPlayerObject);

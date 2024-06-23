@@ -15,6 +15,7 @@ public class PlayerMovement : NetworkBehaviour {
     [SerializeField] private Rigidbody rb;
 
     private bool started;
+    private bool ended;
 
     public bool bussy;
     [SerializeField] private GameObject itemObj;
@@ -30,11 +31,21 @@ public class PlayerMovement : NetworkBehaviour {
     private float tDress;
     private float tDressDelay;
 
+    [Networked(OnChanged = nameof(ChangeStatus))] public NetworkString<_8> status { get; set; }
+
+    [Networked(OnChanged = nameof(ChangePoints))] public NetworkString<_16> points { get; set; }
+    [Networked(OnChanged = nameof(ChangeName))] public NetworkString<_32> playerName { get; set; }
+
+
+    private float tBusy;
 
     IEnumerator Start() {
         if (HasInputAuthority) {
+            Spawner.instance.localPlayer = this;
             DontDestroyOnLoad(this.gameObject);
             yield return new WaitForSeconds(1);
+            RPC_SetName(PlayerData.instance.playerName);
+            RPC_SetPoints("0");
             if (GameObject.FindGameObjectsWithTag("Player").Length == 1) Spawner.instance.owner = true;
             else Spawner.instance.owner = false;
 
@@ -57,7 +68,21 @@ public class PlayerMovement : NetworkBehaviour {
             } else
                 UIManager.instance.CloseLoading(false);
 
-            yield return new WaitForSeconds(1);
+            if (PlayerPrefs.GetString("gamemode") == "vs") {
+                int aux = 0;
+                do {
+                    aux = 0;
+                    foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player")) {
+                        if (p.GetComponent<PlayerMovement>().status.ToString() == "ready")
+                            aux++;
+                    }
+                    yield return new WaitForSeconds(0.1f);
+                } while (aux != 2);
+            } else {
+                while(Spawner.instance.localPlayer.status != "ready")
+                    yield return new WaitForSeconds(0.1f);
+            }
+            
 
             if (Spawner.instance.owner) StartCoroutine(GameManager.instance.SetTimer());
             tDress = Time.time;
@@ -71,7 +96,7 @@ public class PlayerMovement : NetworkBehaviour {
             if (Random.Range(0, 2) == 0) {
                 hatObj.SetActive(true);
                 Color c = Random.ColorHSV(0, 1, 0.5f, 1, 0.5f, 1);
-                hatObj.GetComponent<Material>().color = c;
+                hatObj.GetComponent<MeshRenderer>().material.color = c;
                 hatParticles.startColor = c;
                 hatParticles.Play();
                 hat = true;
@@ -83,11 +108,17 @@ public class PlayerMovement : NetworkBehaviour {
             tDressDelay = Random.Range(20f, 60f);
             tDress = Time.time;
         }
+        if (bussy) {
+            float aux = (Time.time - tBusy) / 100;
+            if (aux < 0) aux = 0;
+            if (aux > 1) aux = 1;
+            UIManager.instance.SetTimeBar(1 - aux);
+        }
     }
 
     public override void FixedUpdateNetwork() {
         if (!HasInputAuthority) return;
-        if (!started) return;
+        if (!started || ended) return;
 
         Vector3 vel = new Vector3(0, -300 * Runner.DeltaTime, 0);
 
@@ -159,5 +190,62 @@ public class PlayerMovement : NetworkBehaviour {
         anim.SetBool("box", false);
         itemObj.SetActive(false);
         AudioManager.instance.PlayEntregarCaja();
+        UIManager.instance.ShowTimeBar(false);
+    }
+
+    public void SetBussy() {
+        bussy = true;
+        tBusy = Time.time;
+        UIManager.instance.SetTimeBar(1);
+        UIManager.instance.ShowTimeBar(true);
+    }
+
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    public void RPC_SetStatus(string s, RpcInfo rpcInfo = default) {
+        if (HasInputAuthority)
+            this.status = s;
+    }
+
+    static void ChangeStatus(Changed<PlayerMovement> changed) {
+        changed.Behaviour.ChangeStatus();
+    }
+
+    private void ChangeStatus() {
+        if (status.ToString() == "ended") {
+            ended = true;
+            Runner.Despawn(Spawner.instance.localPlayer.GetComponent<NetworkObject>());
+            Destroy(PlayerData.instance.gameObject);
+            foreach (GameObject p in GameObject.FindGameObjectsWithTag("Player"))
+                Destroy(p);
+        }   
+    }
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    public void RPC_SetPoints(string p, RpcInfo rpcInfo = default) {
+        if (HasInputAuthority)
+            this.points = p;
+    }
+
+    static void ChangePoints(Changed<PlayerMovement> changed) {
+        changed.Behaviour.ChangePoints();
+    }
+
+    private void ChangePoints() {
+
+    }
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    public void RPC_SetName(string n, RpcInfo rpcInfo = default) {
+        if (HasInputAuthority)
+            this.playerName = n;
+    }
+
+    static void ChangeName(Changed<PlayerMovement> changed) {
+        changed.Behaviour.ChangeName();
+    }
+
+    private void ChangeName() {
+
     }
 }
