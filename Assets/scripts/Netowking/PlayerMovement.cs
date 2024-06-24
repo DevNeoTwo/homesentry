@@ -53,14 +53,15 @@ public class PlayerMovement : NetworkBehaviour {
             while(GameManager.instance == null)
                 yield return new WaitForSeconds(0.1f);
 
-            if (HasInputAuthority) {
-                CameraFollow.instance.SetTarget(this.transform);
-                CameraMiniMap.instance.SetTarget(this.transform);
-                arrowMiniMap.color = playerColor;
-            } else
-                arrowMiniMap.color = enemyColor;
+
+            CameraFollow.instance.SetTarget(this.transform);
+            CameraMiniMap.instance.SetTarget(this.transform);
+            arrowMiniMap.color = playerColor;
+
             yield return new WaitForSeconds(1);
+
             if (Spawner.instance.owner) GameManager.instance.CreateCustomers(20);
+
             if (PlayerPrefs.GetString("gamemode") == "vs") {
                 while (GameObject.FindGameObjectsWithTag("Player").Length != 2)
                     yield return new WaitForSeconds(0.25f);
@@ -88,7 +89,8 @@ public class PlayerMovement : NetworkBehaviour {
             tDress = Time.time;
             tDressDelay = Random.Range(20f, 60f);
             started = true;
-        }
+        } else
+            arrowMiniMap.color = enemyColor;
     }
 
     void Update() {
@@ -120,7 +122,7 @@ public class PlayerMovement : NetworkBehaviour {
         if (!HasInputAuthority) return;
         if (!started || ended) return;
 
-        Vector3 vel = new Vector3(0, -300 * Runner.DeltaTime, 0);
+        Vector3 vel = new Vector3(0, 0, 0);
 
         //translation
         if (Input.GetKey(KeyCode.W))

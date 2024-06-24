@@ -57,7 +57,7 @@ public class CustomerController : NetworkBehaviour {
         aux += Random.Range(0, 9);//pants color
         RPC_SetColor(aux);
         int product = Random.Range(0,3);
-        if (product != 0) product = Random.Range(1,5);
+        if (product != 0) product = Random.Range(1,18);
         RPC_SetProduct(product.ToString());
         this.transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
     }
@@ -171,7 +171,8 @@ public class CustomerController : NetworkBehaviour {
 
                 other.GetComponent<PlayerMovement>().SetBussy();
 
-                productTx.text = ProductsDB.instance.products[aux].pName;
+                //productTx.text = ProductsDB.instance.products[aux].pName;
+                productTx.text = "";
                 productImg.sprite = ProductsDB.instance.products[aux].img;
                 arrowImg.color = Color.white;
                 canvas.SetActive(true);

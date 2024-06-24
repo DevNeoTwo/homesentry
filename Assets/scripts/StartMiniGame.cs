@@ -31,6 +31,7 @@ public class StartMiniGame : MonoBehaviour {
         yield return new WaitForSeconds(15);
         miniGame.SetActive(false);
         UIManager.instance.ShowUI();
+        GameManager.instance.AddPoints(cajasspawn.instance.puntos);
         this.gameObject.SetActive(false);
     }
 }

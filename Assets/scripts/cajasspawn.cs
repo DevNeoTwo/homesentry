@@ -243,8 +243,7 @@ public class cajasspawn : MonoBehaviour {
     }
     public void addscore()
     {
-        
-        puntos++;
+        puntos+=50;
         textopuntos.text = "PUNTOS: "+puntos.ToString();
     }
 }

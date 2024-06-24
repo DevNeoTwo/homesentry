@@ -102,6 +102,7 @@ public class GameManager : NetworkBehaviour {
     }
 
     private void ChangeEndGame() {
+        Debug.Log("asdfasdfasdfdas");
         if(endGame.ToString() != "")
             UIManager.instance.ShowWinScreen();
     }
