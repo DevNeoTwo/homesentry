@@ -42,6 +42,8 @@ public class CustomerController : NetworkBehaviour {
 
     [SerializeField] private bool gender;
 
+    public GameObject player;
+
     void Start() {
         if (!Spawner.instance.owner) return;
 
@@ -57,7 +59,7 @@ public class CustomerController : NetworkBehaviour {
         aux += Random.Range(0, 9);//pants color
         RPC_SetColor(aux);
         int product = Random.Range(0,3);
-        if (product != 0) product = Random.Range(1,18);
+        if (product != 0) product = Random.Range(1, ProductsDB.instance.products.Length);
         RPC_SetProduct(product.ToString());
         this.transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
     }
@@ -150,7 +152,7 @@ public class CustomerController : NetworkBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
 
-            if (other.GetComponent<PlayerMovement>().bussy && other.GetComponent<PlayerMovement>().itemID.ToString() == product.ToString() && waiting) {
+            if (other.GetComponent<PlayerMovement>().bussy && other.GetComponent<PlayerMovement>().itemID.ToString() == product.ToString() && waiting && player == other.gameObject) {
                 other.GetComponent<PlayerMovement>().LeaveItem();
                 StartCoroutine(EndMovement());
                 return;
@@ -159,6 +161,8 @@ public class CustomerController : NetworkBehaviour {
             if (other.GetComponent<PlayerMovement>().bussy) return;
 
             if (waiting) return;
+
+            if (player != null) return;
 
             int aux = int.Parse(product.ToString());
 
@@ -176,6 +180,7 @@ public class CustomerController : NetworkBehaviour {
                 productImg.sprite = ProductsDB.instance.products[aux].img;
                 arrowImg.color = Color.white;
                 canvas.SetActive(true);
+                player = other.gameObject;
             }
         }
     }
