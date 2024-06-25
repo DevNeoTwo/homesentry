@@ -5743,7 +5743,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: CREA TU AVATAR
+  m_text: CREA TU PERSONAJE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d07f65f883ba4e840bc1e1408b80ef1f, type: 2}
   m_sharedMaterial: {fileID: -2781961636815552889, guid: d07f65f883ba4e840bc1e1408b80ef1f, type: 2}
@@ -5770,8 +5770,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

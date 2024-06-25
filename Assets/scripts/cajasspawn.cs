@@ -12,6 +12,10 @@ public class cajasspawn : MonoBehaviour {
 
     [SerializeField] GameObject[] cajasspawnprefap;
     [SerializeField] GameObject[] cajasspawnprefap1;
+    [SerializeField] GameObject[] cajasspawnprefap2;
+    [SerializeField] GameObject[] cajasspawnprefap3;
+    [SerializeField] GameObject[] cajasspawnprefap4;
+    [SerializeField] GameObject[] cajasspawnprefap5;
     [SerializeField] Transform sitiospawn;
     [SerializeField] float spawnintervalos;
     [SerializeField] int cantitadobjspawn;
@@ -102,13 +106,33 @@ public class cajasspawn : MonoBehaviour {
         
         for(int i = 0; i < cantitadobjspawn; i++)
         {
-            if (camisaspantalones.instance.top == 0)
+            if (camisaspantalones.instance.top == 1||camisaspantalones.instance.top==9)
             {
-                randomindex = Random.Range(0, cajasspawnprefap.Length);
+                randomindex = Random.Range(0, cajasspawnprefap5.Length);
             }
-            if (camisaspantalones.instance.top > 0)
+            if (camisaspantalones.instance.top == 2)
             {
                 randomindex = Random.Range(0, cajasspawnprefap1.Length);
+            }
+            if (camisaspantalones.instance.top == 3)
+            {
+                randomindex = Random.Range(0, cajasspawnprefap2.Length);
+            }
+            if (camisaspantalones.instance.top == 4)
+            {
+                randomindex = Random.Range(0, cajasspawnprefap3.Length);
+            }
+            if (camisaspantalones.instance.top == 5|| camisaspantalones.instance.top == 6)
+            {
+                randomindex = Random.Range(0, cajasspawnprefap4.Length);
+            }
+            if (camisaspantalones.instance.top == 7)
+            {
+                randomindex = Random.Range(0, cajasspawnprefap5.Length);
+            }
+            if (camisaspantalones.instance.top == 8)
+            {
+                randomindex = Random.Range(0, cajasspawnprefap.Length);
             }
 
             if (randomindex == 0 && objectosactivar_A >= cajasactivables_A.Length)
@@ -127,13 +151,34 @@ public class cajasspawn : MonoBehaviour {
                 break;
             }
 
-            if(camisaspantalones.instance.top == 0)
+            if(camisaspantalones.instance.top == 1|| camisaspantalones.instance.top==9)
             {
+
                 GameObject newobj = Instantiate(cajasspawnprefap[randomindex], sitiospawn.position, sitiospawn.rotation);
             }
-            if (camisaspantalones.instance.top > 0)
+            if (camisaspantalones.instance.top == 2)
             {
                 GameObject newobj = Instantiate(cajasspawnprefap1[randomindex], sitiospawn.position, sitiospawn.rotation);
+            }
+            if (camisaspantalones.instance.top == 3)
+            {
+                GameObject newobj = Instantiate(cajasspawnprefap2[randomindex], sitiospawn.position, sitiospawn.rotation);
+            }
+            if (camisaspantalones.instance.top == 4)
+            {
+                GameObject newobj = Instantiate(cajasspawnprefap3[randomindex], sitiospawn.position, sitiospawn.rotation);
+            }
+            if (camisaspantalones.instance.top == 5|| camisaspantalones.instance.top == 6)
+            {
+                GameObject newobj = Instantiate(cajasspawnprefap4[randomindex], sitiospawn.position, sitiospawn.rotation);
+            }
+            if (camisaspantalones.instance.top == 7)
+            {
+                GameObject newobj = Instantiate(cajasspawnprefap5[randomindex], sitiospawn.position, sitiospawn.rotation);
+            }
+            if (camisaspantalones.instance.top == 8)
+            {
+                GameObject newobj = Instantiate(cajasspawnprefap[randomindex], sitiospawn.position, sitiospawn.rotation);
             }
 
             yield return new WaitForSeconds(0.5f);
@@ -145,6 +190,7 @@ public class cajasspawn : MonoBehaviour {
 
     void texturasmarcas()
     {
+        
         if (camisaspantalones.instance.top == 1)
         {
             marcamaterial.SetTexture("_MainTex", marcatextura[0]);
@@ -169,6 +215,26 @@ public class cajasspawn : MonoBehaviour {
         {
             marcamaterial.SetTexture("_MainTex", marcatextura[4]);
             marcamaterial.SetTexture("_EmissionMap", emisiontextura[4]);
+        }
+        if (camisaspantalones.instance.top == 6)
+        {
+            marcamaterial.SetTexture("_MainTex", marcatextura[5]);
+            marcamaterial.SetTexture("_EmissionMap", emisiontextura[5]);
+        }
+        if (camisaspantalones.instance.top == 7)
+        {
+            marcamaterial.SetTexture("_MainTex", marcatextura[6]);
+            marcamaterial.SetTexture("_EmissionMap", emisiontextura[6]);
+        }
+        if (camisaspantalones.instance.top == 8)
+        {
+            marcamaterial.SetTexture("_MainTex", marcatextura[7]);
+            marcamaterial.SetTexture("_EmissionMap", emisiontextura[7]);
+        }
+        if (camisaspantalones.instance.top == 9)
+        {
+            marcamaterial.SetTexture("_MainTex", marcatextura[8]);
+            marcamaterial.SetTexture("_EmissionMap", emisiontextura[8]);
         }
     }
 

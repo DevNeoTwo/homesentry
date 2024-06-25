@@ -14,18 +14,18 @@ public class rotatesizestar : MonoBehaviour
     Coroutine escaladorcorrutina;
     private void Start()
     {
-        imagen = GetComponent<Image>();
+        this.imagen = GetComponent<Image>();
         StartCoroutine(escalador());
     }
     
     void Update()
     {
-        imagen.rectTransform.Rotate(0, 0, velocidadrota * Time.deltaTime);
+        this.imagen.rectTransform.Rotate(0, 0, velocidadrota * Time.deltaTime);
     }
     public IEnumerator escalador()
     {
         while (escalando) { 
-        Vector3 escalaoriginal = imagen.rectTransform.localScale;
+        Vector3 escalaoriginal = this.imagen.rectTransform.localScale;
         Vector3 objetivoescala = escalaoriginal * escala;
         float tiempopasado = 0f;
         while(tiempopasado<duracion)
