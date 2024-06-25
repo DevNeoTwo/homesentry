@@ -44,6 +44,9 @@ public class CustomerController : NetworkBehaviour {
 
     public GameObject player;
 
+
+    private bool ready;
+
     void Start() {
         if (!Spawner.instance.owner) return;
 
@@ -96,6 +99,7 @@ public class CustomerController : NetworkBehaviour {
                 target = GameManager.instance.GetDestination();
                 nav.SetDestination(target);
                 anim.SetBool("run", true);
+                ready = true;
             }
         }
     }
@@ -150,6 +154,7 @@ public class CustomerController : NetworkBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
+        if (!ready) return;
         if (other.tag == "Player") {
 
             if (other.GetComponent<PlayerMovement>().bussy && other.GetComponent<PlayerMovement>().itemID.ToString() == product.ToString() && waiting && player == other.gameObject) {
