@@ -41,6 +41,18 @@ public class cajasspawn : MonoBehaviour {
     [SerializeField] Material marcamaterial;
     [SerializeField] Texture[] marcatextura;
     [SerializeField] Texture[] emisiontextura;
+
+    [SerializeField] GameObject spriteindex1;
+    [SerializeField] Sprite[] sprites1;
+
+    [SerializeField] GameObject spriteindex2;
+    [SerializeField] Sprite[] sprites2;
+
+    [SerializeField] GameObject spriteindex3;
+    [SerializeField] Sprite[] sprites3;
+
+    int numrandom;
+    bool randomizado;
     private void Awake() {
         instance = this;
     }
@@ -48,6 +60,7 @@ public class cajasspawn : MonoBehaviour {
     private void Start()
     {
         spawnobjsbool = false;
+        randomizado = false;
         actualizacaja_A();
         actualizacaja_B();
         actualizacaja_C();
@@ -86,6 +99,8 @@ public class cajasspawn : MonoBehaviour {
         StartCoroutine(decrementofillimg());
         StartCoroutine(rotatesizestar.FindObjectOfType<rotatesizestar>().GetComponent<rotatesizestar>().escalador());
         texturasmarcas();
+        numrandom = Random.Range(1, 7);
+        
         //StartCoroutine(spawnobj());
     }
     IEnumerator decrementofillimg()
@@ -106,32 +121,68 @@ public class cajasspawn : MonoBehaviour {
         
         for(int i = 0; i < cantitadobjspawn; i++)
         {
-            if (camisaspantalones.instance.top == 1||camisaspantalones.instance.top==9)
+            if (camisaspantalones.instance.top == 1||camisaspantalones.instance.top==9)//sentry
             {
-                randomindex = Random.Range(0, cajasspawnprefap5.Length);
+                randomizado=false;
+                
+                    randomindex = Random.Range(0, cajasspawnprefap5.Length);
+                
             }
-            if (camisaspantalones.instance.top == 2)
+            if (camisaspantalones.instance.top == 2)//zoom
             {
+                randomizado = false;
                 randomindex = Random.Range(0, cajasspawnprefap1.Length);
             }
-            if (camisaspantalones.instance.top == 3)
+            if (camisaspantalones.instance.top == 3)//natureheart
             {
+                randomizado = false;
                 randomindex = Random.Range(0, cajasspawnprefap2.Length);
             }
-            if (camisaspantalones.instance.top == 4)
+            if (camisaspantalones.instance.top == 4)//blackdeker
             {
+                randomizado = false;
                 randomindex = Random.Range(0, cajasspawnprefap3.Length);
             }
-            if (camisaspantalones.instance.top == 5|| camisaspantalones.instance.top == 6)
+            if (camisaspantalones.instance.top == 5|| camisaspantalones.instance.top == 6)//imusa
             {
+                randomizado = false;
                 randomindex = Random.Range(0, cajasspawnprefap4.Length);
             }
-            if (camisaspantalones.instance.top == 7)
+            if (camisaspantalones.instance.top == 7)//mercadeo
             {
-                randomindex = Random.Range(0, cajasspawnprefap5.Length);
+                randomizado = true;
+                if(randomizado)
+                {
+                    if (numrandom == 1)
+                    {
+                        randomindex = Random.Range(0, cajasspawnprefap5.Length);
+                    }
+                    if (numrandom == 2)
+                    {
+                        randomindex = Random.Range(0, cajasspawnprefap1.Length);
+                    }
+                    if (numrandom == 3)
+                    {
+                        randomindex = Random.Range(0, cajasspawnprefap2.Length);
+                    }
+                    if (numrandom == 4)
+                    {
+                        randomindex = Random.Range(0, cajasspawnprefap3.Length);
+                    }
+                    if (numrandom == 5)
+                    {
+                        randomindex = Random.Range(0, cajasspawnprefap4.Length);
+                    }
+                    if (numrandom == 6)
+                    {
+                        randomindex = Random.Range(0, cajasspawnprefap.Length);
+                    }
+                }
+                
             }
-            if (camisaspantalones.instance.top == 8)
+            if (camisaspantalones.instance.top == 8)//ninjashark
             {
+                randomizado=false;
                 randomindex = Random.Range(0, cajasspawnprefap.Length);
             }
 
@@ -151,34 +202,143 @@ public class cajasspawn : MonoBehaviour {
                 break;
             }
 
-            if(camisaspantalones.instance.top == 1|| camisaspantalones.instance.top==9)
+            if(camisaspantalones.instance.top == 1|| camisaspantalones.instance.top==9)//homesentry
             {
-
-                GameObject newobj = Instantiate(cajasspawnprefap[randomindex], sitiospawn.position, sitiospawn.rotation);
-            }
-            if (camisaspantalones.instance.top == 2)
-            {
-                GameObject newobj = Instantiate(cajasspawnprefap1[randomindex], sitiospawn.position, sitiospawn.rotation);
-            }
-            if (camisaspantalones.instance.top == 3)
-            {
-                GameObject newobj = Instantiate(cajasspawnprefap2[randomindex], sitiospawn.position, sitiospawn.rotation);
-            }
-            if (camisaspantalones.instance.top == 4)
-            {
-                GameObject newobj = Instantiate(cajasspawnprefap3[randomindex], sitiospawn.position, sitiospawn.rotation);
-            }
-            if (camisaspantalones.instance.top == 5|| camisaspantalones.instance.top == 6)
-            {
-                GameObject newobj = Instantiate(cajasspawnprefap4[randomindex], sitiospawn.position, sitiospawn.rotation);
-            }
-            if (camisaspantalones.instance.top == 7)
-            {
+                randomizado = false;
                 GameObject newobj = Instantiate(cajasspawnprefap5[randomindex], sitiospawn.position, sitiospawn.rotation);
+                
+                spriteindex1.GetComponent<SpriteRenderer>().sprite = sprites1[5];
+                spriteindex2.GetComponent<SpriteRenderer>().sprite = sprites2[5];
+                spriteindex3.GetComponent<SpriteRenderer>().sprite = sprites3[5];
+
+                spriteindex1.transform.localScale = new Vector3(0.13f, 0.13f, 1f);
+                spriteindex2.transform.localScale = new Vector3(0.13f, 0.13f, 1f);
+                spriteindex3.transform.localScale = new Vector3(0.13f, 0.13f, 1f);
             }
-            if (camisaspantalones.instance.top == 8)
+            if (camisaspantalones.instance.top == 2)//zoom
             {
+                randomizado = false;
+                GameObject newobj = Instantiate(cajasspawnprefap1[randomindex], sitiospawn.position, sitiospawn.rotation);
+                
+                spriteindex1.GetComponent<SpriteRenderer>().sprite = sprites1[1];
+                spriteindex2.GetComponent<SpriteRenderer>().sprite = sprites2[1];
+                spriteindex3.GetComponent<SpriteRenderer>().sprite = sprites3[1];
+
+                spriteindex1.transform.localScale = new Vector3(0.2f, 0.2f, 1f);
+                spriteindex2.transform.localScale = new Vector3(0.2f, 0.2f, 1f);
+                spriteindex3.transform.localScale = new Vector3(0.2f, 0.2f, 1f);
+            }
+            if (camisaspantalones.instance.top == 3)//natureheart
+            {
+                randomizado = false;
+                GameObject newobj = Instantiate(cajasspawnprefap2[randomindex], sitiospawn.position, sitiospawn.rotation);
+
+                spriteindex1.GetComponent<SpriteRenderer>().sprite = sprites1[2];
+                spriteindex2.GetComponent<SpriteRenderer>().sprite = sprites2[2];
+                spriteindex3.GetComponent<SpriteRenderer>().sprite = sprites3[2];
+
+                spriteindex1.transform.localScale = new Vector3(0.13f, 0.13f, 1f);
+                spriteindex2.transform.localScale = new Vector3(0.13f, 0.13f, 1f);
+                spriteindex3.transform.localScale = new Vector3(0.13f, 0.13f, 1f);
+            }
+            if (camisaspantalones.instance.top == 4)//blackdecker
+            {
+                randomizado = false;
+                GameObject newobj = Instantiate(cajasspawnprefap3[randomindex], sitiospawn.position, sitiospawn.rotation);
+
+                spriteindex1.GetComponent<SpriteRenderer>().sprite = sprites1[3];
+                spriteindex2.GetComponent<SpriteRenderer>().sprite = sprites2[3];
+                spriteindex3.GetComponent<SpriteRenderer>().sprite = sprites3[3];
+
+                spriteindex1.transform.localScale = new Vector3(0.15f, 0.15f, 1f);
+                spriteindex2.transform.localScale = new Vector3(0.15f, 0.15f, 1f);
+                spriteindex3.transform.localScale = new Vector3(0.15f, 0.15f, 1f);
+
+            }
+            if (camisaspantalones.instance.top == 5|| camisaspantalones.instance.top == 6)//imusa
+            {
+                randomizado = false;
+                GameObject newobj = Instantiate(cajasspawnprefap4[randomindex], sitiospawn.position, sitiospawn.rotation);
+
+                spriteindex1.GetComponent<SpriteRenderer>().sprite = sprites1[4];
+                spriteindex2.GetComponent<SpriteRenderer>().sprite = sprites2[4];
+                spriteindex3.GetComponent<SpriteRenderer>().sprite = sprites3[4];
+
+                spriteindex1.transform.localScale = new Vector3(0.15f, 0.15f, 1f);
+                spriteindex2.transform.localScale = new Vector3(0.15f, 0.15f, 1f);
+                spriteindex3.transform.localScale = new Vector3(0.15f, 0.15f, 1f);
+            }
+
+            if (camisaspantalones.instance.top == 7)//mercadeo
+            {
+                randomizado = true;
+
+                if (randomizado)
+                {
+                    if (numrandom == 1)//sentry
+                    {
+                        GameObject newobj = Instantiate(cajasspawnprefap5[randomindex], sitiospawn.position, sitiospawn.rotation);
+
+                        spriteindex1.GetComponent<SpriteRenderer>().sprite = sprites1[5];
+                        spriteindex2.GetComponent<SpriteRenderer>().sprite = sprites2[5];
+                        spriteindex3.GetComponent<SpriteRenderer>().sprite = sprites3[5];
+                    }
+                    if (numrandom == 2)//zoom
+                    {
+                        GameObject newobj = Instantiate(cajasspawnprefap1[randomindex], sitiospawn.position, sitiospawn.rotation);
+                        spriteindex1.GetComponent<SpriteRenderer>().sprite = sprites1[1];
+                        spriteindex2.GetComponent<SpriteRenderer>().sprite = sprites2[1];
+                        spriteindex3.GetComponent<SpriteRenderer>().sprite = sprites3[1];
+                    }
+                    if (numrandom == 3)//natureheart
+                    {
+                        GameObject newobj = Instantiate(cajasspawnprefap2[randomindex], sitiospawn.position, sitiospawn.rotation);
+
+                        spriteindex1.GetComponent<SpriteRenderer>().sprite = sprites1[2];
+                        spriteindex2.GetComponent<SpriteRenderer>().sprite = sprites2[2];
+                        spriteindex3.GetComponent<SpriteRenderer>().sprite = sprites3[2];
+                    }
+                    if (numrandom == 4)//blackdecker
+                    {
+                        GameObject newobj = Instantiate(cajasspawnprefap3[randomindex], sitiospawn.position, sitiospawn.rotation);
+
+                        spriteindex1.GetComponent<SpriteRenderer>().sprite = sprites1[3];
+                        spriteindex2.GetComponent<SpriteRenderer>().sprite = sprites2[3];
+                        spriteindex3.GetComponent<SpriteRenderer>().sprite = sprites3[3];
+                    }
+                    if (numrandom == 5)//imusa
+                    {
+                        GameObject newobj = Instantiate(cajasspawnprefap4[randomindex], sitiospawn.position, sitiospawn.rotation);
+
+                        spriteindex1.GetComponent<SpriteRenderer>().sprite = sprites1[4];
+                        spriteindex2.GetComponent<SpriteRenderer>().sprite = sprites2[4];
+                        spriteindex3.GetComponent<SpriteRenderer>().sprite = sprites3[4];
+                    }
+                    if (numrandom == 6)//sharkninja
+                    {
+                        GameObject newobj = Instantiate(cajasspawnprefap[randomindex], sitiospawn.position, sitiospawn.rotation);
+
+                        spriteindex1.GetComponent<SpriteRenderer>().sprite = sprites1[0];
+                        spriteindex2.GetComponent<SpriteRenderer>().sprite = sprites2[0];
+                        spriteindex3.GetComponent<SpriteRenderer>().sprite = sprites3[0];
+                    }
+                }
+               
+            }
+
+            if (camisaspantalones.instance.top == 8)//sharkninja
+            {
+                randomizado = false;
                 GameObject newobj = Instantiate(cajasspawnprefap[randomindex], sitiospawn.position, sitiospawn.rotation);
+
+                spriteindex1.GetComponent<SpriteRenderer>().sprite = sprites1[0];
+                spriteindex2.GetComponent<SpriteRenderer>().sprite = sprites2[0];
+                spriteindex3.GetComponent<SpriteRenderer>().sprite = sprites3[0];
+
+                spriteindex1.transform.localScale = new Vector3(0.15f, 0.15f, 1f);
+                spriteindex2.transform.localScale = new Vector3(0.15f, 0.15f, 1f);
+                spriteindex3.transform.localScale = new Vector3(0.15f, 0.15f, 1f);
+
             }
 
             yield return new WaitForSeconds(0.5f);
@@ -195,6 +355,7 @@ public class cajasspawn : MonoBehaviour {
         {
             marcamaterial.SetTexture("_MainTex", marcatextura[0]);
             marcamaterial.SetTexture("_EmissionMap", emisiontextura[0]);
+            
         }
         if (camisaspantalones.instance.top == 2)
         {
