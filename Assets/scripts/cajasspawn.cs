@@ -84,6 +84,7 @@ public class cajasspawn : MonoBehaviour {
     }
 
     public void Restart() {
+       // StartCoroutine(rotatesizestar.FindObjectOfType<rotatesizestar>().GetComponent<rotatesizestar>().escalador());
         objectosactivar_A = 0;
         objectosactivar_B = 0;
         objectosactivar_C = 0;
@@ -97,7 +98,7 @@ public class cajasspawn : MonoBehaviour {
         duracionfill = 15;
         timerfill.fillAmount = 1;
         StartCoroutine(decrementofillimg());
-        StartCoroutine(rotatesizestar.FindObjectOfType<rotatesizestar>().GetComponent<rotatesizestar>().escalador());
+        
         texturasmarcas();
         numrandom = Random.Range(1, 7);
         
@@ -107,6 +108,7 @@ public class cajasspawn : MonoBehaviour {
     {
         float starttime=Time.time;
         float endtime=Time.time+duracionfill;
+       
         while (Time.time<endtime)
         {
             float tiempopasado=Time.time-starttime;
@@ -347,7 +349,7 @@ public class cajasspawn : MonoBehaviour {
         yield return new WaitForSeconds(spawnintervalos);
         spawnobjsbool = false;
     }
-
+  
     void texturasmarcas()
     {
         
