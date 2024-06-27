@@ -17,7 +17,7 @@ public class PlayerMovement : NetworkBehaviour {
     private bool started;
     private bool ended;
 
-    public bool bussy;
+    //public bool bussy;
     [SerializeField] private GameObject itemObj;
     private GameObject currentObj;
     public int itemID;
@@ -36,6 +36,7 @@ public class PlayerMovement : NetworkBehaviour {
     [Networked(OnChanged = nameof(ChangePoints))] public NetworkString<_16> points { get; set; }
     [Networked(OnChanged = nameof(ChangeName))] public NetworkString<_32> playerName { get; set; }
 
+    [Networked(OnChanged = nameof(ChangeBussy))] public NetworkString<_2> bussy { get; set; }
 
     private float tBusy;
 
@@ -94,6 +95,10 @@ public class PlayerMovement : NetworkBehaviour {
     }
 
     void Update() {
+        itemObj.SetActive(anim.GetBool("box"));
+
+        if (!HasInputAuthority) return;
+
         if (started && Time.time > tDress + tDressDelay) {
             if (Random.Range(0, 2) == 0) {
                 hatObj.SetActive(true);
@@ -110,7 +115,7 @@ public class PlayerMovement : NetworkBehaviour {
             tDressDelay = Random.Range(20f, 60f);
             tDress = Time.time;
         }
-        if (bussy) {
+        if (bussy.ToString() == "T") {
             float aux = (Time.time - tBusy) / 100;
             if (aux < 0) aux = 0;
             if (aux > 1) aux = 1;
@@ -161,21 +166,23 @@ public class PlayerMovement : NetworkBehaviour {
     }
 
     public void OnMouseDown() {
+        if (!HasInputAuthority) return;
         if (hat) {
             hatObj.SetActive(false);
             hatParticles.Play();
             hat = false;
-            GameManager.instance.AddPoints(500);
+            GameManager.instance.AddPoints(200);
         }
         if (chain) {
             chainObj.SetActive(false);
             chainParticles.Play();
             chain = false;
-            GameManager.instance.AddPoints(500);
+            GameManager.instance.AddPoints(200);
         }
     }
 
     public void TakeItem(int id) {
+        if (!HasInputAuthority) return;
         itemID = id;
         if (currentObj != null) Destroy(currentObj);
         currentObj = Instantiate(ProductsDB.instance.products[itemID].obj, itemObj.transform.position, Quaternion.identity);
@@ -186,17 +193,21 @@ public class PlayerMovement : NetworkBehaviour {
     }
 
     public void LeaveItem() {
+        if (!HasInputAuthority) return;
         itemID = 0;
         if (currentObj != null) Destroy(currentObj);
-        bussy = false;
+        RPC_SetBussy("F");
         anim.SetBool("box", false);
         itemObj.SetActive(false);
         AudioManager.instance.PlayEntregarCaja();
         UIManager.instance.ShowTimeBar(false, 0);
+        int aux = (int)(200f * UIManager.instance.GetTimeBar());
+        GameManager.instance.AddPoints(200 + aux);
     }
 
     public void SetBussy(int id) {
-        bussy = true;
+        if (!HasInputAuthority) return;
+        RPC_SetBussy("T");
         tBusy = Time.time;
         UIManager.instance.SetTimeBar(1);
         UIManager.instance.ShowTimeBar(true, id);
@@ -248,6 +259,21 @@ public class PlayerMovement : NetworkBehaviour {
     }
 
     private void ChangeName() {
+
+    }
+
+
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority)]
+    public void RPC_SetBussy(string b, RpcInfo rpcInfo = default) {
+        if (HasInputAuthority)
+            this.bussy = b;
+    }
+
+    static void ChangeBussy(Changed<PlayerMovement> changed) {
+        changed.Behaviour.ChangeBussy();
+    }
+
+    private void ChangeBussy() {
 
     }
 }

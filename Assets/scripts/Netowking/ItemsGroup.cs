@@ -18,7 +18,7 @@ public class ItemsGroup : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Player") {
             if (other.GetComponent<NetworkObject>().HasStateAuthority == Spawner.instance.localPlayer) {
-                if (other.GetComponent<PlayerMovement>().bussy)
+                if (other.GetComponent<PlayerMovement>().bussy.ToString() == "T")
                     other.GetComponent<PlayerMovement>().TakeItem(itemID);
             }
         }

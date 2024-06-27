@@ -48,24 +48,26 @@ public class CustomerController : NetworkBehaviour {
 
     private bool ready;
 
-    void Start() {
-        if (!Spawner.instance.owner) return;
+    IEnumerator Start() {
+        if (Spawner.instance.owner) {
+            target = this.transform.position;
+            tState = Time.time;
+            tDelay = Random.Range(2f, 7f);
 
-        target = this.transform.position;
-        tState = Time.time;
-        tDelay = Random.Range(2f, 7f);
-
-        string aux = "";
-        aux += Random.Range(0, 6) + ",";//skin color
-        aux += Random.Range(0, 6) + ",";//hair style
-        aux += Random.Range(0, 9) + ",";//hair color
-        aux += Random.Range(0, 9) + ",";//shirt color
-        aux += Random.Range(0, 9);//pants color
-        RPC_SetColor(aux);
-        int product = Random.Range(0,3);
-        if (product != 0) product = Random.Range(1, ProductsDB.instance.products.Length);
-        RPC_SetProduct(product.ToString());
-        this.transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+            string aux = "";
+            aux += Random.Range(0, 6) + ",";//skin color
+            aux += Random.Range(0, 6) + ",";//hair style
+            aux += Random.Range(0, 9) + ",";//hair color
+            aux += Random.Range(0, 9) + ",";//shirt color
+            aux += Random.Range(0, 9);//pants color
+            RPC_SetColor(aux);
+            int product = Random.Range(0, 3);
+            if (product != 0) product = Random.Range(1, ProductsDB.instance.products.Length);
+            RPC_SetProduct(product.ToString());
+            this.transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
+        }
+        yield return new WaitForSeconds(3);
+        RPC_SetState("ready");
     }
 
     public override void FixedUpdateNetwork() {
@@ -100,7 +102,6 @@ public class CustomerController : NetworkBehaviour {
                 target = GameManager.instance.GetDestination();
                 nav.SetDestination(target);
                 anim.SetBool("run", true);
-                RPC_SetState("ready");
             }
         }
     }
@@ -158,13 +159,13 @@ public class CustomerController : NetworkBehaviour {
         if (!ready) return;
         if (other.tag == "Player") {
 
-            if (other.GetComponent<PlayerMovement>().bussy && other.GetComponent<PlayerMovement>().itemID.ToString() == product.ToString() && waiting && player == other.gameObject) {
+            if (other.GetComponent<PlayerMovement>().bussy.ToString() == "T" && other.GetComponent<PlayerMovement>().itemID.ToString() == product.ToString() && waiting && player == other.gameObject) {
                 other.GetComponent<PlayerMovement>().LeaveItem();
                 RPC_SetState("end");
                 return;
             }
 
-            if (other.GetComponent<PlayerMovement>().bussy) return;
+            if (other.GetComponent<PlayerMovement>().bussy.ToString() == "T") return;
 
             if (waiting) return;
 
@@ -174,10 +175,6 @@ public class CustomerController : NetworkBehaviour {
 
             if (aux == 0) StartCoroutine(ShowCloud()); //no item
             else {
-                RPC_SetState("wait");
-                walking = false;
-                nav.isStopped = true;
-                anim.SetBool("run", false);
 
                 other.GetComponent<PlayerMovement>().SetBussy(int.Parse(product.ToString()));
 
@@ -187,6 +184,7 @@ public class CustomerController : NetworkBehaviour {
                 arrowImg.color = Color.white;
                 canvas.SetActive(true);
                 player = other.gameObject;
+                RPC_SetState("wait");
             }
         }
     }
@@ -197,15 +195,13 @@ public class CustomerController : NetworkBehaviour {
         ready = false;
         nav.SetDestination(GameManager.instance.cajaPoint.position);
         nav.isStopped = false;
-        nav.speed = 7;
+        nav.speed = 10;
 
         while(Vector3.Distance(this.transform.position, GameManager.instance.cajaPoint.position) > 1)
             yield return new WaitForSeconds(0.1f);
 
         nav.SetDestination(GameManager.instance.portalPoint.position);
         nav.isStopped = false;
-        int aux = (int)(200f * UIManager.instance.GetTimeBar());
-        GameManager.instance.AddPoints(200 + aux);
 
         //money sound and particles
         AudioManager.instance.PlayCajaRegistradora();
@@ -238,8 +234,12 @@ public class CustomerController : NetworkBehaviour {
         if (state.ToString() == "ready")
             ready = true;
 
-        if (state.ToString() == "wait")
+        if (state.ToString() == "wait") {
             waiting = true;
+            walking = false;
+            nav.isStopped = true;
+            anim.SetBool("run", false);
+        }   
 
         if(state.ToString() == "end")
             StartCoroutine(EndMovement());
