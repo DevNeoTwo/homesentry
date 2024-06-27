@@ -6843,7 +6843,6 @@ MonoBehaviour:
   playerColor: {r: 0, g: 0.21568628, b: 0.65882355, a: 1}
   enemyColor: {r: 0.90588236, g: 0, b: 0, a: 1}
   rb: {fileID: 4842592250625620536}
-  bussy: 0
   itemObj: {fileID: 2811807922373514963}
   itemID: 0
   hatObj: {fileID: 9149701407117043733}
@@ -6862,6 +6861,10 @@ MonoBehaviour:
     _length: 0
     _data:
       Data: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  _bussy:
+    _length: 0
+    _data:
+      Data: 0000000000000000
 --- !u!54 &4842592250625620536
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6884,10 +6887,10 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!95 &480182104439169767
 Animator:
@@ -8263,7 +8266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6184609337862325572
 Transform:
   m_ObjectHideFlags: 0
@@ -14699,14 +14702,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1431224228652995608}
     m_Modifications:
-    - target: {fileID: 8287975786487966625, guid: eee30285d8ba15c4f930d42fd994ff11, type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: e51e9c4f43b7d254096d54363a02d779, type: 2}
-    - target: {fileID: 8287975786487966625, guid: eee30285d8ba15c4f930d42fd994ff11, type: 3}
-      propertyPath: m_Materials.Array.data[4]
-      value: 
-      objectReference: {fileID: 2100000, guid: f6a48b7fd8f37514fa92a6ed024049dd, type: 2}
     - target: {fileID: 2431004218301823728, guid: ef71643cabccbf94a95edcee02c1995b, type: 3}
       propertyPath: m_Name
       value: carrito
@@ -14763,6 +14758,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8287975786487966625, guid: eee30285d8ba15c4f930d42fd994ff11, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: e51e9c4f43b7d254096d54363a02d779, type: 2}
+    - target: {fileID: 8287975786487966625, guid: eee30285d8ba15c4f930d42fd994ff11, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: f6a48b7fd8f37514fa92a6ed024049dd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

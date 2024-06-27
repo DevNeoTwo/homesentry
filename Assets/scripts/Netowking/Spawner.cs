@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour, INetworkRunnerCallbacks {
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) {
         if(player == runner.LocalPlayer) {
-            Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 3, UnityEngine.Random.Range(-1.5f, 1.5f));
+            Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(-0.5f, 0.5f), 0, UnityEngine.Random.Range(-1.5f, 1.5f));
             NetworkObject networkPlayerObject = runner.Spawn(playerPref[PlayerData.instance.genre ? 1 : 0], spawnPosition, Quaternion.identity, player);
             spawnedCharacters.Add(player, networkPlayerObject);
         }

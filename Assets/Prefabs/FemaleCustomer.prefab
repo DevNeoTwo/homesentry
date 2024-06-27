@@ -3117,7 +3117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8960551299570294007
 Transform:
   m_ObjectHideFlags: 0
@@ -3533,6 +3533,10 @@ MonoBehaviour:
     _length: 0
     _data:
       Data: 0000000000000000
+  _state:
+    _length: 0
+    _data:
+      Data: 0000000000000000000000000000000000000000000000000000000000000000
   hairStyles:
   - {fileID: 5897795303380049720}
   - {fileID: 1047349892509911521}
