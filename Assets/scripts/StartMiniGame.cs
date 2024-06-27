@@ -29,6 +29,16 @@ public class StartMiniGame : MonoBehaviour {
         miniGame.SetActive(true);
         cajasspawn.instance.Restart();
         yield return new WaitForSeconds(15);
+        audiomanager.instance.selectaudio(5, 1);
+        yield return new WaitForSeconds(1);
+        audiomanager.instance.selectaudio(5, 1);
+        yield return new WaitForSeconds(1);
+        audiomanager.instance.selectaudio(5, 1);
+        yield return new WaitForSeconds(1);
+        audiomanager.instance.selectaudio(5, 1);
+        yield return new WaitForSeconds(1);
+        audiomanager.instance.selectaudio(5, 1);
+        yield return new WaitForSeconds(1);
         miniGame.SetActive(false);
         UIManager.instance.ShowUI();
         GameManager.instance.AddPoints(cajasspawn.instance.puntos);

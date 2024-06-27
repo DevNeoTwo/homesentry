@@ -4816,7 +4816,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: edd8a890b56d50c44a7be6eef8864cd3, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5297,14 +5297,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 373840473311870854}
     m_Modifications:
-    - target: {fileID: 8287975786487966625, guid: eee30285d8ba15c4f930d42fd994ff11, type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: 2100000, guid: e51e9c4f43b7d254096d54363a02d779, type: 2}
-    - target: {fileID: 8287975786487966625, guid: eee30285d8ba15c4f930d42fd994ff11, type: 3}
-      propertyPath: m_Materials.Array.data[4]
-      value: 
-      objectReference: {fileID: 2100000, guid: f6a48b7fd8f37514fa92a6ed024049dd, type: 2}
     - target: {fileID: 2431004218301823728, guid: ef71643cabccbf94a95edcee02c1995b, type: 3}
       propertyPath: m_Name
       value: carrito
@@ -5357,6 +5349,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8287975786487966625, guid: eee30285d8ba15c4f930d42fd994ff11, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: e51e9c4f43b7d254096d54363a02d779, type: 2}
+    - target: {fileID: 8287975786487966625, guid: eee30285d8ba15c4f930d42fd994ff11, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: f6a48b7fd8f37514fa92a6ed024049dd, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class audiomanager : MonoBehaviour {
 
+    public static audiomanager instance;
+
     [SerializeField] private AudioClip[] audios;
     private AudioSource sonidos;
+
+    private void Awake() {
+        instance = this;
+    }
 
     private void Start() {
         sonidos = GetComponent<AudioSource>();
     }
+
     public void selectaudio(int indice, float volumen)
     {
         sonidos.pitch = Random.Range(0.85f, 1.15f);

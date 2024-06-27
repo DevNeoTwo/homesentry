@@ -12,6 +12,7 @@ public class CustomerController : NetworkBehaviour {
 
     [Networked(OnChanged = nameof(ChangeProduct))] public NetworkString<_2> product { get; set; }
 
+    [Networked(OnChanged = nameof(ChangeState))] public NetworkString<_8> state { get; set; }
 
     [SerializeField] private GameObject[] hairStyles = new GameObject[0];
     [SerializeField] private Color[] hairColors = new Color[0];
@@ -99,7 +100,7 @@ public class CustomerController : NetworkBehaviour {
                 target = GameManager.instance.GetDestination();
                 nav.SetDestination(target);
                 anim.SetBool("run", true);
-                ready = true;
+                RPC_SetState("ready");
             }
         }
     }
@@ -159,7 +160,7 @@ public class CustomerController : NetworkBehaviour {
 
             if (other.GetComponent<PlayerMovement>().bussy && other.GetComponent<PlayerMovement>().itemID.ToString() == product.ToString() && waiting && player == other.gameObject) {
                 other.GetComponent<PlayerMovement>().LeaveItem();
-                StartCoroutine(EndMovement());
+                RPC_SetState("end");
                 return;
             }
 
@@ -173,12 +174,12 @@ public class CustomerController : NetworkBehaviour {
 
             if (aux == 0) StartCoroutine(ShowCloud()); //no item
             else {
-                waiting = true;
+                RPC_SetState("wait");
                 walking = false;
                 nav.isStopped = true;
                 anim.SetBool("run", false);
 
-                other.GetComponent<PlayerMovement>().SetBussy();
+                other.GetComponent<PlayerMovement>().SetBussy(int.Parse(product.ToString()));
 
                 //productTx.text = ProductsDB.instance.products[aux].pName;
                 productTx.text = "";
@@ -193,6 +194,7 @@ public class CustomerController : NetworkBehaviour {
     IEnumerator EndMovement() {
         anim.SetBool("box", true);
         anim.SetBool("run", true);
+        ready = false;
         nav.SetDestination(GameManager.instance.cajaPoint.position);
         nav.isStopped = false;
         nav.speed = 7;
@@ -221,5 +223,25 @@ public class CustomerController : NetworkBehaviour {
         canvas.SetActive(true);
         yield return new WaitForSeconds(3);
         canvas.SetActive(false);
+    }
+
+    [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
+    public void RPC_SetState(string s, RpcInfo rpcInfo = default) {
+        this.state = s;
+    }
+
+    static void ChangeState(Changed<CustomerController> changed) {
+        changed.Behaviour.ChangeState();
+    }
+
+    private void ChangeState() {
+        if (state.ToString() == "ready")
+            ready = true;
+
+        if (state.ToString() == "wait")
+            waiting = true;
+
+        if(state.ToString() == "end")
+            StartCoroutine(EndMovement());
     }
 }

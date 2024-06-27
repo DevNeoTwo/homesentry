@@ -192,14 +192,14 @@ public class PlayerMovement : NetworkBehaviour {
         anim.SetBool("box", false);
         itemObj.SetActive(false);
         AudioManager.instance.PlayEntregarCaja();
-        UIManager.instance.ShowTimeBar(false);
+        UIManager.instance.ShowTimeBar(false, 0);
     }
 
-    public void SetBussy() {
+    public void SetBussy(int id) {
         bussy = true;
         tBusy = Time.time;
         UIManager.instance.SetTimeBar(1);
-        UIManager.instance.ShowTimeBar(true);
+        UIManager.instance.ShowTimeBar(true, id);
     }
 
 

@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private TMP_Text playerName;
     [SerializeField] private GameObject timeBarWin;
     [SerializeField] private Image timeBar;
+    [SerializeField] private Image imageBar;
 
     [SerializeField] private TMP_Text pointsTx;
     [SerializeField] private TMP_Text timeTx;
@@ -81,7 +82,8 @@ public class UIManager : MonoBehaviour {
         CameraMiniMap.instance.GetComponent<Camera>().enabled = false;
     }
 
-    public void ShowTimeBar(bool show) {
+    public void ShowTimeBar(bool show, int id) {
+        imageBar.sprite = ProductsDB.instance.products[id].img;
         timeBarWin.SetActive(show);
     }
 

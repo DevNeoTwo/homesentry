@@ -27,6 +27,7 @@ public class GameManager : NetworkBehaviour {
         while (gameTime > 0) {
             yield return new WaitForSeconds(1);
             gameTime--;
+            if (gameTime < 30) audiomanager.instance.selectaudio(6,1);
             System.TimeSpan t = System.TimeSpan.FromSeconds(gameTime);
             RPC_SetTime(t.ToString("mm\\:ss")); ;
         }
