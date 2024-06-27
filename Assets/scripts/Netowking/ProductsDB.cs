@@ -16,6 +16,12 @@ public class ProductsDB : MonoBehaviour {
     void Start() { }
 
     void Update() { }
+
+    public void ChangeSpawn(int id) {
+        for (int i = 1; i < products.Length; i++)
+            products[i].spawn.SetActive(false);
+        products[id].spawn.SetActive(true);
+    }
 }
 
 [System.Serializable]
@@ -23,4 +29,5 @@ public class Product {
     public string pName;
     public Sprite img;
     public GameObject obj;
+    public GameObject spawn;
 }

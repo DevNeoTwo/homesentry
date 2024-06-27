@@ -211,6 +211,7 @@ public class PlayerMovement : NetworkBehaviour {
         tBusy = Time.time;
         UIManager.instance.SetTimeBar(1);
         UIManager.instance.ShowTimeBar(true, id);
+        ProductsDB.instance.ChangeSpawn(id);
     }
 
 

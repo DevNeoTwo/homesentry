@@ -11092,6 +11092,7 @@ MonoBehaviour:
   faded: 0
   fadeinicial: 1
   UIitem: {fileID: 0}
+  lvl: 
 --- !u!114 &511361604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30246,8 +30247,8 @@ Transform:
   - {fileID: 2040526541}
   - {fileID: 1124453100}
   - {fileID: 403623691}
-  - {fileID: 76164083}
   - {fileID: 1730666933}
+  - {fileID: 76164083}
   - {fileID: 36880614}
   - {fileID: 1018444516}
   - {fileID: 2142190196}
@@ -31991,54 +31992,71 @@ MonoBehaviour:
   - pName: Nada
     img: {fileID: 0}
     obj: {fileID: 0}
+    spawn: {fileID: 0}
   - pName: Gafas Zoom verdes
     img: {fileID: 21300000, guid: 2905af9773415374cb2c0dc1a74a5947, type: 3}
     obj: {fileID: 5192509893583563501, guid: e81883adff6e17d4888e3d2df8b04443, type: 3}
+    spawn: {fileID: 1730666928}
   - pName: Gafas Zoom Rojas
     img: {fileID: 21300000, guid: ceef9f155e92c79439e0b0e763f32a0d, type: 3}
     obj: {fileID: 8822553783640401833, guid: 58a1ac27889efb749844107eeea0bc4a, type: 3}
+    spawn: {fileID: 76164078}
   - pName: Calentador
     img: {fileID: 21300000, guid: 8af40fbe43da3664d9c055b4e436d776, type: 3}
     obj: {fileID: 5561367730394542200, guid: 0d8a0a3cc23098e42891b68a1030200f, type: 3}
+    spawn: {fileID: 36880609}
   - pName: vajilla
     img: {fileID: 21300000, guid: 0044870edbfb9ab46895b18a4ae27499, type: 3}
     obj: {fileID: 719479022042567502, guid: 48d6bf4a0426e4d4b9201442026e88c4, type: 3}
+    spawn: {fileID: 1018444511}
   - pName: molino cafe
     img: {fileID: 21300000, guid: 49b51fed9ba42404ba9bd270c4860498, type: 3}
     obj: {fileID: 4959811176866826513, guid: e50fab4cdd54e5f46a09b3c40970adf2, type: 3}
+    spawn: {fileID: 2142190195}
   - pName: licuadora
     img: {fileID: 21300000, guid: 49c5220e2a153e7469e91c9db7cea58e, type: 3}
     obj: {fileID: 8168896573591023292, guid: c1b08c8e7431c3e4cbcbf694e9e0d5ff, type: 3}
+    spawn: {fileID: 389129201}
   - pName: olla express electrica
     img: {fileID: 21300000, guid: c2425cabf69476b499e860eaae3e141f, type: 3}
     obj: {fileID: 7544941117179427671, guid: 9d2e7e5992e222e48a06cf2235e035a0, type: 3}
+    spawn: {fileID: 1007044733}
   - pName: licuadora byd
     img: {fileID: 21300000, guid: 8d5fe3c0b80144f44a2a656b1b7e8631, type: 3}
     obj: {fileID: 5254644537627472302, guid: 3b66d230711b3a8409035e3f3df9b8a9, type: 3}
+    spawn: {fileID: 1256618410}
   - pName: air fryer
     img: {fileID: 21300000, guid: 77f0ade15000c014189ac03866cb1b77, type: 3}
     obj: {fileID: 8858446615392961111, guid: d3de6d6b700e9b544bdfd62f15fe6f8b, type: 3}
+    spawn: {fileID: 271701434}
   - pName: arandanos
     img: {fileID: 21300000, guid: 84e161308577c9c4eacefade64424f55, type: 3}
     obj: {fileID: 1228869649463477760, guid: 194a4fb69cff747428d7c87868987376, type: 3}
+    spawn: {fileID: 967266861}
   - pName: paila 1
     img: {fileID: 21300000, guid: b0745bf2d4f511d449e93dfca5f0f847, type: 3}
     obj: {fileID: 3950396559923108798, guid: 63fe233ea71d3a04f897406ec4393bb5, type: 3}
+    spawn: {fileID: 1909838326}
   - pName: paila 2
     img: {fileID: 21300000, guid: e3436e5d131c0b64ba0765e8f459ee2b, type: 3}
     obj: {fileID: 40344609813306920, guid: 8d457eba73a9d7b4dae4a9cabf458efb, type: 3}
+    spawn: {fileID: 1242500109}
   - pName: almohada
     img: {fileID: 21300000, guid: cfc71314b26917c4bb8777c347374dde, type: 3}
     obj: {fileID: 3292406928872949842, guid: e4961d5800a540647aaecd5d0aad30ea, type: 3}
+    spawn: {fileID: 1051349465}
   - pName: leche de almendras
     img: {fileID: 21300000, guid: 3eba4c5b74c3f4c4981525063dad0c03, type: 3}
     obj: {fileID: 2237193653103386547, guid: d8d1c7a3e2f4ea143a2c049cc1943705, type: 3}
+    spawn: {fileID: 2091191088}
   - pName: olla express chiwawa
     img: {fileID: 21300000, guid: 86ddf04924f516845a826acef77f9e8a, type: 3}
     obj: {fileID: 8344144092670921891, guid: 1d3649166ccf8a74a990b653a87b56e7, type: 3}
+    spawn: {fileID: 325681385}
   - pName: lonchera electrica
     img: {fileID: 21300000, guid: 9c37a1e99205a074c88d5279dee300d6, type: 3}
     obj: {fileID: 4673984951716635371, guid: 83eea93d3469dd942a991018e577bb53, type: 3}
+    spawn: {fileID: 379285188}
 --- !u!1 &1372415038
 GameObject:
   m_ObjectHideFlags: 0
@@ -34850,7 +34868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 266, y: -281}
+  m_AnchoredPosition: {x: 266, y: -301.8}
   m_SizeDelta: {x: 568.92883, y: 474.239}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1504683486
