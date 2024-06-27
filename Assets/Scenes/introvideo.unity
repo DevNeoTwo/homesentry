@@ -984,6 +984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vidio: SplashWaneshort.mp4
   objdesactivar: {fileID: 246371503}
+  lvl: mainmenu
 --- !u!328 &1602748083
 VideoPlayer:
   m_ObjectHideFlags: 0

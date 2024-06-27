@@ -8,6 +8,7 @@ public class videoplayer : MonoBehaviour
     [SerializeField] string vidio;
     [SerializeField] GameObject objdesactivar;
     cambiarnivel cambianivelscript;
+    [SerializeField]string lvl;
     void Start()
     {
         cambianivelscript = GetComponent<cambiarnivel>();
@@ -28,7 +29,7 @@ public class videoplayer : MonoBehaviour
     }
     private void videofinish(VideoPlayer vp)
     {
-        cambianivelscript.cambiaescena();
+        cambianivelscript.cambiaescena(lvl);
     }
 
     public void playvidio()

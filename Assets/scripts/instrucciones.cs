@@ -80,7 +80,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[10].SetActive(false);
             cuadritoextra.SetActive(true);
             textotuto.text = "¿No registraste tu marcación? Verifica que\ncuentes con  el código de barras que te da\nel acceso a que puedas" +
-                "registrar tu visita\ncon las siguientes recomendaciones";
+                " registrar tu visita\ncon las siguientes recomendaciones";
             transfortext.anchoredPosition = new Vector2(-105f, 21f);
             transformtuto.anchoredPosition = new Vector2(0f, 143f);
             //x 105
@@ -149,7 +149,7 @@ public class instrucciones : MonoBehaviour
             imageninstruccion[8].SetActive(false);
             imageninstruccion[9].SetActive(false);
             imageninstruccion[10].SetActive(false);
-            textotuto.text = "Escoge el género de tu personaje";
+            textotuto.text = "Elije el género de tu personaje";
             transformtuto.anchoredPosition = new Vector2(1f, -194f);
         }
         if (instruccionnumero == 7)

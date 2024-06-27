@@ -15,7 +15,7 @@ public class fadescreen : MonoBehaviour {
     [SerializeField] bool fadeinicial;
     [SerializeField] GameObject UIitem;
     //20 objs llenando exajerando
-
+    [SerializeField] string lvl;
 
     private void Awake() {
         instance = this;
@@ -77,7 +77,7 @@ public class fadescreen : MonoBehaviour {
         {
             this.gameObject.GetComponent<Image>().raycastTarget = true;
         }
-        cambialvlscript.cambiaescena();
+        cambialvlscript.cambiaescena(lvl);
     }
 
     public void hacefade()

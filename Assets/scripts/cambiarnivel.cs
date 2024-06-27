@@ -17,10 +17,10 @@ public class cambiarnivel : MonoBehaviour
         
     }
     
-    public void cambiaescena()
+    public void cambiaescena(string namelvl)
     {
         
-            SceneManager.LoadScene(nivel);
+            SceneManager.LoadScene(namelvl);
         
     }
     
