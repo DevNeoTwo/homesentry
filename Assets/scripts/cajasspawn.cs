@@ -95,7 +95,7 @@ public class cajasspawn : MonoBehaviour {
         tCurrent = Time.time;
         spawnobjsbool = false;
         puntos=0;
-        duracionfill = 15;
+        duracionfill = 20;
         timerfill.fillAmount = 1;
         StartCoroutine(decrementofillimg());
         
