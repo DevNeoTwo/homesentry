@@ -66,8 +66,9 @@ public class CustomerController : NetworkBehaviour {
             RPC_SetProduct(product.ToString());
             this.transform.eulerAngles = new Vector3(0, Random.Range(0, 360), 0);
         }
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         RPC_SetState("ready");
+        nav.enabled = true;
     }
 
     public override void FixedUpdateNetwork() {
@@ -190,6 +191,7 @@ public class CustomerController : NetworkBehaviour {
     }
 
     IEnumerator EndMovement() {
+        nav.enabled = true;
         anim.SetBool("box", true);
         anim.SetBool("run", true);
         ready = false;
@@ -231,17 +233,23 @@ public class CustomerController : NetworkBehaviour {
     }
 
     private void ChangeState() {
-        if (state.ToString() == "ready")
+        if (state.ToString() == "ready") {
             ready = true;
+            nav.enabled = true;
+        }
+            
 
         if (state.ToString() == "wait") {
             waiting = true;
             walking = false;
             nav.isStopped = true;
             anim.SetBool("run", false);
-        }   
+        }
 
-        if(state.ToString() == "end")
+        if (state.ToString() == "end") {
+            nav.enabled = true;
             StartCoroutine(EndMovement());
+        }
+            
     }
 }
